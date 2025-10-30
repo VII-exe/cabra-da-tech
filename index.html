@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <!-- ========================================
+         META TAGS ESSENCIAIS
+    ========================================= -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- SEO -->
+    <meta name="description"
+        content="Projeto educacional de acessibilidade web - Compare 4 versões do mesmo portal de notícias: anti-padrão, WCAG AA, WCAG AAA + eMAG e versão global com i18n">
+    <meta name="keywords" content="acessibilidade, WCAG, eMAG, HTML semântico, a11y, web accessibility">
+    <meta name="author" content="IFBA - Santo Antônio de Jesus">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Cabra da Tech - Projeto de Acessibilidade Web">
+    <meta property="og:description" content="Aprenda acessibilidade web na prática com 4 versões comparativas">
+    <meta property="og:image" content="./assets/images/og-image.png">
+    <meta property="og:url" content="https://cabradatech.ifba.br">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cabra da Tech - Projeto de Acessibilidade Web">
+    <meta name="twitter:description" content="Aprenda acessibilidade web na prática com 4 versões comparativas">
+    <meta name="twitter:image" content="./assets/images/og-image.png">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#1E90FF">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <title>Cabra da Tech - Escolha sua versão | Projeto de Acessibilidade Web</title>
+
+    <!-- ========================================
+         FAVICON
+    ========================================= -->
+    <link rel="icon" type="image/svg+xml" href="./assets/images/logo-cabra-tech.svg">
+    <link rel="icon" type="image/png" href="./assets/images/logo-cabra-tech.png">
+    <link rel="apple-touch-icon" href="./assets/images/logo-cabra-tech.png">
+
+    <!-- ========================================
+         CSS
+    ========================================= -->
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        integrity="sha384-XGjxtQfXaH2tnPFa9x+ruJTuLE3Aa6LhHSWRr1XeTyhezb4abCG4ccI5AkVDxqC+" crossorigin="anonymous">
+
+    <!-- CSS Global -->
+    <link rel="stylesheet" href="./css/global.css">
+
+    <!-- CSS específico do Index -->
+    <style>
+        /* ============================================
+           INDEX - ESTILOS ESPECÍFICOS
+           ============================================ */
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg,
+                    var(--cabra-ceu) 0%,
+                    var(--cor-primaria) 100%);
+            color: var(--cor-texto-claro);
+            padding: var(--espaco-4xl) var(--espaco-lg);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('./assets/images/pattern-sertao.svg') repeat;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-logo {
+            width: 200px;
+            height: auto;
+            margin-bottom: var(--espaco-lg);
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+        }
+
+        .hero h1 {
+            font-size: var(--fonte-5xl);
+            margin-bottom: var(--espaco-md);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-subtitle {
+            font-size: var(--fonte-xl);
+            margin-bottom: var(--espaco-2xl);
+            opacity: 0.95;
+            font-weight: 400;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--espaco-xs);
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: var(--espaco-xs) var(--espaco-md);
+            border-radius: var(--raio-full);
+            font-size: var(--fonte-sm);
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Versões Grid */
+        .versoes-section {
+            padding: var(--espaco-4xl) var(--espaco-lg);
+            background-color: var(--cor-fundo);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--espaco-3xl);
+        }
+
+        .section-header h2 {
+            font-size: var(--fonte-4xl);
+            color: var(--cor-texto);
+            margin-bottom: var(--espaco-md);
+        }
+
+        .section-description {
+            font-size: var(--fonte-lg);
+            color: var(--cor-texto-secundario);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .versoes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--espaco-xl);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Card de Versão */
+        .versao-card {
+            background-color: var(--cor-fundo);
+            border-radius: var(--raio-lg);
+            overflow: hidden;
+            box-shadow: var(--sombra-lg);
+            transition: all var(--transicao-normal);
+            border: 2px solid var(--cor-borda);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .versao-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--sombra-2xl);
+        }
+
+        .versao-card:focus-within {
+            outline: 3px solid var(--cor-primaria);
+            outline-offset: 3px;
+        }
+
+        .card-header {
+            padding: var(--espaco-xl);
+            background: linear-gradient(135deg, var(--card-color-start), var(--card-color-end));
+            color: var(--cor-texto-claro);
+            text-align: center;
+            position: relative;
+        }
+
+        /* Cores específicas por versão */
+        .versao-card[data-version="v1"] {
+            --card-color-start: #DC3545;
+            --card-color-end: #C82333;
+        }
+
+        .versao-card[data-version="v2"] {
+            --card-color-start: #1E90FF;
+            --card-color-end: #1E70E0;
+        }
+
+        .versao-card[data-version="v3"] {
+            --card-color-start: #28A745;
+            --card-color-end: #218838;
+        }
+
+        .versao-card[data-version="v4"] {
+            --card-color-start: #FFC107;
+            --card-color-end: #E0A800;
+        }
+
+        .card-icon {
+            font-size: var(--fonte-5xl);
+            margin-bottom: var(--espaco-sm);
+            display: block;
+        }
+
+        .card-title {
+            font-size: var(--fonte-2xl);
+            margin-bottom: var(--espaco-xs);
+        }
+
+        .card-level {
+            font-size: var(--fonte-sm);
+            opacity: 0.9;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .card-body {
+            padding: var(--espaco-xl);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: var(--espaco-lg);
+        }
+
+        .card-description {
+            font-size: var(--fonte-base);
+            color: var(--cor-texto-secundario);
+            line-height: 1.6;
+        }
+
+        .card-features {
+            display: flex;
+            flex-direction: column;
+            gap: var(--espaco-sm);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--espaco-sm);
+            font-size: var(--fonte-sm);
+            color: var(--cor-texto);
+        }
+
+        .feature-item i {
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .feature-item.positive i {
+            color: var(--cabra-verde);
+        }
+
+        .feature-item.negative i {
+            color: var(--cor-erro);
+        }
+
+        .feature-item.neutral i {
+            color: var(--cor-primaria);
+        }
+
+        .card-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--espaco-sm);
+            padding: var(--espaco-md);
+            background-color: var(--cor-fundo-secundario);
+            border-radius: var(--raio-md);
+            font-size: var(--fonte-xs);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            display: block;
+            font-size: var(--fonte-xl);
+            font-weight: 700;
+            color: var(--cor-texto);
+        }
+
+        .stat-label {
+            display: block;
+            color: var(--cor-texto-secundario);
+            margin-top: var(--espaco-xs);
+        }
+
+        .card-footer {
+            padding: var(--espaco-xl);
+            background-color: var(--cor-fundo-secundario);
+            text-align: center;
+        }
+
+        .btn-access {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--espaco-sm);
+            width: 100%;
+            padding: var(--espaco-md) var(--espaco-xl);
+            background-color: var(--card-color-start);
+            color: var(--cor-texto-claro);
+            text-decoration: none;
+            border-radius: var(--raio-md);
+            font-weight: 600;
+            font-size: var(--fonte-base);
+            transition: all var(--transicao-normal);
+            border: none;
+        }
+
+        .btn-access:hover {
+            background-color: var(--card-color-end);
+            transform: scale(1.05);
+        }
+
+        .btn-access:focus {
+            outline: 3px solid var(--cor-texto);
+            outline-offset: 3px;
+        }
+
+        /* Comparação Section */
+        .comparacao-section {
+            padding: var(--espaco-4xl) var(--espaco-lg);
+            background-color: var(--cor-fundo-secundario);
+        }
+
+        .comparison-table {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--cor-fundo);
+            border-radius: var(--raio-lg);
+            overflow: hidden;
+            box-shadow: var(--sombra-lg);
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: var(--espaco-md);
+            text-align: left;
+            border-bottom: 1px solid var(--cor-borda);
+        }
+
+        .comparison-table th {
+            background-color: var(--cor-primaria);
+            color: var(--cor-texto-claro);
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .comparison-table th:first-child {
+            text-align: left;
+        }
+
+        .comparison-table td {
+            text-align: center;
+        }
+
+        .comparison-table td:first-child {
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .check-yes {
+            color: var(--cabra-verde);
+            font-size: var(--fonte-xl);
+        }
+
+        .check-no {
+            color: var(--cor-erro);
+            font-size: var(--fonte-xl);
+        }
+
+        .check-partial {
+            color: var(--cabra-sol);
+            font-size: var(--fonte-xl);
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: var(--cabra-escuro);
+            color: var(--cor-texto-claro);
+            padding: var(--espaco-2xl) var(--espaco-lg);
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            width: 150px;
+            height: auto;
+            margin-bottom: var(--espaco-md);
+            opacity: 0.9;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--espaco-lg);
+            margin: var(--espaco-lg) 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--cor-texto-claro);
+            text-decoration: none;
+            transition: color var(--transicao-normal);
+        }
+
+        .footer-links a:hover {
+            color: var(--cabra-sol);
+        }
+
+        .footer-links a:focus {
+            outline: 2px solid var(--cabra-sol);
+            outline-offset: 2px;
+            border-radius: var(--raio-sm);
+        }
+
+        .copyright {
+            font-size: var(--fonte-sm);
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: var(--espaco-lg);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: var(--fonte-3xl);
+            }
+
+            .hero-subtitle {
+                font-size: var(--fonte-md);
+            }
+
+            .versoes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table {
+                overflow-x: auto;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: var(--espaco-sm);
+                font-size: var(--fonte-sm);
+            }
+        }
+
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .versao-card {
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+
+        .versao-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .versao-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .versao-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .versao-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        /* Modo reduzido de movimento */
+        @media (prefers-reduced-motion: reduce) {
+            .versao-card {
+                animation: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ========================================
+         SKIP LINK
+    ========================================= -->
+    <a href="#main-content" class="skip-link">
+        Pular para o conteúdo principal
+    </a>
+
+    <!-- ========================================
+         HEADER - Hero Section
+    ========================================= -->
+    <header class="hero" role="banner">
+        <div class="hero-content">
+            <img src="./assets/images/logo-cabra-tech.svg" alt="Logo Cabra da Tech" class="hero-logo">
+
+            <h1>Cabra da Tech</h1>
+
+            <p class="hero-subtitle">
+                Projeto Educacional de Acessibilidade Web
+            </p>
+
+            <div class="hero-badge">
+                <i class="bi bi-award-fill" aria-hidden="true"></i>
+                <span>IFBA - Santo Antônio de Jesus</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========================================
+         MAIN - Conteúdo Principal
+    ========================================= -->
+    <main id="main-content">
+
+        <!-- Seção de Versões -->
+        <section class="versoes-section" aria-labelledby="versoes-titulo">
+            <div class="section-header">
+                <h2 id="versoes-titulo">Escolha sua Versão</h2>
+                <p class="section-description">
+                    Explore 4 implementações diferentes do mesmo portal de notícias.
+                    Cada versão demonstra um nível distinto de acessibilidade e boas práticas web.
+                </p>
+            </div>
+
+            <div class="versoes-grid">
+
+                <!-- V1 - Anti-padrão -->
+                <article class="versao-card" data-version="v1">
+                    <header class="card-header">
+                        <span class="card-icon" aria-hidden="true">❌</span>
+                        <h3 class="card-title">Versão 1</h3>
+                        <p class="card-level">Anti-padrão</p>
+                    </header>
+
+                    <div class="card-body">
+                        <p class="card-description">
+                            Demonstração do que <strong>NÃO fazer</strong>. HTML não-semântico,
+                            divitis extrema, zero acessibilidade e más práticas de CSS/JS.
+                        </p>
+
+                        <ul class="card-features" role="list">
+                            <li class="feature-item negative">
+                                <i class="bi bi-x-circle-fill" aria-hidden="true"></i>
+                                <span>Sem HTML semântico</span>
+                            </li>
+                            <li class="feature-item negative">
+                                <i class="bi bi-x-circle-fill" aria-hidden="true"></i>
+                                <span>Zero acessibilidade (WCAG 0%)</span>
+                            </li>
+                            <li class="feature-item negative">
+                                <i class="bi bi-x-circle-fill" aria-hidden="true"></i>
+                                <span>52 erros de HTML</span>
+                            </li>
+                            <li class="feature-item negative">
+                                <i class="bi bi-x-circle-fill" aria-hidden="true"></i>
+                                <span>60+ problemas de CSS</span>
+                            </li>
+                            <li class="feature-item negative">
+                                <i class="bi bi-x-circle-fill" aria-hidden="true"></i>
+                                <span>80+ problemas de JavaScript</span>
+                            </li>
+                        </ul>
+
+                        <div class="card-stats">
+                            <div class="stat-item">
+                                <span class="stat-value">0%</span>
+                                <span class="stat-label">Acessibilidade</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">192</span>
+                                <span class="stat-label">Problemas</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <footer class="card-footer">
+                        <a href="./v1-antipadrao/antipadrao.html" class="btn-access">
+                            <span>Ver Exemplo Ruim</span>
+                            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </footer>
+                </article>
+
+                <!-- V2 - WCAG AA -->
+                <article class="versao-card" data-version="v2">
+                    <header class="card-header">
+                        <span class="card-icon" aria-hidden="true">✅</span>
+                        <h3 class="card-title">Versão 2</h3>
+                        <p class="card-level">WCAG 2.1 AA</p>
+                    </header>
+
+                    <div class="card-body">
+                        <p class="card-description">
+                            HTML5 semântico completo, conformidade com WCAG 2.1 nível AA,
+                            CSS moderno e JavaScript acessível.
+                        </p>
+
+                        <ul class="card-features" role="list">
+                            <li class="feature-item positive">
+                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                                <span>HTML5 100% semântico</span>
+                            </li>
+                            <li class="feature-item positive">
+                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                                <span>WCAG 2.1 AA completo</span>
+                            </li>
+                            <li class="feature-item positive">
+                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                                <span>ARIA adequado</span>
+                            </li>
+                            <li class="feature-item positive">
+                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                                <span>Navegação por teclado</span>
+                            </li>
+                            <li class="feature-item positive">
+                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                                <span>Compatível com leitores de tela</span>
+                            </li>
+                        </ul>
+
+                        <div class="card-stats">
+                            <div class="stat-item">
+                                <span class="stat-value">100%</span>
+                                <span class="stat-label">Acessibilidade</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">A</span>
+                                <span class="stat-label">Nota WCAG</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <footer class="card-footer">
+                        <a href="./v2-wcag-aa/wcag-aa.html" class="btn-access">
+                            <span>Acessar Versão AA</span>
+                            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </footer>
+                </article>
+
+                <!-- V3 - WCAG AAA + eMAG -->
+                <article class="versao-card" data-version="v3">
+                    <header class="card-header">
+                        <span class="card-icon" aria-hidden="true">🏆</span>
+                        <h3 class="card-title">Versão 3</h3>
+                        <p class="card-level">WCAG 2.1 AAA + eMAG</p>
+                    </header>
+
+                    <div class="card-body">
+                        <p class="card-description">
+                            Máxima acessibilidade possível. WCAG 2.1 AAA + conformidade total
+                            com eMAG (Governo Brasileiro). Controles avançados de personalização.
+                        </p>
+
+                        <ul class="card-features" role="list">
+                            <li class="feature-item positive">
+                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                                <span>WCAG 2.1 AAA completo</span>
+                            </li>
+                            <li class="feature-item positive">
+                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                                <span>eMAG 100% conforme</span>
+                            </li>
+                            <li class="feature-item positive">
+                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                                <span>Contraste AAA (7:1)</span>
+                            </li>
+                            <li class="feature-item positive">
+                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                                <span>Personalização de fonte/cor</span>
+                            </li>
+                            <li class="feature-item positive">
+                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                                <span>Libras e audiodescrição</span>
+                            </li>
+                        </ul>
+
+                        <div class="card-stats">
+                            <div class="stat-item">
+                                <span class="stat-value">AAA</span>
+                                <span class="stat-label">Nível WCAG</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">100%</span>
+                                <span class="stat-label">eMAG</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <footer class="card-footer">
+                        <a href="./v3-wcag-aaa-emag/wcag-aaa-emag.html" class="btn-access">
+                            <span>Acessar Versão AAA</span>
+                            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </footer>
+                </article>
+
+                <!-- V4 - Global i18n -->
+                <article class="versao-card" data-version="v4">
+                    <header class="card-header">
+                        <span class="card-icon" aria-hidden="true">🌍</span>
+                        <h3 class="card-title">Versão 4</h3>
+                        <p class="card-level">Global i18n + RTL</p>
+                    </header>
+
+                    <div class="card-body">
+                        <p class="card-description">
+                            Versão internacional com suporte completo a i18n (internacionalização),
+                            múltiplos idiomas, RTL (right-to-left) e formatos localizados.
+                        </p>
+
+                        <ul class="card-features" role="list">
+                            <li class="feature-item positive">
+                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                                <span>4 idiomas (PT, EN, ES, AR)</span>
+                            </li>
+                            <li class="feature-item positive">
+                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                                <span>Suporte RTL (árabe)</span>
+                            </li>
+                            <li class="feature-item positive">
+                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                                <span>Formatos de data/moeda localizados</span>
+                            </li>
+                            <li class="feature-item positive">
+                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                                <span>WCAG AA mantido</span>
+                            </li>
+                            <li class="feature-item positive">
+                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                                <span>Detecção automática de idioma</span>
+                            </li>
+                        </ul>
+
+                        <div class="card-stats">
+                            <div class="stat-item">
+                                <span class="stat-value">4</span>
+                                <span class="stat-label">Idiomas</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">RTL</span>
+                                <span class="stat-label">Suporte</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <footer class="card-footer">
+                        <a href="./v4-global-i18n/index-i18n.html" class="btn-access">
+                            <span>Acessar Versão Global</span>
+                            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </footer>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Seção de Comparação -->
+        <section class="comparacao-section" aria-labelledby="comparacao-titulo">
+            <div class="section-header">
+                <h2 id="comparacao-titulo">Tabela Comparativa</h2>
+                <p class="section-description">
+                    Veja lado a lado as diferenças entre as quatro versões
+                </p>
+            </div>
+
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Característica</th>
+                            <th scope="col">V1 (Anti)</th>
+                            <th scope="col">V2 (AA)</th>
+                            <th scope="col">V3 (AAA)</th>
+                            <th scope="col">V4 (i18n)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">HTML Semântico</th>
+                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
+                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
+                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
+                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">WCAG 2.1 AA</th>
+                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
+                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
+                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
+                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">WCAG 2.1 AAA</th>
+                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
+                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
+                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
+                            <td><i class="bi bi-dash-circle-fill check-partial" aria-label="Parcial"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">eMAG</th>
+                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
+                            <td><i class="bi bi-dash-circle-fill check-partial" aria-label="Parcial"></i></td>
+                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
+                            <td><i class="bi bi-dash-circle-fill check-partial" aria-label="Parcial"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">ARIA</th>
+                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
+                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
+                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
+                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Navegação por Teclado</th>
+                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
+                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
+                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
+                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Leitores de Tela</th>
+                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
+                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
+                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
+                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Contraste AAA (7:1)</th>
+                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
+                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
+                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
+                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Personalização</th>
+                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
+                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
+                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
+                            <td><i class="bi bi-dash-circle-fill check-partial" aria-label="Parcial"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Internacionalização</th>
+                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
+                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
+                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
+                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Suporte RTL</th>
+                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
+                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
+                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
+                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Libras/Audiodescrição</th>
+                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
+                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
+                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
+                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================
+         FOOTER
+    ========================================= -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-content">
+            <img src="./assets/images/ifba-logo.png" alt="Logo IFBA" class="footer-logo">
+
+            <nav aria-label="Links do rodapé">
+                <ul class="footer-links" role="list">
+                    <li><a href="./docs/documentacao.html">Documentação</a></li>
+                    <li><a href="./docs/guia-acessibilidade.html">Guia de Acessibilidade</a></li>
+                    <li><a href="https://github.com/VII-exe/cabra-da-tech" target="_blank"
+                            rel="noopener noreferrer">GitHub</a></li>
+                    <li><a href="./docs/sobre.html">Sobre o Projeto</a></li>
+                </ul>
+            </nav>
+
+            <p class="copyright">
+                &copy; 2025 IFBA - Campus Santo Antônio de Jesus.
+                Desenvolvido como projeto educacional de Acessibilidade Web.
+            </p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,749 @@
+/* ============================================
+   CSS ANTI-PADRÃO - V1
+   Demonstração de PÉSSIMAS práticas de CSS
+   ============================================ */
+
+/* ❌ Sem reset CSS */
+/* ❌ Sem variáveis CSS */
+/* ❌ Sem organização/comentários úteis */
+
+/* ❌ Seletor universal com propriedades pesadas */
+* {
+    box-sizing: content-box;
+    /* ❌ Deveria ser border-box */
+}
+
+/* ❌ Estilos genéricos e não reutilizáveis */
+.red {
+    color: red;
+}
+
+.blue {
+    color: blue;
+}
+
+.big {
+    font-size: 20px;
+}
+
+.small {
+    font-size: 12px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.center {
+    text-align: center;
+}
+
+/* ❌ IDs para estilos (alta especificidade) */
+#header {
+    background: blue;
+}
+
+#footer {
+    background: black;
+}
+
+/* ❌ Floats para layout (técnica obsoleta) */
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.clearfix {
+    clear: both;
+}
+
+/* ❌ Classes com nomes não semânticos */
+.box1 {
+    width: 300px;
+    height: 200px;
+    background: #ccc;
+}
+
+.box2 {
+    width: 400px;
+    background: red;
+}
+
+/* ❌ !important em excesso */
+.texto-grande {
+    font-size: 24px !important;
+}
+
+.cor-azul {
+    color: #1E90FF !important;
+}
+
+/* ❌ Valores absolutos sem responsividade */
+.container {
+    width: 1200px;
+    /* ❌ Fixo */
+    margin: 0 auto;
+}
+
+/* ❌ Seletores muito específicos (dificulta manutenção) */
+div.container div.conteudo div.card div.card-body div.card-title {
+    font-size: 18px;
+    color: #333;
+}
+
+/* ❌ Estilos inline no CSS (redundância) */
+body {
+    font-family: Arial;
+    /* ❌ Sem fallback */
+    margin: 0;
+    padding: 0;
+    background: white;
+    color: black;
+}
+
+/* ❌ Hover sem states adequados */
+.card {
+    cursor: pointer;
+}
+
+.card:hover {
+    /* ❌ Transform sem transition */
+    transform: scale(1.05);
+}
+
+/* ❌ Z-index aleatórios */
+.topo {
+    z-index: 9999;
+}
+
+.modal {
+    z-index: 99999;
+}
+
+.dropdown {
+    z-index: 999999;
+}
+
+/* ❌ Cores em hex curto ou nomes genéricos */
+.btn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+}
+
+.btn:hover {
+    background: darkred;
+    /* ❌ Sem transição */
+}
+
+/* ❌ Font-size em px (não escalável) */
+h1 {
+    font-size: 48px;
+}
+
+h2 {
+    font-size: 36px;
+}
+
+h3 {
+    font-size: 24px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 24px;
+    /* ❌ Deveria ser relativo */
+}
+
+/* ❌ Margin/padding inconsistentes */
+.espaco-1 {
+    margin: 5px;
+}
+
+.espaco-2 {
+    margin: 10px;
+}
+
+.espaco-3 {
+    margin: 17px;
+    /* ❌ Valor estranho */
+}
+
+.espaco-4 {
+    padding: 23px;
+    /* ❌ Sem padrão */
+}
+
+/* ❌ Grid/Flexbox mal implementado */
+.noticias-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* ❌ Sem responsividade */
+    gap: 30px;
+}
+
+/* ❌ Media queries bagunçadas */
+/* ❌ Sem mobile-first */
+@media screen and (max-width: 1024px) {
+    .container {
+        width: 900px;
+        /* ❌ Ainda fixo */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .noticias-grid {
+        grid-template-columns: 1fr;
+        /* ❌ Quebra subitamente */
+    }
+
+    /* ❌ Esconde elementos importantes */
+    .menu {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    /* ❌ Sobrescreve tudo sem organização */
+    .container {
+        width: 100% !important;
+        padding: 10px !important;
+    }
+}
+
+/* ❌ Animações sem prefixos ou fallback */
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.animado {
+    animation: bounce 1s infinite;
+}
+
+/* ❌ Estilos de impressão inexistentes */
+
+/* ❌ Transições aplicadas erraticamente */
+a {
+    color: blue;
+    /* ❌ Sem transição */
+}
+
+a:hover {
+    color: darkblue;
+    text-decoration: underline;
+}
+
+/* ❌ Forms sem estilo consistente */
+input {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+/* ❌ Sem estados :focus */
+input:focus {
+    /* ❌ Vazio - sem feedback visual */
+}
+
+textarea {
+    border: 1px solid #999;
+    /* ❌ Borda diferente do input */
+    padding: 12px;
+    /* ❌ Padding diferente */
+}
+
+/* ❌ Botões inconsistentes */
+button {
+    background: blue;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: #1E90FF;
+    padding: 15px 30px;
+    /* ❌ Padding diferente */
+}
+
+.btn-secondary {
+    background: gray;
+    padding: 12px 24px;
+    /* ❌ Outro padding diferente */
+}
+
+/* ❌ Shadows sem consistência */
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.dropdown {
+    box-shadow: 2px 2px 5px #888;
+    /* ❌ Formato diferente */
+}
+
+/* ❌ Border-radius aleatórios */
+.card {
+    border-radius: 10px;
+}
+
+.btn {
+    border-radius: 5px;
+}
+
+.badge {
+    border-radius: 20px;
+}
+
+.modal {
+    border-radius: 8px;
+}
+
+/* ❌ Cores sem padrão */
+.destaque {
+    background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+}
+
+.newsletter {
+    background: linear-gradient(135deg, #1E90FF, #1E70E0);
+}
+
+.rodape {
+    background: #2C1810;
+}
+
+/* ❌ Tipografia caótica */
+.titulo-grande {
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.titulo-medio {
+    font-size: 28px;
+    /* ❌ Salto estranho */
+    font-weight: 600;
+}
+
+.titulo-pequeno {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* ❌ Links sem :visited, :active */
+a {
+    color: #1E90FF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ❌ Estados :active e :visited ignorados */
+
+/* ❌ Imagens sem object-fit adequado */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    /* ❌ Fixo */
+    /* ❌ Sem object-fit, imagens distorcem */
+}
+
+/* ❌ Tabelas sem estilo (se houvesse) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    border: 1px solid black;
+    /* ❌ Borda preta dura */
+    padding: 5px;
+}
+
+/* ❌ Listas sem reset adequado */
+ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+ol {
+    list-style: decimal;
+}
+
+/* ❌ Code/pre sem estilo */
+code {
+    background: #f0f0f0;
+    padding: 2px 5px;
+    font-family: monospace;
+}
+
+pre {
+    background: #f5f5f5;
+    padding: 10px;
+    overflow: auto;
+}
+
+/* ❌ Blockquote genérico */
+blockquote {
+    border-left: 4px solid #ccc;
+    padding-left: 15px;
+    font-style: italic;
+}
+
+/* ❌ Scrollbar customizado (quebra acessibilidade) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* ❌ Seletores de atributo sem necessidade */
+[class*="card"] {
+    /* ❌ Muito genérico */
+    position: relative;
+}
+
+/* ❌ Pseudo-elementos sem uso adequado */
+.destaque::before {
+    content: "★";
+    color: gold;
+}
+
+/* ❌ nth-child sem contexto */
+div:nth-child(odd) {
+    /* ❌ Muito genérico */
+    background: #fafafa;
+}
+
+/* ❌ Vendor prefixes faltando */
+.box-shadow {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* ❌ Sem -webkit-, -moz- onde necessário */
+}
+
+/* ❌ Filters sem fallback */
+.imagem-cinza {
+    filter: grayscale(100%);
+    /* ❌ Sem fallback para navegadores antigos */
+}
+
+/* ❌ CSS para JavaScript (má separação) */
+.js-ativo {
+    display: block;
+}
+
+.js-inativo {
+    display: none;
+}
+
+/* ❌ Hacks de navegador (evitar) */
+* html .ie6-hack {
+    /* ❌ Hack do IE6 */
+    margin: 10px;
+}
+
+/* ❌ Comentários inúteis ou inexistentes */
+/* box */
+.box {
+    /* box style */
+    padding: 10px;
+}
+
+/* ❌ Mistura de unidades (px, em, %, rem) sem padrão */
+.section1 {
+    padding: 20px;
+    margin: 2em;
+    width: 80%;
+}
+
+.section2 {
+    padding: 1.5rem;
+    margin: 15px;
+    width: 600px;
+}
+
+/* ❌ Line-height sem unidade (má prática) */
+.texto {
+    line-height: 1.5;
+    /* ❌ OK, mas inconsistente com outros valores */
+}
+
+.outro-texto {
+    line-height: 24px;
+    /* ❌ Fixo */
+}
+
+/* ❌ Opacity para esconder elementos (deveria usar visibility) */
+.escondido {
+    opacity: 0;
+    /* ❌ Ainda ocupa espaço e recebe eventos */
+}
+
+/* ❌ Position absolute sem contexto */
+.posicionado {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    /* ❌ Relativo a quê? Sem parent position: relative */
+}
+
+/* ❌ Transform sem transform-origin */
+.rotacionado {
+    transform: rotate(45deg);
+    /* ❌ Sem transform-origin, pode ficar estranho */
+}
+
+/* ❌ Gradientes sem fallback */
+.gradiente {
+    background: linear-gradient(to right, red, blue);
+    /* ❌ Sem cor sólida de fallback */
+}
+
+/* ❌ Mix de inglês e português */
+.conteudo-principal {
+    background: white;
+}
+
+.main-content {
+    padding: 20px;
+}
+
+/* ❌ Classes em português (dificulta colaboração internacional) */
+.botao-primario {
+    background: blue;
+}
+
+.cartao-noticia {
+    border: 1px solid #ddd;
+}
+
+/* ❌ Breakpoints sem lógica */
+@media (max-width: 1367px) {
+
+    /* ❌ Valor estranho */
+    .container {
+        width: 1100px;
+    }
+}
+
+@media (max-width: 823px) {
+
+    /* ❌ Outro valor estranho */
+    .sidebar {
+        display: none;
+    }
+}
+
+/* ❌ Estilos para elementos que não existem */
+.elemento-inexistente {
+    color: red;
+}
+
+.outro-elemento-que-nao-existe {
+    background: blue;
+}
+
+/* ❌ Sobrescritas desnecessárias */
+.card {
+    background: white;
+}
+
+.card.especial {
+    background: white;
+    /* ❌ Redundante */
+}
+
+/* ❌ Calc() mal usado */
+.largura-estranha {
+    width: calc(100% - 37px);
+    /* ❌ Valor mágico sem contexto */
+}
+
+/* ❌ Aspect-ratio ignorado (para imagens) */
+
+/* ❌ Gap sem grid/flex adequado */
+.espacamento {
+    gap: 20px;
+    /* ❌ Sem display: grid ou flex */
+}
+
+/* ❌ Will-change mal usado (performance) */
+.tudo-vai-mudar {
+    will-change: transform, opacity, left, top, width, height;
+    /* ❌ Muito genérico, afeta performance */
+}
+
+/* ❌ Pointer-events sem necessidade */
+.nao-clicavel {
+    pointer-events: none;
+    /* ❌ Melhor usar disabled em botões */
+}
+
+/* ❌ User-select sem contexto */
+.nao-seleciona {
+    user-select: none;
+    /* ❌ Ruim para acessibilidade */
+}
+
+/* ❌ Cursor customizado exagerado */
+.cursor-customizado {
+    cursor: url('cursor.png'), auto;
+    /* ❌ Arquivo pode não existir, sem fallback adequado */
+}
+
+/* ❌ Text-transform em lugares errados */
+.tudo-maiusculo {
+    text-transform: uppercase;
+    /* ❌ Aplica em todo texto, incluindo nomes próprios */
+}
+
+/* ❌ Letter-spacing e word-spacing aleatórios */
+.espacado {
+    letter-spacing: 3px;
+    /* ❌ Valor alto sem necessidade */
+    word-spacing: 10px;
+}
+
+/* ❌ Overflow escondido sem necessidade */
+.esconde-overflow {
+    overflow: hidden;
+    /* ❌ Pode esconder conteúdo importante */
+}
+
+/* ❌ White-space sem contexto */
+.sem-quebra {
+    white-space: nowrap;
+    /* ❌ Pode causar overflow horizontal */
+}
+
+/* ❌ Text-overflow sem overflow adequado */
+.reticencias {
+    text-overflow: ellipsis;
+    /* ❌ Sem white-space: nowrap e overflow: hidden */
+}
+
+/* ❌ Backdrop-filter sem fallback */
+.vidro {
+    backdrop-filter: blur(10px);
+    /* ❌ Não funciona em todos navegadores */
+}
+
+/* ❌ Clip-path complexo sem fallback */
+.formato-estranho {
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    /* ❌ Sem fallback */
+}
+
+/* ❌ Mix-blend-mode sem contexto */
+.mistura {
+    mix-blend-mode: multiply;
+    /* ❌ Pode não funcionar como esperado */
+}
+
+/* ❌ Isolation sem necessidade */
+.isolado {
+    isolation: isolate;
+    /* ❌ Sem contexto de blend modes */
+}
+
+/* ❌ Contain sem necessidade */
+.contido {
+    contain: layout style paint;
+    /* ❌ Otimização prematura */
+}
+
+/* ❌ Touch-action sem contexto mobile */
+.sem-gestos {
+    touch-action: none;
+    /* ❌ Ruim para acessibilidade */
+}
+
+/* ❌ Scroll-behavior global (pode causar problemas) */
+html {
+    scroll-behavior: smooth;
+    /* ❌ Deveria respeitar prefers-reduced-motion */
+}
+
+/* ❌ Scroll-snap mal implementado */
+.snap-container {
+    scroll-snap-type: y mandatory;
+    /* ❌ Sem altura definida, não funciona */
+}
+
+/* ❌ Overscroll-behavior sem necessidade */
+body {
+    overscroll-behavior: none;
+    /* ❌ Remove comportamento padrão do navegador */
+}
+
+/* ❌ Sem dark mode ou preferências de sistema */
+
+/* ❌ Sem estados de loading/erro/vazio */
+
+/* ❌ Sem utilitários reutilizáveis */
+
+/* ❌ Duplicação massiva de código */
+.card1 {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card2 {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* ❌ Código duplicado */
+}
+
+.card3 {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* ❌ Mais duplicação */
+}
+
+/* ❌ FIM DO CSS ANTI-PADRÃO */
+/* Total: ~700 linhas de CSS ruim */
