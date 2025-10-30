@@ -1,0 +1,339 @@
+{
+    "site": {
+        "nome": "Cabra da Tech",
+        "tagline": "Tecnologia do sertão pro mundo todo",
+        "descricao": "Portal de notícias sobre tecnologia, inovação e educação do sertão brasileiro"
+    },
+    "manchete": {
+        "id": "manchete-principal",
+        "titulo": "Cabras do IFBA criam app que até o véi usa",
+        "subtitulo": "Sistema de monitoramento de cisternas via WhatsApp revoluciona acesso à água no sertão",
+        "imagem": "../assets/images/hero-sertao-tech.jpg",
+        "imagemAlt": "Estudantes do IFBA-Saj testando aplicativo de monitoramento de cisternas em área rural do sertão baiano",
+        "categoria": "Inovação Social",
+        "data": "2025-10-28",
+        "dataFormatada": "28 de outubro de 2025",
+        "autor": "Redação Cabra da Tech",
+        "resumo": "Alunos do Instituto Federal da Bahia desenvolveram solução de IoT acessível que permite famílias do sertão monitorarem o nível de água das cisternas usando apenas WhatsApp, sem necessidade de internet ou smartphones avançados.",
+        "conteudo": "A tecnologia nem sempre precisa ser complicada para resolver problemas reais. Três estudantes do curso de Análise e Desenvolvimento de Sistemas do IFBA-Saj provaram isso ao desenvolverem um sistema de monitoramento de cisternas que funciona via WhatsApp, acessível até para quem tem celulares mais simples.\n\nO projeto, batizado de 'Água Inteligente', utiliza sensores de baixo custo conectados a um microcontrolador ESP32 que envia atualizações automáticas sobre o nível de água diretamente para o WhatsApp das famílias. 'A gente queria algo que o véi e a véia conseguissem usar sem dificuldade', explica João Silva, um dos desenvolvedores.\n\nAlém de informar o nível atual, o sistema envia alertas quando a água está acabando e até sugere a melhor época para solicitar o caminhão-pipa da prefeitura, baseado em dados históricos de consumo. O projeto já foi implantado em 50 residências da zona rural de Senhor do Bonfim e região.\n\n'Antes a gente só descobria que a água tinha acabado quando ia buscar. Agora recebo a mensagem no WhatsApp e já me organizo', conta Maria dos Santos, moradora da comunidade de Caldeirão Grande e uma das beneficiadas pelo projeto.\n\nO sistema também se integra ao programa Cisternas do Governo Federal, facilitando o cadastro e a manutenção dos equipamentos. Os estudantes pretendem expandir o projeto para outras comunidades e já estão em conversas com prefeituras da região.",
+        "tags": [
+            "IoT",
+            "Sertão",
+            "IFBA",
+            "Inovação Social",
+            "WhatsApp",
+            "Sustentabilidade"
+        ]
+    },
+    "noticias": [
+        {
+            "id": "noticia-1",
+            "titulo": "Arrocha da IA: chatbot em forró vira viral e ajuda negócios",
+            "resumo": "Microempreendedores do Nordeste adotam assistente virtual com sotaque regional que entende gírias e expressões locais",
+            "imagem": "../assets/images/noticia-01.jpg",
+            "imagemAlt": "Empreendedora usando chatbot em tablet na feira livre",
+            "categoria": "Inteligência Artificial",
+            "data": "2025-10-27",
+            "dataFormatada": "27 de outubro de 2025",
+            "autor": "Carlos Mendes",
+            "link": "#noticia-1",
+            "destaque": true,
+            "tags": [
+                "IA",
+                "Negócios",
+                "Nordeste",
+                "Chatbot"
+            ]
+        },
+        {
+            "id": "noticia-2",
+            "titulo": "Internet 5G chega ao mato: zona rural terá conexão rápida",
+            "resumo": "Projeto piloto leva internet de alta velocidade para comunidades rurais de três municípios do sertão baiano",
+            "imagem": "../assets/images/noticia-02.jpg",
+            "imagemAlt": "Antena 5G instalada em área rural com paisagem de caatinga ao fundo",
+            "categoria": "Conectividade",
+            "data": "2025-10-26",
+            "dataFormatada": "26 de outubro de 2025",
+            "autor": "Ana Paula Rodrigues",
+            "link": "#noticia-2",
+            "destaque": true,
+            "tags": [
+                "5G",
+                "Internet",
+                "Inclusão Digital",
+                "Zona Rural"
+            ]
+        },
+        {
+            "id": "noticia-3",
+            "titulo": "IFBA oferece curso gratuito: 'Vem pro code, sô!'",
+            "resumo": "Instituto abre 200 vagas para curso de programação voltado para iniciantes, com certificação reconhecida pelo MEC",
+            "imagem": "../assets/images/noticia-03.jpg",
+            "imagemAlt": "Sala de aula do IFBA com alunos aprendendo programação em computadores",
+            "categoria": "Educação",
+            "data": "2025-10-25",
+            "dataFormatada": "25 de outubro de 2025",
+            "autor": "Redação Cabra da Tech",
+            "link": "#noticia-3",
+            "destaque": true,
+            "tags": [
+                "IFBA",
+                "Educação",
+                "Programação",
+                "Curso Gratuito"
+            ]
+        },
+        {
+            "id": "noticia-4",
+            "titulo": "Startup do sertão: app de delivery chega a 20 cidades",
+            "resumo": "Aplicativo desenvolvido em Juazeiro conecta pequenos comerciantes a clientes em cidades do interior",
+            "imagem": "../assets/images/noticia-01.jpg",
+            "imagemAlt": "Entregador usando aplicativo em smartphone",
+            "categoria": "Empreendedorismo",
+            "data": "2025-10-24",
+            "dataFormatada": "24 de outubro de 2025",
+            "autor": "Pedro Santos",
+            "link": "#noticia-4",
+            "destaque": false,
+            "tags": [
+                "Startup",
+                "Delivery",
+                "App",
+                "Economia Local"
+            ]
+        },
+        {
+            "id": "noticia-5",
+            "titulo": "Energia solar + IoT: produtores rurais economizam 70%",
+            "resumo": "Sistema inteligente de irrigação movido a energia solar reduz drasticamente custos de agricultores familiares",
+            "imagem": "../assets/images/noticia-02.jpg",
+            "imagemAlt": "Painéis solares em propriedade rural com sistema de irrigação automatizado",
+            "categoria": "Sustentabilidade",
+            "data": "2025-10-23",
+            "dataFormatada": "23 de outubro de 2025",
+            "autor": "Juliana Costa",
+            "link": "#noticia-5",
+            "destaque": false,
+            "tags": [
+                "Energia Solar",
+                "IoT",
+                "Agricultura",
+                "Sustentabilidade"
+            ]
+        }
+    ],
+    "sidebar": {
+        "maisLidas": [
+            {
+                "titulo": "HTML semântico: por que todo dev deveria usar",
+                "link": "#html-semantico",
+                "views": "12.5k visualizações"
+            },
+            {
+                "titulo": "WCAG 3.0: o que muda para desenvolvedores",
+                "link": "#wcag-3",
+                "views": "9.8k visualizações"
+            },
+            {
+                "titulo": "Acessibilidade não é opcional: entenda a lei",
+                "link": "#acessibilidade-lei",
+                "views": "8.2k visualizações"
+            }
+        ],
+        "newsletter": {
+            "titulo": "Receba no Zap!",
+            "descricao": "Digite seu WhatsApp e receba as notícias tech do sertão toda semana",
+            "placeholder": "+55 75 99999-9999",
+            "botao": "Quero receber!"
+        },
+        "video": {
+            "titulo": "O que é acessibilidade digital?",
+            "descricao": "Entenda em 3 minutos por que sites acessíveis são importantes para todos",
+            "thumbnail": "../assets/videos/placeholder-video.mp4",
+            "duracao": "3:24",
+            "link": "#video-acessibilidade"
+        }
+    },
+    "footer": {
+        "sobre": {
+            "titulo": "Sobre o Cabra da Tech",
+            "texto": "Portal de notícias sobre tecnologia, inovação e educação do sertão brasileiro. Desenvolvido por estudantes do IFBA-Saj como projeto de acessibilidade web."
+        },
+        "links": {
+            "titulo": "Links Rápidos",
+            "itens": [
+                {
+                    "texto": "Início",
+                    "url": "#home"
+                },
+                {
+                    "texto": "Tecnologia",
+                    "url": "#tecnologia"
+                },
+                {
+                    "texto": "Educação",
+                    "url": "#educacao"
+                },
+                {
+                    "texto": "Sobre",
+                    "url": "#sobre"
+                },
+                {
+                    "texto": "Contato",
+                    "url": "#contato"
+                }
+            ]
+        },
+        "acessibilidade": {
+            "titulo": "Acessibilidade",
+            "itens": [
+                {
+                    "texto": "Declaração de Acessibilidade",
+                    "url": "#declaracao"
+                },
+                {
+                    "texto": "Atalhos de Teclado",
+                    "url": "#atalhos"
+                },
+                {
+                    "texto": "Mapa do Site",
+                    "url": "#mapa"
+                },
+                {
+                    "texto": "Política de Privacidade",
+                    "url": "#privacidade"
+                }
+            ]
+        },
+        "contato": {
+            "titulo": "Contato",
+            "email": "contato@cabradatech.ifba.br",
+            "telefone": "+55 74 3541-2345",
+            "endereco": "IFBA Campus Santo Antônio de Jesus - BA"
+        },
+        "social": [
+            {
+                "nome": "GitHub",
+                "icone": "bi-github",
+                "url": "https://github.com/VII-exe",
+                "ariaLabel": "Visite nosso GitHub"
+            },
+            {
+                "nome": "Instagram",
+                "icone": "bi-instagram",
+                "url": "#instagram",
+                "ariaLabel": "Siga no Instagram"
+            },
+            {
+                "nome": "YouTube",
+                "icone": "bi-youtube",
+                "url": "#youtube",
+                "ariaLabel": "Inscreva-se no YouTube"
+            },
+            {
+                "nome": "LinkedIn",
+                "icone": "bi-linkedin",
+                "url": "#linkedin",
+                "ariaLabel": "Conecte no LinkedIn"
+            }
+        ],
+        "copyright": "© 2025 Cabra da Tech. Desenvolvido por Vinicius Xavier e Flávio Costa. Todos os direitos reservados.",
+        "badges": [
+            {
+                "texto": "WCAG 2.1 AA",
+                "descricao": "Conformidade com diretrizes de acessibilidade"
+            },
+            {
+                "texto": "eMAG",
+                "descricao": "Modelo de Acessibilidade em Governo Eletrônico"
+            },
+            {
+                "texto": "HTML5 Semântico",
+                "descricao": "Estrutura web moderna e acessível"
+            }
+        ]
+    },
+    "navegacao": {
+        "principal": [
+            {
+                "texto": "Início",
+                "url": "#home",
+                "icone": "bi-house-door-fill",
+                "atalho": "Alt+1"
+            },
+            {
+                "texto": "Tecnologia",
+                "url": "#tecnologia",
+                "icone": "bi-cpu"
+            },
+            {
+                "texto": "Educação",
+                "url": "#educacao",
+                "icone": "bi-book"
+            },
+            {
+                "texto": "Rolé",
+                "url": "#regiao",
+                "icone": "bi-compass",
+                "descricao": "Notícias da região"
+            }
+        ],
+        "secundaria": [
+            {
+                "texto": "Sobre",
+                "url": "#sobre"
+            },
+            {
+                "texto": "Contato",
+                "url": "#contato"
+            },
+            {
+                "texto": "Acessibilidade",
+                "url": "#acessibilidade"
+            }
+        ]
+    },
+    "formularioComentario": {
+        "titulo": "Bora Comentar",
+        "descricao": "Deixe sua opinião sobre essa notícia. Seu feedback é importante pra gente!",
+        "campos": [
+            {
+                "id": "nome",
+                "label": "Nome",
+                "tipo": "text",
+                "placeholder": "Seu nome",
+                "obrigatorio": true,
+                "autocomplete": "name"
+            },
+            {
+                "id": "email",
+                "label": "E-mail",
+                "tipo": "email",
+                "placeholder": "seu@email.com",
+                "obrigatorio": true,
+                "autocomplete": "email"
+            },
+            {
+                "id": "comentario",
+                "label": "Comentário",
+                "tipo": "textarea",
+                "placeholder": "Escreva seu comentário aqui...",
+                "obrigatorio": true,
+                "maxlength": 500,
+                "dica": "Máximo de 500 caracteres"
+            }
+        ],
+        "botaoEnviar": "Enviar Comentário",
+        "mensagens": {
+            "sucesso": "Arretado! Seu comentário foi enviado com sucesso.",
+            "erro": "Eita! Algo deu errado. Tente novamente.",
+            "campoObrigatorio": "Por favor, preencha este campo."
+        }
+    },
+    "metadata": {
+        "versao": "1.0.0",
+        "ultimaAtualizacao": "2025-10-29",
+        "idioma": "pt-BR",
+        "charset": "UTF-8"
+    }
+}

@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <!-- ========================================
+        META TAGS ESSENCIAIS
+    ========================================= -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- SEO & Acessibilidade -->
+    <meta name="description"
+        content="Portal de notícias sobre tecnologia, inovação e educação do sertão brasileiro. Conteúdo acessível e inclusivo.">
+    <meta name="keywords" content="tecnologia, sertão, IFBA, inovação, acessibilidade, educação">
+    <meta name="author" content="Cabra da Tech - IFBA Senhor do Bonfim">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph (Facebook/LinkedIn) -->
+    <meta property="og:title" content="Cabra da Tech - Tecnologia do sertão pro mundo todo">
+    <meta property="og:description"
+        content="Portal de notícias sobre tecnologia, inovação e educação do sertão brasileiro">
+    <meta property="og:image" content="../assets/images/logo-cabra-tech.png">
+    <meta property="og:url" content="https://cabradatech.ifba.br">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cabra da Tech">
+    <meta name="twitter:description" content="Tecnologia do sertão pro mundo todo">
+    <meta name="twitter:image" content="../assets/images/logo-cabra-tech.png">
+
+    <!-- Tema do navegador (mobile) -->
+    <meta name="theme-color" content="#1E90FF">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <title>Cabra da Tech - Tecnologia do sertão pro mundo todo</title>
+
+    <!-- ========================================
+        FAVICON
+    ========================================= -->
+    <link rel="icon" type="image/svg+xml" href="../assets/images/logo-cabra-tech.svg">
+    <link rel="icon" type="image/png" href="../assets/images/logo-cabra-tech.png">
+
+    <!-- ========================================
+        CSS
+    ========================================= -->
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        integrity="sha384-XGjxtQfXaH2tnPFa9x+ruJTuLE3Aa6LhHSWRr1XeTyhezb4abCG4ccI5AkVDxqC+" crossorigin="anonymous">
+
+    <!-- CSS Global -->
+    <link rel="stylesheet" href="../css/global.css">
+
+    <!-- CSS específico da V2 -->
+    <link rel="stylesheet" href="wcag-aa.css">
+</head>
+
+<body>
+    <!-- ========================================
+        SKIP LINKS (WCAG 2.4.1)
+        Permite pular para o conteúdo principal
+    ========================================= -->
+    <a href="#main-content" class="skip-link">
+        Pular para o conteúdo principal (Alt+1)
+    </a>
+    <a href="#main-nav" class="skip-link">
+        Pular para o menu de navegação (Alt+2)
+    </a>
+    <a href="#search" class="skip-link">
+        Pular para a busca (Alt+3)
+    </a>
+
+    <!-- ========================================
+        HEADER (Cabeçalho do Site)
+    ========================================= -->
+    <header class="site-header" role="banner">
+        <div class="container">
+            <!-- Logo -->
+            <div class="logo">
+                <a href="#home" aria-label="Cabra da Tech - Página inicial">
+                    <img src="../assets/images/logo-cabra-tech.svg" alt="Logo Cabra da Tech" width="180" height="60">
+                </a>
+                <p class="tagline" id="site-tagline">Tecnologia do sertão pro mundo todo</p>
+            </div>
+
+            <!-- Navegação Principal -->
+            <nav id="main-nav" class="main-nav" aria-label="Navegação principal">
+                <button class="menu-toggle" aria-expanded="false" aria-controls="menu-list"
+                    aria-label="Abrir menu de navegação">
+                    <i class="bi bi-list" aria-hidden="true"></i>
+                    <span>Menu</span>
+                </button>
+
+                <ul id="menu-list" class="menu-list" role="list">
+                    <li>
+                        <a href="#home" class="menu-link active" aria-current="page" accesskey="1"
+                            title="Ir para página inicial (Alt+1)">
+                            <i class="bi bi-house-door-fill" aria-hidden="true"></i>
+                            <span>Início</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tecnologia" class="menu-link">
+                            <i class="bi bi-cpu" aria-hidden="true"></i>
+                            <span>Tecnologia</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#educacao" class="menu-link">
+                            <i class="bi bi-book" aria-hidden="true"></i>
+                            <span>Educação</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#regiao" class="menu-link">
+                            <i class="bi bi-compass" aria-hidden="true"></i>
+                            <span>Rolé</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Busca -->
+            <div class="search-wrapper">
+                <form role="search" class="search-form" action="#buscar" method="get">
+                    <label for="search" class="sr-only">Buscar no site</label>
+                    <input type="search" id="search" name="q" placeholder="Buscar notícias..."
+                        aria-label="Campo de busca" accesskey="3" autocomplete="off">
+                    <button type="submit" aria-label="Realizar busca" title="Buscar (Alt+3)">
+                        <i class="bi bi-search" aria-hidden="true"></i>
+                        <span class="sr-only">Buscar</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========================================
+        MAIN (Conteúdo Principal)
+    ========================================= -->
+    <main id="main-content" tabindex="-1">
+
+        <!-- ========================================
+            SEÇÃO HERO - Manchete Principal
+        ========================================= -->
+        <section class="hero-section" aria-labelledby="manchete-titulo">
+            <div class="container">
+                <article id="manchete-principal" class="hero-article">
+                    <!-- Cabeçalho do Artigo -->
+                    <header class="article-header">
+                        <span class="category-badge" aria-label="Categoria">
+                            Inovação Social
+                        </span>
+
+                        <h1 id="manchete-titulo" class="article-title">
+                            Cabras do IFBA criam app que até o véi usa
+                        </h1>
+
+                        <p class="article-subtitle">
+                            Sistema de monitoramento de cisternas via WhatsApp revoluciona acesso à água no sertão
+                        </p>
+
+                        <!-- Metadados -->
+                        <div class="article-meta">
+                            <time datetime="2025-10-28" class="article-date">
+                                <i class="bi bi-calendar3" aria-hidden="true"></i>
+                                <span>28 de outubro de 2025</span>
+                            </time>
+                            <address class="article-author">
+                                <i class="bi bi-person-fill" aria-hidden="true"></i>
+                                <span>Por <span class="author-name">Redação Cabra da Tech</span></span>
+                            </address>
+                        </div>
+                    </header>
+
+                    <!-- Imagem Destacada -->
+                    <figure class="article-figure">
+                        <img src="../assets/images/hero-sertao-tech.jpg"
+                            alt="Estudantes do IFBA-Saj testando aplicativo de monitoramento de cisternas em área rural do sertão baiano"
+                            loading="eager" fetchpriority="high">
+                        <figcaption>
+                            Estudantes do IFBA-Saj testam sistema em comunidade rural de Senhor do Bonfim
+                        </figcaption>
+                    </figure>
+
+                    <!-- Conteúdo do Artigo -->
+                    <div class="article-content">
+                        <p class="lead">
+                            Alunos do Instituto Federal da Bahia desenvolveram solução de IoT acessível que permite
+                            famílias do sertão monitorarem o nível de água das cisternas usando apenas WhatsApp, sem
+                            necessidade de internet ou smartphones avançados.
+                        </p>
+
+                        <p>
+                            A tecnologia nem sempre precisa ser complicada para resolver problemas reais. Três
+                            estudantes do curso de Análise e Desenvolvimento de Sistemas do IFBA-Saj provaram isso ao
+                            desenvolverem um sistema de monitoramento de cisternas que funciona via WhatsApp, acessível
+                            até para quem tem celulares mais simples.
+                        </p>
+
+                        <p>
+                            O projeto, batizado de "Água Inteligente", utiliza sensores de baixo custo conectados a um
+                            microcontrolador ESP32 que envia atualizações automáticas sobre o nível de água diretamente
+                            para o WhatsApp das famílias. "A gente queria algo que o véi e a véia conseguissem usar sem
+                            dificuldade", explica João Silva, um dos desenvolvedores.
+                        </p>
+
+                        <p>
+                            Além de informar o nível atual, o sistema envia alertas quando a água está acabando e até
+                            sugere a melhor época para solicitar o caminhão-pipa da prefeitura, baseado em dados
+                            históricos de consumo. O projeto já foi implantado em 50 residências da zona rural de Senhor
+                            do Bonfim e região.
+                        </p>
+
+                        <blockquote cite="#fonte-maria-santos">
+                            <p>
+                                "Antes a gente só descobria que a água tinha acabado quando ia buscar. Agora recebo a
+                                mensagem no WhatsApp e já me organizo"
+                            </p>
+                            <footer>
+                                — <cite>Maria dos Santos</cite>, moradora da comunidade de Caldeirão Grande
+                            </footer>
+                        </blockquote>
+
+                        <p>
+                            O sistema também se integra ao programa Cisternas do Governo Federal, facilitando o cadastro
+                            e a manutenção dos equipamentos. Os estudantes pretendem expandir o projeto para outras
+                            comunidades e já estão em conversas com prefeituras da região.
+                        </p>
+                    </div>
+
+                    <!-- Rodapé do Artigo -->
+                    <footer class="article-footer">
+                        <h2 class="sr-only">Tags relacionadas</h2>
+                        <ul class="tags-list" aria-label="Tags do artigo">
+                            <li><a href="#tag-iot" class="tag">IoT</a></li>
+                            <li><a href="#tag-sertao" class="tag">Sertão</a></li>
+                            <li><a href="#tag-ifba" class="tag">IFBA</a></li>
+                            <li><a href="#tag-inovacao" class="tag">Inovação Social</a></li>
+                            <li><a href="#tag-whatsapp" class="tag">WhatsApp</a></li>
+                            <li><a href="#tag-sustentabilidade" class="tag">Sustentabilidade</a></li>
+                        </ul>
+
+                        <!-- Compartilhar -->
+                        <div class="share-buttons" aria-label="Compartilhar artigo">
+                            <p class="share-label">Compartilhar:</p>
+                            <ul role="list">
+                                <li>
+                                    <a href="#share-facebook" aria-label="Compartilhar no Facebook" target="_blank"
+                                        rel="noopener noreferrer">
+                                        <i class="bi bi-facebook" aria-hidden="true"></i>
+                                        <span class="sr-only">Facebook</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#share-twitter" aria-label="Compartilhar no Twitter" target="_blank"
+                                        rel="noopener noreferrer">
+                                        <i class="bi bi-twitter" aria-hidden="true"></i>
+                                        <span class="sr-only">Twitter</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#share-whatsapp" aria-label="Compartilhar no WhatsApp" target="_blank"
+                                        rel="noopener noreferrer">
+                                        <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                                        <span class="sr-only">WhatsApp</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#share-linkedin" aria-label="Compartilhar no LinkedIn" target="_blank"
+                                        rel="noopener noreferrer">
+                                        <i class="bi bi-linkedin" aria-hidden="true"></i>
+                                        <span class="sr-only">LinkedIn</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </footer>
+                </article>
+            </div>
+        </section>
+
+        <!-- ========================================
+            SEÇÃO DE NOTÍCIAS
+        ========================================= -->
+        <section class="noticias-section" aria-labelledby="noticias-titulo">
+            <div class="container">
+                <header class="section-header">
+                    <h2 id="noticias-titulo">Últimas Notícias</h2>
+                    <p class="section-description">
+                        Fique por dentro das novidades tech do sertão
+                    </p>
+                </header>
+
+                <div class="noticias-grid" role="list">
+                    <!-- Notícia 1 -->
+                    <article class="noticia-card" role="listitem">
+                        <a href="#noticia-1" class="card-link">
+                            <figure class="card-figure">
+                                <img src="../assets/images/noticia-01.jpg"
+                                    alt="Empreendedora usando chatbot em tablet na feira livre" loading="lazy">
+                                <span class="category-badge">Inteligência Artificial</span>
+                            </figure>
+
+                            <div class="card-content">
+                                <h3 class="card-title">
+                                    Arrocha da IA: chatbot em forró vira viral e ajuda negócios
+                                </h3>
+                                <p class="card-description">
+                                    Microempreendedores do Nordeste adotam assistente virtual com sotaque regional que
+                                    entende gírias e expressões locais
+                                </p>
+                                <div class="card-meta">
+                                    <time datetime="2025-10-27">27 de outubro de 2025</time>
+                                    <address>Por Carlos Mendes</address>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <!-- Notícia 2 -->
+                    <article class="noticia-card" role="listitem">
+                        <a href="#noticia-2" class="card-link">
+                            <figure class="card-figure">
+                                <img src="../assets/images/noticia-02.jpg"
+                                    alt="Antena 5G instalada em área rural com paisagem de caatinga ao fundo"
+                                    loading="lazy">
+                                <span class="category-badge">Conectividade</span>
+                            </figure>
+
+                            <div class="card-content">
+                                <h3 class="card-title">
+                                    Internet 5G chega ao mato: zona rural terá conexão rápida
+                                </h3>
+                                <p class="card-description">
+                                    Projeto piloto leva internet de alta velocidade para comunidades rurais de três
+                                    municípios do sertão baiano
+                                </p>
+                                <div class="card-meta">
+                                    <time datetime="2025-10-26">26 de outubro de 2025</time>
+                                    <address>Por Ana Paula Rodrigues</address>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <!-- Notícia 3 -->
+                    <article class="noticia-card" role="listitem">
+                        <a href="#noticia-3" class="card-link">
+                            <figure class="card-figure">
+                                <img src="../assets/images/noticia-03.jpg"
+                                    alt="Sala de aula do IFBA com alunos aprendendo programação em computadores"
+                                    loading="lazy">
+                                <span class="category-badge">Educação</span>
+                            </figure>
+
+                            <div class="card-content">
+                                <h3 class="card-title">
+                                    IFBA oferece curso gratuito: "Vem pro code, sô!"
+                                </h3>
+                                <p class="card-description">
+                                    Instituto abre 200 vagas para curso de programação voltado para iniciantes, com
+                                    certificação reconhecida pelo MEC
+                                </p>
+                                <div class="card-meta">
+                                    <time datetime="2025-10-25">25 de outubro de 2025</time>
+                                    <address>Por Redação Cabra da Tech</address>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+
+                <!-- Botão Ver Mais -->
+                <div class="section-footer">
+                    <a href="#todas-noticias" class="btn-primary">
+                        Ver todas as notícias
+                        <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+            SEÇÃO DE COMENTÁRIOS
+        ========================================= -->
+        <section class="comentarios-section" aria-labelledby="comentarios-titulo">
+            <div class="container">
+                <header class="section-header">
+                    <h2 id="comentarios-titulo">Bora Comentar</h2>
+                    <p class="section-description">
+                        Deixe sua opinião sobre essa notícia. Seu feedback é importante pra gente!
+                    </p>
+                </header>
+
+                <form id="form-comentario" class="comentario-form" novalidate>
+                    <div class="form-group">
+                        <label for="nome" class="form-label">
+                            Nome <abbr title="Campo obrigatório" aria-label="obrigatório">*</abbr>
+                        </label>
+                        <input type="text" id="nome" name="nome" class="form-input" placeholder="Seu nome"
+                            autocomplete="name" required aria-required="true">
+                        <span class="form-error" id="nome-error" role="alert"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">
+                            E-mail <abbr title="Campo obrigatório" aria-label="obrigatório">*</abbr>
+                        </label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="seu@email.com"
+                            autocomplete="email" required aria-required="true">
+                        <span class="form-error" id="email-error" role="alert"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comentario" class="form-label">
+                            Comentário <abbr title="Campo obrigatório" aria-label="obrigatório">*</abbr>
+                        </label>
+                        <textarea id="comentario" name="comentario" class="form-textarea"
+                            placeholder="Escreva seu comentário aqui..." rows="5" maxlength="500" required
+                            aria-required="true" aria-describedby="comentario-hint"></textarea>
+                        <small id="comentario-hint" class="form-hint">
+                            Máximo de 500 caracteres
+                        </small>
+                        <span class="form-error" id="comentario-error" role="alert"></span>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">
+                            <i class="bi bi-send" aria-hidden="true"></i>
+                            Enviar Comentário
+                        </button>
+                    </div>
+
+                    <!-- Mensagem de sucesso/erro (oculta inicialmente) -->
+                    <div class="form-message" id="form-message" role="status" aria-live="polite" hidden></div>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================
+        ASIDE (Barra Lateral)
+    ========================================= -->
+    <aside class="sidebar" aria-label="Conteúdo complementar">
+        <div class="container">
+
+            <!-- Mais Lidas -->
+            <section class="sidebar-section" aria-labelledby="mais-lidas-titulo">
+                <h2 id="mais-lidas-titulo">
+                    <i class="bi bi-fire" aria-hidden="true"></i>
+                    Mais Lidas
+                </h2>
+                <ol class="mais-lidas-list">
+                    <li>
+                        <a href="#html-semantico">
+                            HTML semântico: por que todo dev deveria usar
+                            <span class="views">12.5k visualizações</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#wcag-3">
+                            WCAG 3.0: o que muda para desenvolvedores
+                            <span class="views">9.8k visualizações</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#acessibilidade-lei">
+                            Acessibilidade não é opcional: entenda a lei
+                            <span class="views">8.2k visualizações</span>
+                        </a>
+                    </li>
+                </ol>
+            </section>
+
+            <!-- Newsletter -->
+            <section class="sidebar-section newsletter" aria-labelledby="newsletter-titulo">
+                <h2 id="newsletter-titulo">
+                    <i class="bi bi-envelope" aria-hidden="true"></i>
+                    Receba no Zap!
+                </h2>
+                <p>Digite seu WhatsApp e receba as notícias tech do sertão toda semana</p>
+                <form class="newsletter-form" action="#newsletter" method="post">
+                    <label for="whatsapp" class="sr-only">Número do WhatsApp</label>
+                    <input type="tel" id="whatsapp" name="whatsapp" placeholder="+55 74 99999-9999" inputmode="tel"
+                        autocomplete="tel" pattern="[+][0-9]{2} [0-9]{2} [0-9]{5}-[0-9]{4}" required
+                        aria-required="true">
+                    <button type="submit" class="btn-primary">
+                        Quero receber!
+                    </button>
+                </form>
+            </section>
+
+            <!-- Vídeo -->
+            <section class="sidebar-section video-destaque" aria-labelledby="video-titulo">
+                <h2 id="video-titulo">
+                    <i class="bi bi-play-circle" aria-hidden="true"></i>
+                    O que é acessibilidade digital?
+                </h2>
+                <p>Entenda em 3 minutos por que sites acessíveis são importantes para todos</p>
+                <a href="#video-acessibilidade" class="video-link">
+                    <div class="video-thumbnail">
+                        <img src="../assets/images/noticia-01.jpg" alt="Thumbnail do vídeo sobre acessibilidade digital"
+                            loading="lazy">
+                        <span class="video-duration" aria-label="Duração: 3 minutos e 24 segundos">3:24</span>
+                        <span class="video-play-icon" aria-hidden="true">
+                            <i class="bi bi-play-fill"></i>
+                        </span>
+                    </div>
+                    <span class="sr-only">Assistir vídeo: O que é acessibilidade digital?</span>
+                </a>
+            </section>
+
+        </div>
+    </aside>
+
+    <!-- ========================================
+        FOOTER (Rodapé)
+    ========================================= -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+
+                <!-- Sobre -->
+                <section class="footer-section" aria-labelledby="footer-sobre-titulo">
+                    <h2 id="footer-sobre-titulo">Sobre o Cabra da Tech</h2>
+                    <p>
+                        Portal de notícias sobre tecnologia, inovação e educação do sertão brasileiro. Desenvolvido por
+                        estudantes do IFBA-Saj como projeto de acessibilidade web.
+                    </p>
+                    <img src="../assets/images/ifba-logo.png" alt="Logo IFBA" class="footer-logo" width="120"
+                        height="40" loading="lazy">
+                </section>
+
+                <!-- Links Rápidos -->
+                <section class="footer-section" aria-labelledby="footer-links-titulo">
+                    <h2 id="footer-links-titulo">Links Rápidos</h2>
+                    <nav aria-label="Links rápidos do rodapé">
+                        <ul role="list">
+                            <li><a href="#home">Início</a></li>
+                            <li><a href="#tecnologia">Tecnologia</a></li>
+                            <li><a href="#educacao">Educação</a></li>
+                            <li><a href="#sobre">Sobre</a></li>
+                            <li><a href="#contato">Contato</a></li>
+                        </ul>
+                    </nav>
+                </section>
+
+                <!-- Acessibilidade -->
+                <section class="footer-section" aria-labelledby="footer-acessibilidade-titulo">
+                    <h2 id="footer-acessibilidade-titulo">Acessibilidade</h2>
+                    <nav aria-label="Links de acessibilidade">
+                        <ul role="list">
+                            <li><a href="#declaracao">Declaração de Acessibilidade</a></li>
+                            <li><a href="#atalhos">Atalhos de Teclado</a></li>
+                            <li><a href="#mapa">Mapa do Site</a></li>
+                            <li><a href="#privacidade">Política de Privacidade</a></li>
+                        </ul>
+                    </nav>
+                </section>
+
+                <!-- Contato -->
+                <section class="footer-section" aria-labelledby="footer-contato-titulo">
+                    <h2 id="footer-contato-titulo">Contato</h2>
+                    <address>
+                        <p>
+                            <i class="bi bi-envelope-fill" aria-hidden="true"></i>
+                            <a href="mailto:contato@cabradatech.ifba.br">
+                                contato@cabradatech.ifba.br
+                            </a>
+                        </p>
+                        <p>
+                            <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+                            <a href="tel:+557435412345">
+                                +55 74 3541-2345
+                            </a>
+                        </p>
+                        <p>
+                            <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
+                            IFBA Campus Senhor do Bonfim - BA
+                        </p>
+                    </address>
+
+                    <!-- Redes Sociais -->
+                    <nav aria-label="Redes sociais">
+                        <ul class="social-links" role="list">
+                            <li>
+                                <a href="https://github.com/ifba-saj" aria-label="Visite nosso GitHub" target="_blank"
+                                    rel="noopener noreferrer">
+                                    <i class="bi bi-github" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#instagram" aria-label="Siga no Instagram" target="_blank"
+                                    rel="noopener noreferrer">
+                                    <i class="bi bi-instagram" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#youtube" aria-label="Inscreva-se no YouTube" target="_blank"
+                                    rel="noopener noreferrer">
+                                    <i class="bi bi-youtube" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#linkedin" aria-label="Conecte no LinkedIn" target="_blank"
+                                    rel="noopener noreferrer">
+                                    <i class="bi bi-linkedin" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </section>
+
+            </div>
+
+            <!-- Copyright e Badges -->
+            <div class="footer-bottom">
+                <p class="copyright">
+                    &copy; 2025 Cabra da Tech. Desenvolvido com <span aria-label="amor">❤️</span> no sertão da Bahia.
+                    Todos os direitos reservados.
+                </p>
+
+                <div class="badges" aria-label="Selos de conformidade">
+                    <span class="badge" title="Conformidade com diretrizes de acessibilidade WCAG 2.1 nível AA">
+                        <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                        WCAG 2.1 AA
+                    </span>
+                    <span class="badge" title="Modelo de Acessibilidade em Governo Eletrônico">
+                        <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                        eMAG
+                    </span>
+                    <span class="badge" title="Estrutura web moderna e acessível">
+                        <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                        HTML5 Semântico
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================
+        JAVASCRIPT
+    ========================================= -->
+    <script src="wcag-aa.js"></script>
+
+</body>
+
+</html>

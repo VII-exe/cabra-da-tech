@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cabra da Tech</title>
+    <link rel="stylesheet" href="antipadrao.css">
+    <style>
+        /* Inline styles misturados (péssima prática) */
+        .red { color: red; }
+        .big { font-size: 20px; }
+    </style>
+</head>
+
+<!-- ❌ Inline styles no body -->
+<body style="font-family: Arial; margin: 0; background: #fff;">
+
+    <!-- ❌ DIVITIS - Uso excessivo de divs sem semântica -->
+    <!-- ❌ Sem skip links -->
+    <!-- ❌ Sem landmarks (header, nav, main) -->
+    
+    <div class="topo" style="background: #1E90FF; padding: 20px; position: sticky; top: 0;">
+        <div class="container">
+            <div class="logo-area" style="float: left;">
+                <!-- ❌ Imagem sem alt text -->
+                <img src="../assets/images/logo-cabra-tech.svg" width="180" onclick="location.href='#'">
+                <div style="font-size: 12px; color: #fff; font-style: italic;">Tecnologia do sertão pro mundo todo</div>
+            </div>
+
+            <!-- ❌ Menu sem <nav>, sem aria-label -->
+            <!-- ❌ Onclick ao invés de links -->
+            <div class="menu" style="float: right; margin-top: 20px;">
+                <div class="menu-item" onclick="location.href='#home'" style="display: inline-block; padding: 10px 15px; color: #fff; cursor: pointer; background: rgba(255,255,255,0.2); margin: 0 5px; border-radius: 5px;">
+                    🏠 Inicio
+                </div>
+                <div class="menu-item" onclick="location.href='#tech'" style="display: inline-block; padding: 10px 15px; color: #fff; cursor: pointer; background: rgba(255,255,255,0.2); margin: 0 5px; border-radius: 5px;">
+                    💻 Tecnologia
+                </div>
+                <div class="menu-item" onclick="location.href='#edu'" style="display: inline-block; padding: 10px 15px; color: #fff; cursor: pointer; background: rgba(255,255,255,0.2); margin: 0 5px; border-radius: 5px;">
+                    📚 Educacao
+                </div>
+                <div class="menu-item" onclick="location.href='#about'" style="display: inline-block; padding: 10px 15px; color: #fff; cursor: pointer; background: rgba(255,255,255,0.2); margin: 0 5px; border-radius: 5px;">
+                    ℹ️ Sobre
+                </div>
+            </div>
+            
+            <!-- ❌ Input sem label -->
+            <!-- ❌ Botão sem texto (só emoji) -->
+            <div style="clear: both; margin-top: 10px;">
+                <input type="text" placeholder="Buscar..." style="padding: 8px; width: 200px; border: 1px solid #ccc; border-radius: 5px;">
+                <div onclick="alert('Buscando...')" style="display: inline-block; padding: 8px 15px; background: #FFD700; cursor: pointer; border-radius: 5px;">🔍</div>
+            </div>
+        </div>
+        <!-- ❌ Floats sem clear -->
+    </div>
+
+    <!-- ❌ Sem <main> -->
+    <!-- ❌ Divs genéricas ao invés de <article> -->
+    <div class="conteudo" style="padding: 40px 20px;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto;">
+            
+            <!-- ❌ Manchete sem estrutura semântica -->
+            <!-- ❌ Sem <article>, <header>, <time> -->
+            <div class="destaque" style="background: linear-gradient(135deg, #f5f5f5, #e0e0e0); padding: 40px; border-radius: 10px; margin-bottom: 40px;">
+                <!-- ❌ Badge sem contexto semântico -->
+                <div style="background: #1E90FF; color: #fff; display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 15px;">INOVAÇÃO SOCIAL</div>
+                
+                <!-- ❌ Título sem hierarquia adequada -->
+                <!-- ❌ Poderia ser <h1>, mas é div com classes de estilo -->
+                <div class="titulo-grande" style="font-size: 48px; font-weight: bold; margin-bottom: 15px; line-height: 1.2;">
+                    Cabras do IFBA criam app que até o véi usa
+                </div>
+                
+                <div style="font-size: 20px; color: #666; margin-bottom: 20px;">
+                    Sistema de monitoramento de cisternas via WhatsApp revoluciona acesso à água no sertão
+                </div>
+
+                <!-- ❌ Data sem <time datetime> -->
+                <div style="font-size: 14px; color: #999; margin-bottom: 20px;">
+                    📅 28 de outubro de 2025 | ✍️ Por Redação Cabra da Tech
+                </div>
+
+                <!-- ❌ Imagem sem figure/figcaption -->
+                <!-- ❌ Alt genérico e inútil -->
+                <div style="margin: 30px 0;">
+                    <img src="../assets/images/hero-sertao-tech.jpg" alt="imagem" style="width: 100%; border-radius: 10px;">
+                    <div style="font-size: 12px; color: #999; margin-top: 10px; text-align: center; font-style: italic;">Estudantes do IFBA-Saj testam sistema em comunidade rural de Senhor do Bonfim</div>
+                </div>
+
+                <!-- ❌ Texto sem estrutura de parágrafos -->
+                <!-- ❌ Tudo em uma única div -->
+                <div style="font-size: 18px; line-height: 1.8; color: #333;">
+                    <b>Alunos do Instituto Federal da Bahia desenvolveram solução de IoT acessível que permite famílias do sertão monitorarem o nível de água das cisternas usando apenas WhatsApp, sem necessidade de internet ou smartphones avançados.</b>
+                    <br><br>
+                    A tecnologia nem sempre precisa ser complicada para resolver problemas reais. Três estudantes do curso de Análise e Desenvolvimento de Sistemas do IFBA-Saj provaram isso ao desenvolverem um sistema de monitoramento de cisternas que funciona via WhatsApp, acessível até para quem tem celulares mais simples.
+                    <br><br>
+                    O projeto, batizado de "Água Inteligente", utiliza sensores de baixo custo conectados a um microcontrolador ESP32 que envia atualizações automáticas sobre o nível de água diretamente para o WhatsApp das famílias. "A gente queria algo que o véi e a véia conseguissem usar sem dificuldade", explica João Silva, um dos desenvolvedores.
+                    <br><br>
+                    <!-- ❌ Citação sem <blockquote> -->
+                    <div style="border-left: 4px solid #1E90FF; padding-left: 20px; margin: 30px 0; background: #f9f9f9; padding: 20px; border-radius: 5px; font-style: italic;">
+                        "Antes a gente só descobria que a água tinha acabado quando ia buscar. Agora recebo a mensagem no WhatsApp e já me organizo"
+                        <br>
+                        <span style="font-weight: bold; font-style: normal;">- Maria dos Santos, moradora da comunidade de Caldeirão Grande</span>
+                    </div>
+                    Além de informar o nível atual, o sistema envia alertas quando a água está acabando e até sugere a melhor época para solicitar o caminhão-pipa da prefeitura, baseado em dados históricos de consumo. O projeto já foi implantado em 50 residências da zona rural de Senhor do Bonfim e região.
+                    <br><br>
+                    O sistema também se integra ao programa Cisternas do Governo Federal, facilitando o cadastro e a manutenção dos equipamentos. Os estudantes pretendem expandir o projeto para outras comunidades e já estão em conversas com prefeituras da região.
+                </div>
+
+                <!-- ❌ Tags sem estrutura semântica -->
+                <!-- ❌ Sem <ul> ou lista -->
+                <div style="margin-top: 30px;">
+                    <span style="background: #f0f0f0; padding: 5px 15px; border-radius: 20px; display: inline-block; margin: 5px; border: 1px solid #ddd; cursor: pointer;" onclick="location.href='#iot'">IoT</span>
+                    <span style="background: #f0f0f0; padding: 5px 15px; border-radius: 20px; display: inline-block; margin: 5px; border: 1px solid #ddd; cursor: pointer;" onclick="location.href='#sertao'">Sertão</span>
+                    <span style="background: #f0f0f0; padding: 5px 15px; border-radius: 20px; display: inline-block; margin: 5px; border: 1px solid #ddd; cursor: pointer;" onclick="location.href='#ifba'">IFBA</span>
+                    <span style="background: #f0f0f0; padding: 5px 15px; border-radius: 20px; display: inline-block; margin: 5px; border: 1px solid #ddd; cursor: pointer;" onclick="location.href='#inovacao'">Inovação Social</span>
+                    <span style="background: #f0f0f0; padding: 5px 15px; border-radius: 20px; display: inline-block; margin: 5px; border: 1px solid #ddd; cursor: pointer;" onclick="location.href='#whatsapp'">WhatsApp</span>
+                </div>
+
+                <!-- ❌ Compartilhar sem contexto acessível -->
+                <div style="margin-top: 30px; padding-top: 30px; border-top: 2px solid #ddd;">
+                    <b>Compartilhar:</b>
+                    <!-- ❌ Links sem texto alternativo adequado -->
+                    <span onclick="alert('Compartilhar no Facebook')" style="cursor: pointer; margin: 0 10px; font-size: 24px;">📘</span>
+                    <span onclick="alert('Compartilhar no Twitter')" style="cursor: pointer; margin: 0 10px; font-size: 24px;">🐦</span>
+                    <span onclick="alert('Compartilhar no WhatsApp')" style="cursor: pointer; margin: 0 10px; font-size: 24px;">📱</span>
+                    <span onclick="alert('Compartilhar no LinkedIn')" style="cursor: pointer; margin: 0 10px; font-size: 24px;">💼</span>
+                </div>
+            </div>
+
+            <!-- ❌ Seção de notícias sem <section> -->
+            <!-- ❌ Título sem hierarquia (deveria ser <h2>) -->
+            <div style="margin-bottom: 40px;">
+                <div style="font-size: 36px; font-weight: bold; text-align: center; margin-bottom: 10px;">Últimas Notícias</div>
+                <div style="text-align: center; color: #666; margin-bottom: 30px;">Fique por dentro das novidades tech do sertão</div>
+
+                <!-- ❌ Grid de notícias sem estrutura semântica -->
+                <div class="noticias-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
+                    
+                    <!-- ❌ Card sem <article> -->
+                    <div class="card" style="background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.3s;" onclick="location.href='#noticia1'">
+                        <div style="position: relative;">
+                            <!-- ❌ Imagem sem alt -->
+                            <img src="../assets/images/noticia-01.jpg" style="width: 100%; height: 200px; object-fit: cover;">
+                            <div style="position: absolute; top: 15px; left: 15px; background: #1E90FF; color: #fff; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: bold;">INTELIGÊNCIA ARTIFICIAL</div>
+                        </div>
+                        <div style="padding: 20px;">
+                            <!-- ❌ Título sem <h3> -->
+                            <div style="font-size: 20px; font-weight: bold; margin-bottom: 10px; line-height: 1.3;">Arrocha da IA: chatbot em forró vira viral e ajuda negócios</div>
+                            <div style="color: #666; margin-bottom: 15px; line-height: 1.6;">Microempreendedores do Nordeste adotam assistente virtual com sotaque regional que entende gírias e expressões locais</div>
+                            <!-- ❌ Metadados sem semântica -->
+                            <div style="font-size: 14px; color: #999;">📅 27 de outubro de 2025</div>
+                            <div style="font-size: 14px; color: #999;">✍️ Por Carlos Mendes</div>
+                        </div>
+                    </div>
+
+                    <!-- ❌ Card 2 - Repetindo os mesmos erros -->
+                    <div class="card" style="background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;" onclick="location.href='#noticia2'">
+                        <div style="position: relative;">
+                            <img src="../assets/images/noticia-02.jpg" style="width: 100%; height: 200px; object-fit: cover;">
+                            <div style="position: absolute; top: 15px; left: 15px; background: #228B22; color: #fff; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: bold;">CONECTIVIDADE</div>
+                        </div>
+                        <div style="padding: 20px;">
+                            <div style="font-size: 20px; font-weight: bold; margin-bottom: 10px; line-height: 1.3;">Internet 5G chega ao mato: zona rural terá conexão rápida</div>
+                            <div style="color: #666; margin-bottom: 15px; line-height: 1.6;">Projeto piloto leva internet de alta velocidade para comunidades rurais de três municípios do sertão baiano</div>
+                            <div style="font-size: 14px; color: #999;">📅 26 de outubro de 2025</div>
+                            <div style="font-size: 14px; color: #999;">✍️ Por Ana Paula Rodrigues</div>
+                        </div>
+                    </div>
+
+                    <!-- ❌ Card 3 - Repetindo os mesmos erros -->
+                    <div class="card" style="background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;" onclick="location.href='#noticia3'">
+                        <div style="position: relative;">
+                            <img src="../assets/images/noticia-03.jpg" style="width: 100%; height: 200px; object-fit: cover;">
+                            <div style="position: absolute; top: 15px; left: 15px; background: #FFD700; color: #333; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: bold;">EDUCAÇÃO</div>
+                        </div>
+                        <div style="padding: 20px;">
+                            <div style="font-size: 20px; font-weight: bold; margin-bottom: 10px; line-height: 1.3;">IFBA oferece curso gratuito: "Vem pro code, sô!"</div>
+                            <div style="color: #666; margin-bottom: 15px; line-height: 1.6;">Instituto abre 200 vagas para curso de programação voltado para iniciantes, com certificação reconhecida pelo MEC</div>
+                            <div style="font-size: 14px; color: #999;">📅 25 de outubro de 2025</div>
+                            <div style="font-size: 14px; color: #999;">✍️ Por Redação Cabra da Tech</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ❌ Botão sem semântica (div ao invés de <button> ou <a>) -->
+                <div style="text-align: center; margin-top: 30px;">
+                    <div onclick="location.href='#todas'" style="display: inline-block; background: #1E90FF; color: #fff; padding: 15px 40px; border-radius: 8px; font-weight: bold; cursor: pointer;">Ver todas as notícias →</div>
+                </div>
+            </div>
+
+            <!-- ❌ Formulário de comentário horrível -->
+            <div style="background: #f5f5f5; padding: 40px; border-radius: 10px; margin-bottom: 40px;">
+                <div style="font-size: 28px; font-weight: bold; margin-bottom: 10px;">Bora Comentar</div>
+                <div style="color: #666; margin-bottom: 20px;">Deixe sua opinião sobre essa notícia</div>
+
+                <!-- ❌ Form sem action/method -->
+                <!-- ❌ Inputs sem labels -->
+                <!-- ❌ Campos sem required -->
+                <form>
+                    <!-- ❌ Placeholder como label (péssima prática) -->
+                    <input type="text" placeholder="Nome" style="width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px;">
+                    <input type="text" placeholder="Email" style="width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px;">
+                    <textarea placeholder="Seu comentário" style="width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; height: 120px; resize: vertical;"></textarea>
+                    
+                    <!-- ❌ Botão sem type="submit" -->
+                    <div onclick="alert('Comentário enviado!')" style="background: #1E90FF; color: #fff; padding: 15px 30px; border-radius: 5px; display: inline-block; cursor: pointer; font-weight: bold;">Enviar Comentário</div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ❌ Sidebar sem <aside> -->
+    <div class="barra-lateral" style="background: #f9f9f9; padding: 40px 20px;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
+            
+            <!-- ❌ Mais lidas sem estrutura -->
+            <div style="background: #fff; padding: 20px; border-radius: 10px; border: 1px solid #ddd;">
+                <div style="font-size: 20px; font-weight: bold; margin-bottom: 15px;">🔥 Mais Lidas</div>
+                <!-- ❌ Lista sem <ol> ou numeração semântica -->
+                <div style="margin-bottom: 15px; padding-left: 30px; position: relative;">
+                    <div style="position: absolute; left: 0; top: 0; background: #1E90FF; color: #fff; width: 24px; height: 24px; border-radius: 50%; text-align: center; line-height: 24px; font-weight: bold; font-size: 12px;">1</div>
+                    <div onclick="location.href='#html'" style="cursor: pointer; color: #333;">HTML semântico: por que todo dev deveria usar</div>
+                    <div style="font-size: 12px; color: #999;">12.5k visualizações</div>
+                </div>
+                <div style="margin-bottom: 15px; padding-left: 30px; position: relative;">
+                    <div style="position: absolute; left: 0; top: 0; background: #1E90FF; color: #fff; width: 24px; height: 24px; border-radius: 50%; text-align: center; line-height: 24px; font-weight: bold; font-size: 12px;">2</div>
+                    <div onclick="location.href='#wcag'" style="cursor: pointer; color: #333;">WCAG 3.0: o que muda para desenvolvedores</div>
+                    <div style="font-size: 12px; color: #999;">9.8k visualizações</div>
+                </div>
+                <div style="padding-left: 30px; position: relative;">
+                    <div style="position: absolute; left: 0; top: 0; background: #1E90FF; color: #fff; width: 24px; height: 24px; border-radius: 50%; text-align: center; line-height: 24px; font-weight: bold; font-size: 12px;">3</div>
+                    <div onclick="location.href='#lei'" style="cursor: pointer; color: #333;">Acessibilidade não é opcional: entenda a lei</div>
+                    <div style="font-size: 12px; color: #999;">8.2k visualizações</div>
+                </div>
+            </div>
+
+            <!-- ❌ Newsletter sem fieldset/legend -->
+            <div style="background: linear-gradient(135deg, #1E90FF, #1E70E0); color: #fff; padding: 20px; border-radius: 10px;">
+                <div style="font-size: 20px; font-weight: bold; margin-bottom: 10px;">📱 Receba no Zap!</div>
+                <div style="margin-bottom: 15px;">Digite seu WhatsApp e receba as notícias tech do sertão toda semana</div>
+                <!-- ❌ Form sem estrutura -->
+                <input type="text" placeholder="+55 74 99999-9999" style="width: 100%; padding: 12px; margin-bottom: 10px; border: none; border-radius: 5px;">
+                <div onclick="alert('Inscrito!')" style="background: #fff; color: #1E90FF; padding: 12px; border-radius: 5px; text-align: center; cursor: pointer; font-weight: bold;">Quero receber!</div>
+            </div>
+
+            <!-- ❌ Vídeo sem estrutura adequada -->
+            <div style="background: #fff; padding: 20px; border-radius: 10px; border: 1px solid #ddd;">
+                <div style="font-size: 20px; font-weight: bold; margin-bottom: 10px;">▶️ O que é acessibilidade digital?</div>
+                <div style="margin-bottom: 15px; color: #666;">Entenda em 3 minutos por que sites acessíveis são importantes para todos</div>
+                <div onclick="alert('Abrindo vídeo...')" style="position: relative; cursor: pointer; border-radius: 8px; overflow: hidden;">
+                    <img src="../assets/images/noticia-01.jpg" style="width: 100%; height: auto;">
+                    <!-- ❌ Ícone de play sem acessibilidade -->
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(30,144,255,0.9); color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px;">▶</div>
+                    <div style="position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.8); color: #fff; padding: 5px 10px; border-radius: 5px; font-size: 12px;">3:24</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ❌ Footer sem <footer> -->
+    <!-- ❌ Estrutura caótica -->
+    <div class="rodape" style="background: #2C1810; color: #fff; padding: 60px 20px 20px;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 40px;">
+                
+                <!-- ❌ Sobre sem estrutura -->
+                <div>
+                    <div style="font-size: 18px; font-weight: bold; margin-bottom: 15px;">Sobre o Cabra da Tech</div>
+                    <div style="color: rgba(255,255,255,0.8); line-height: 1.6; margin-bottom: 15px;">Portal de notícias sobre tecnologia, inovação e educação do sertão brasileiro. Desenvolvido por estudantes do IFBA-Saj como projeto de acessibilidade web.</div>
+                    <img src="../assets/images/ifba-logo.png" style="width: 120px; opacity: 0.8;">
+                </div>
+
+                <!-- ❌ Links sem <nav> -->
+                <div>
+                    <div style="font-size: 18px; font-weight: bold; margin-bottom: 15px;">Links Rápidos</div>
+                    <div onclick="location.href='#home'" style="color: rgba(255,255,255,0.8); margin-bottom: 8px; cursor: pointer;">Início</div>
+                    <div onclick="location.href='#tech'" style="color: rgba(255,255,255,0.8); margin-bottom: 8px; cursor: pointer;">Tecnologia</div>
+                    <div onclick="location.href='#edu'" style="color: rgba(255,255,255,0.8); margin-bottom: 8px; cursor: pointer;">Educação</div>
+                    <div onclick="location.href='#sobre'" style="color: rgba(255,255,255,0.8); margin-bottom: 8px; cursor: pointer;">Sobre</div>
+                    <div onclick="location.href='#contato'" style="color: rgba(255,255,255,0.8); cursor: pointer;">Contato</div>
+                </div>
+
+                <div>
+                    <div style="font-size: 18px; font-weight: bold; margin-bottom: 15px;">Acessibilidade</div>
+                    <div onclick="location.href='#declaracao'" style="color: rgba(255,255,255,0.8); margin-bottom: 8px; cursor: pointer;">Declaração de Acessibilidade</div>
+                    <div onclick="location.href='#atalhos'" style="color: rgba(255,255,255,0.8); margin-bottom: 8px; cursor: pointer;">Atalhos de Teclado</div>
+                    <div onclick="location.href='#mapa'" style="color: rgba(255,255,255,0.8); margin-bottom: 8px; cursor: pointer;">Mapa do Site</div>
+                    <div onclick="location.href='#privacidade'" style="color: rgba(255,255,255,0.8); cursor: pointer;">Política de Privacidade</div>
+                </div>
+
+                <!-- ❌ Contato sem <address> -->
+                <div>
+                    <div style="font-size: 18px; font-weight: bold; margin-bottom: 15px;">Contato</div>
+                    <div style="color: rgba(255,255,255,0.8); margin-bottom: 8px;">📧 contato@cabradatech.ifba.br</div>
+                    <div style="color: rgba(255,255,255,0.8); margin-bottom: 8px;">📞 +55 74 3541-2345</div>
+                    <div style="color: rgba(255,255,255,0.8); margin-bottom: 15px;">📍 IFBA Campus Senhor do Bonfim - BA</div>
+                    
+                    <!-- ❌ Redes sociais sem links reais -->
+                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                        <div onclick="alert('GitHub')" style="background: rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer;">🐙</div>
+                        <div onclick="alert('Instagram')" style="background: rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer;">📷</div>
+                        <div onclick="alert('YouTube')" style="background: rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer;">📺</div>
+                        <div onclick="alert('LinkedIn')" style="background: rgba(255,255,255,0.1); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer;">💼</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ❌ Copyright e badges sem estrutura -->
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <div style="color: rgba(255,255,255,0.7); font-size: 14px;">© 2025 Cabra da Tech. Desenvolvido com ❤️ no sertão da Bahia. Todos os direitos reservados.</div>
+                
+                <div style="display: flex; gap: 10px;">
+                    <div style="background: rgba(255,255,255,0.1); padding: 5px 15px; border-radius: 20px; font-size: 12px; border: 1px solid rgba(255,255,255,0.2);">✓ WCAG 2.1 AA</div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 5px 15px; border-radius: 20px; font-size: 12px; border: 1px solid rgba(255,255,255,0.2);">✓ eMAG</div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 5px 15px; border-radius: 20px; font-size: 12px; border: 1px solid rgba(255,255,255,0.2);">✓ HTML5 Semântico</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ❌ Script inline -->
+    <script>
+        // ❌ Código inline misturado com HTML
+        console.log('Site carregado');
+        
+        // ❌ Efeito hover via JS (deveria ser CSS)
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+    
+    <script src="antipadrao.js"></script>
+</body>
+</html>
