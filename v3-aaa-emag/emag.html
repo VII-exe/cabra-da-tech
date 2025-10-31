@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- ========================================
+         META TAGS ESSENCIAIS
+    ========================================= -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO & Acessibilidade -->
+    <meta name="description" content="Portal de notícias sobre tecnologia, inovação e educação do sertão brasileiro. Versão com máxima acessibilidade: WCAG 2.1 AAA + eMAG">
+    <meta name="keywords" content="tecnologia, sertão, IFBA, inovação, acessibilidade, WCAG AAA, eMAG, inclusão digital">
+    <meta name="author" content="Cabra da Tech - IFBA Santo Antônio de Jesus">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph (Facebook/LinkedIn) -->
+    <meta property="og:title" content="Cabra da Tech - Versão Máxima Acessibilidade (WCAG AAA)">
+    <meta property="og:description" content="Portal 100% acessível com WCAG 2.1 AAA e conformidade eMAG">
+    <meta property="og:image" content="../assets/images/logo-cabra-tech.png">
+    <meta property="og:url" content="https://cabradatech.ifba.br/v3-wcag-aaa-emag/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cabra da Tech - WCAG AAA">
+    <meta name="twitter:description" content="Portal 100% acessível">
+    <meta name="twitter:image" content="../assets/images/logo-cabra-tech.png">
+    
+    <!-- Tema do navegador (mobile) -->
+    <meta name="theme-color" content="#228B22" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <title>Cabra da Tech - Tecnologia do sertão pro mundo todo | Versão WCAG AAA + eMAG</title>
+    
+    <!-- ========================================
+         FAVICON
+    ========================================= -->
+    <link rel="icon" type="image/svg+xml" href="../assets/images/logo-cabra-tech.svg">
+    <link rel="icon" type="image/png" href="../assets/images/logo-cabra-tech.png">
+    <link rel="apple-touch-icon" href="../assets/images/logo-cabra-tech.png">
+    
+    <!-- ========================================
+         CSS
+    ========================================= -->
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" integrity="sha384-XGjxtQfXaH2tnPFa9x+ruJTuLE3Aa6LhHSWRr1XeTyhezb4abCG4ccI5AkVDxqC+" crossorigin="anonymous">
+    
+    <!-- CSS Global -->
+    <link rel="stylesheet" href="../css/global.css">
+    
+    <!-- CSS específico da V3 -->
+    <link rel="stylesheet" href="emag.css">
+    
+</head>
+
+<body>
+    <!-- ========================================
+         BARRA DE ACESSIBILIDADE (eMAG)
+         Recursos avançados de personalização
+    ========================================= -->
+    <div id="barra-acessibilidade" class="barra-acessibilidade" role="region" aria-label="Barra de ferramentas de acessibilidade">
+        <div class="container">
+            <h2 class="sr-only">Ferramentas de Acessibilidade</h2>
+            
+            <div class="acessibilidade-controles">
+                
+                <!-- Controle de Contraste -->
+                <div class="controle-grupo">
+                    <span class="controle-label" id="contraste-label">
+                        <i class="bi bi-circle-half" aria-hidden="true"></i>
+                        Contraste:
+                    </span>
+                    <div class="controle-botoes" role="group" aria-labelledby="contraste-label">
+                        <button type="button" 
+                                class="btn-controle active" 
+                                data-theme="default"
+                                aria-pressed="true"
+                                title="Contraste padrão">
+                            <span class="sr-only">Contraste </span>Padrão
+                        </button>
+                        <button type="button" 
+                                class="btn-controle" 
+                                data-theme="high-contrast"
+                                aria-pressed="false"
+                                title="Alto contraste (preto no branco)">
+                            <span class="sr-only">Contraste </span>Alto
+                        </button>
+                        <button type="button" 
+                                class="btn-controle" 
+                                data-theme="dark"
+                                aria-pressed="false"
+                                title="Modo escuro (branco no preto)">
+                            <span class="sr-only">Contraste </span>Escuro
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Controle de Tamanho de Fonte -->
+                <div class="controle-grupo">
+                    <span class="controle-label" id="fonte-label">
+                        <i class="bi bi-fonts" aria-hidden="true"></i>
+                        Fonte:
+                    </span>
+                    <div class="controle-botoes" role="group" aria-labelledby="fonte-label">
+                        <button type="button" 
+                                class="btn-controle" 
+                                id="diminuir-fonte"
+                                aria-label="Diminuir tamanho da fonte"
+                                title="Diminuir fonte (Ctrl + -)">
+                            <i class="bi bi-dash-lg" aria-hidden="true"></i>
+                            <span class="btn-text">A-</span>
+                        </button>
+                        <button type="button" 
+                                class="btn-controle active" 
+                                id="fonte-normal"
+                                aria-pressed="true"
+                                aria-label="Tamanho de fonte normal"
+                                title="Fonte padrão (Ctrl + 0)">
+                            <span class="btn-text">A</span>
+                        </button>
+                        <button type="button" 
+                                class="btn-controle" 
+                                id="aumentar-fonte"
+                                aria-label="Aumentar tamanho da fonte"
+                                title="Aumentar fonte (Ctrl + +)">
+                            <i class="bi bi-plus-lg" aria-hidden="true"></i>
+                            <span class="btn-text">A+</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Controle de Espaçamento -->
+                <div class="controle-grupo">
+                    <span class="controle-label" id="espacamento-label">
+                        <i class="bi bi-text-paragraph" aria-hidden="true"></i>
+                        Espaçamento:
+                    </span>
+                    <div class="controle-botoes" role="group" aria-labelledby="espacamento-label">
+                        <button type="button" 
+                                class="btn-controle active" 
+                                data-spacing="normal"
+                                aria-pressed="true"
+                                title="Espaçamento entre linhas normal">
+                            Normal
+                        </button>
+                        <button type="button" 
+                                class="btn-controle" 
+                                data-spacing="large"
+                                aria-pressed="false"
+                                title="Espaçamento entre linhas ampliado">
+                            Ampliado
+                        </button>
+                    </div>
+                </div>
+
+                <!-- VLibras -->
+                <div class="controle-grupo">
+                    <button type="button" 
+                            class="btn-controle btn-libras" 
+                            id="toggle-libras"
+                            aria-label="Ativar/Desativar tradução em Libras"
+                            aria-pressed="false"
+                            title="Tradução em Libras (Língua Brasileira de Sinais)">
+                        <i class="bi bi-hand-index-thumb" aria-hidden="true"></i>
+                        <span class="btn-text">Libras</span>
+                    </button>
+                </div>
+
+                <!-- Mapa do Site -->
+                <div class="controle-grupo">
+                    <a href="#mapa-site" 
+                       class="btn-controle"
+                       title="Ir para mapa do site"
+                       aria-label="Acessar mapa do site">
+                        <i class="bi bi-map" aria-hidden="true"></i>
+                        <span class="btn-text">Mapa</span>
+                    </a>
+                </div>
+
+                <!-- Atalhos de Teclado -->
+                <div class="controle-grupo">
+                    <button type="button" 
+                            class="btn-controle" 
+                            id="btn-atalhos"
+                            aria-label="Ver atalhos de teclado disponíveis"
+                            title="Lista de atalhos de teclado">
+                        <i class="bi bi-keyboard" aria-hidden="true"></i>
+                        <span class="btn-text">Atalhos</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================
+         SKIP LINKS (WCAG 2.4.1 - Nível A)
+         eMAG: Recomendação 2.1
+    ========================================= -->
+    <nav class="skip-links" aria-label="Links de navegação rápida">
+        <ul role="list">
+            <li>
+                <a href="#main-content" accesskey="1">
+                    Ir para o conteúdo principal <kbd>[Alt+1]</kbd>
+                </a>
+            </li>
+            <li>
+                <a href="#main-nav" accesskey="2">
+                    Ir para o menu de navegação <kbd>[Alt+2]</kbd>
+                </a>
+            </li>
+            <li>
+                <a href="#search" accesskey="3">
+                    Ir para a busca <kbd>[Alt+3]</kbd>
+                </a>
+            </li>
+            <li>
+                <a href="#site-footer" accesskey="4">
+                    Ir para o rodapé <kbd>[Alt+4]</kbd>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- ========================================
+         HEADER (Cabeçalho do Site)
+         WCAG 1.3.1 (Info e Relacionamentos)
+    ========================================= -->
+    <header class="site-header" role="banner">
+        <div class="container">
+            <!-- Logo -->
+            <div class="logo">
+                <a href="#home" aria-label="Cabra da Tech - Ir para página inicial">
+                    <img src="../assets/images/logo-cabra-tech.svg" 
+                         alt="Logo Cabra da Tech - Ilustração de um cabrito usando óculos e fones de ouvido"
+                         width="180" 
+                         height="60"
+                         fetchpriority="high">
+                </a>
+                <p class="tagline" id="site-tagline">
+                    Tecnologia do sertão pro mundo todo
+                </p>
+            </div>
+
+            <!-- Navegação Principal -->
+            <nav id="main-nav" class="main-nav" aria-label="Navegação principal do site">
+                <button class="menu-toggle" 
+                        aria-expanded="false" 
+                        aria-controls="menu-list"
+                        aria-label="Abrir menu de navegação">
+                    <i class="bi bi-list" aria-hidden="true"></i>
+                    <span>Menu</span>
+                </button>
+
+                <ul id="menu-list" class="menu-list" role="list">
+                    <li>
+                        <a href="#home" 
+                           class="menu-link active" 
+                           aria-current="page"
+                           accesskey="h"
+                           title="Ir para página inicial">
+                            <i class="bi bi-house-door-fill" aria-hidden="true"></i>
+                            <span>Início</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tecnologia" 
+                           class="menu-link"
+                           accesskey="t"
+                           title="Ver notícias de tecnologia">
+                            <i class="bi bi-cpu" aria-hidden="true"></i>
+                            <span>Tecnologia</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#educacao" 
+                           class="menu-link"
+                           accesskey="e"
+                           title="Ver notícias de educação">
+                            <i class="bi bi-book" aria-hidden="true"></i>
+                            <span>Educação</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#regiao" 
+                           class="menu-link"
+                           accesskey="r"
+                           title="Ver notícias da região">
+                            <i class="bi bi-compass" aria-hidden="true"></i>
+                            <span>Rolé</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#sobre" 
+                           class="menu-link"
+                           accesskey="s"
+                           title="Sobre o Cabra da Tech">
+                            <i class="bi bi-info-circle" aria-hidden="true"></i>
+                            <span>Sobre</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Busca -->
+            <div class="search-wrapper">
+                <form role="search" 
+                      class="search-form" 
+                      action="#buscar" 
+                      method="get">
+                    <label for="search" class="sr-only">
+                        Buscar notícias no site
+                    </label>
+                    <input type="search" 
+                           id="search" 
+                           name="q" 
+                           placeholder="Buscar notícias..."
+                           aria-label="Campo de busca de notícias"
+                           accesskey="b"
+                           autocomplete="off"
+                           spellcheck="true"
+                           aria-describedby="search-hint">
+                    <span id="search-hint" class="sr-only">
+                        Digite sua busca e pressione Enter. Use palavras-chave como tecnologia, educação, ou nomes de cidades.
+                    </span>
+                    <button type="submit" 
+                            aria-label="Realizar busca"
+                            title="Buscar">
+                        <i class="bi bi-search" aria-hidden="true"></i>
+                        <span class="sr-only">Buscar</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========================================
+         MAIN (Conteúdo Principal)
+         WCAG 2.4.1 (Bypass Blocks)
+    ========================================= -->
+    <main id="main-content" tabindex="-1">
+        
+        <!-- ========================================
+             BREADCRUMB (WCAG 2.4.8 - Nível AAA)
+             eMAG: Recomendação 2.5
+        ========================================= -->
+        <nav class="breadcrumb" aria-label="Você está em">
+            <ol role="list">
+                <li>
+                    <a href="../index.html">
+                        <i class="bi bi-house-door" aria-hidden="true"></i>
+                        <span>Início</span>
+                    </a>
+                </li>
+                <li>
+                    <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                </li>
+                <li>
+                    <a href="#versoes">Versões</a>
+                </li>
+                <li>
+                    <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                </li>
+                <li aria-current="page">
+                    <span>WCAG AAA + eMAG</span>
+                </li>
+            </ol>
+        </nav>
+
+        <!-- ========================================
+             ANÚNCIO DE VERSÃO
+        ========================================= -->
+        <aside class="alerta-versao" role="complementary" aria-labelledby="alerta-titulo">
+            <div class="container">
+                <div class="alerta-conteudo">
+                    <i class="bi bi-award-fill alerta-icone" aria-hidden="true"></i>
+                    <div class="alerta-texto">
+                        <h2 id="alerta-titulo" class="alerta-titulo">
+                            Versão WCAG 2.1 AAA + eMAG
+                        </h2>
+                        <p class="alerta-descricao">
+                            Você está navegando na versão com <strong>máxima acessibilidade</strong>. 
+                            Contraste AAA (7:1), personalização completa, suporte a Libras e conformidade total com eMAG.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ========================================
+             SEÇÃO HERO - Manchete Principal
+        ========================================= -->
+        <section class="hero-section" aria-labelledby="manchete-titulo">
+            <div class="container">
+                <article id="manchete-principal" class="hero-article">
+                    <!-- Cabeçalho do Artigo -->
+                    <header class="article-header">
+                        <span class="category-badge" aria-label="Categoria: Inovação Social">
+                            Inovação Social
+                        </span>
+                        
+                        <h1 id="manchete-titulo" class="article-title">
+                            Cabras do IFBA criam app que até o véi usa
+                        </h1>
+                        
+                        <p class="article-subtitle">
+                            Sistema de monitoramento de cisternas via WhatsApp revoluciona acesso à água no sertão
+                        </p>
+
+                        <!-- Metadados -->
+                        <div class="article-meta">
+                            <time datetime="2025-10-28T10:30:00-03:00" class="article-date">
+                                <i class="bi bi-calendar3" aria-hidden="true"></i>
+                                <span>
+                                    <span class="sr-only">Publicado em </span>
+                                    28 de outubro de 2025 às 10h30
+                                </span>
+                            </time>
+                            <address class="article-author">
+                                <i class="bi bi-person-fill" aria-hidden="true"></i>
+                                <span>
+                                    <span class="sr-only">Escrito por </span>
+                                    <span class="author-name">Redação Cabra da Tech</span>
+                                </span>
+                            </address>
+                            <div class="article-reading-time">
+                                <i class="bi bi-clock" aria-hidden="true"></i>
+                                <span>
+                                    <span class="sr-only">Tempo de leitura: </span>
+                                    5 minutos
+                                </span>
+                            </div>
+                        </div>
+                    </header>
+
+                    <!-- Imagem Destacada -->
+                    <figure class="article-figure">
+                        <img src="../assets/images/hero-sertao-tech.jpg" 
+                             alt="Três estudantes do IFBA Campus Santo Antônio de Jesus em área rural, demonstrando aplicativo em tablet para uma família de agricultores. Ao fundo, cisterna de água e paisagem da caatinga baiana"
+                             loading="eager"
+                             fetchpriority="high"
+                             width="1200"
+                             height="675">
+                        <figcaption>
+                            Estudantes do IFBA-Saj testam sistema em comunidade rural de Santo Antônio de Jesus. 
+                            <span class="credito">Foto: Assessoria IFBA</span>
+                        </figcaption>
+                    </figure>
+
+                    <!-- Resumo do Artigo (WCAG 2.4.2 - AAA) -->
+                    <div class="article-summary" role="doc-abstract" aria-label="Resumo do artigo">
+                        <h2 class="summary-title">
+                            <i class="bi bi-file-text" aria-hidden="true"></i>
+                            Resumo
+                        </h2>
+                        <p>
+                            Alunos do IFBA desenvolveram solução IoT acessível que permite famílias do sertão 
+                            monitorarem cisternas via WhatsApp. Sistema já beneficia 50 residências e 
+                            integra-se ao programa Cisternas do Governo Federal.
+                        </p>
+                    </div>
+
+                    <!-- Conteúdo do Artigo -->
+                    <div class="article-content">
+                        <p class="lead">
+                            Alunos do Instituto Federal da Bahia desenvolveram solução de Internet das Coisas (IoT) 
+                            acessível que permite famílias do sertão monitorarem o nível de água das cisternas 
+                            usando apenas WhatsApp, sem necessidade de internet ou smartphones avançados.
+                        </p>
+
+                        <p>
+                            A tecnologia nem sempre precisa ser complicada para resolver problemas reais. 
+                            Três estudantes do curso de Análise e Desenvolvimento de Sistemas do 
+                            <abbr title="Instituto Federal da Bahia">IFBA</abbr> Campus Santo Antônio de Jesus 
+                            provaram isso ao desenvolverem um sistema de monitoramento de cisternas que funciona 
+                            via WhatsApp, acessível até para quem tem celulares mais simples.
+                        </p>
+
+                        <h2>Como funciona o sistema</h2>
+
+                        <p>
+                            O projeto, batizado de "Água Inteligente", utiliza sensores de baixo custo conectados 
+                            a um microcontrolador <abbr title="Sistema embarcado com WiFi e Bluetooth">ESP32</abbr> 
+                            que envia atualizações automáticas sobre o nível de água diretamente para o WhatsApp 
+                            das famílias.
+                        </p>
+
+                        <p>
+                            <q cite="#entrevista-joao-silva">A gente queria algo que o véi e a véia conseguissem 
+                            usar sem dificuldade</q>, explica João Silva, um dos desenvolvedores do projeto.
+                        </p>
+
+                        <h2>Benefícios para as comunidades</h2>
+
+                        <p>
+                            Além de informar o nível atual da água, o sistema oferece funcionalidades inteligentes:
+                        </p>
+
+                        <ul>
+                            <li>Alertas automáticos quando a água está acabando</li>
+                            <li>Sugestão da melhor época para solicitar caminhão-pipa</li>
+                            <li>Histórico de consumo para planejamento</li>
+                            <li>Integração com programa governamental Cisternas</li>
+                        </ul>
+
+                        <blockquote cite="#fonte-maria-santos">
+                            <p>
+                                Antes a gente só descobria que a água tinha acabado quando ia buscar. 
+                                Agora recebo a mensagem no WhatsApp e já me organizo. Mudou muito nossa vida.
+                            </p>
+                            <footer>
+                                — <cite>Maria dos Santos</cite>, moradora da comunidade de Caldeirão Grande
+                            </footer>
+                        </blockquote>
+
+                        <h2>Dados de impacto</h2>
+
+                        <p>
+                            O projeto já foi implantado em 50 residências da zona rural de Santo Antônio de Jesus e 
+                            região, beneficiando aproximadamente 200 pessoas. Segundo levantamento dos 
+                            desenvolvedores, o sistema reduziu em 40% o desperdício de água e aumentou em 65% 
+                            a eficiência no pedido de caminhões-pipa.
+                        </p>
+
+                        <h2>Expansão e próximos passos</h2>
+
+                        <p>
+                            O sistema também se integra ao programa Cisternas do Governo Federal, facilitando 
+                            o cadastro e a manutenção dos equipamentos. Os estudantes pretendem expandir o 
+                            projeto para outras comunidades e já estão em conversas com prefeituras de oito 
+                            municípios da região do semiárido baiano.
+                        </p>
+
+                        <p>
+                            A iniciativa concorrerá no próximo mês ao Prêmio Nacional de Inovação Tecnológica, 
+                            categoria Impacto Social, promovido pelo Ministério da Ciência e Tecnologia.
+                        </p>
+                    </div>
+
+                    <!-- Informações Adicionais -->
+                    <aside class="article-extra" aria-labelledby="extra-titulo">
+                        <h2 id="extra-titulo">
+                            <i class="bi bi-info-circle" aria-hidden="true"></i>
+                            Saiba mais
+                        </h2>
+                        <dl>
+                            <dt>Custo por instalação:</dt>
+                            <dd>R$ 150,00 (incluindo sensor, ESP32 e instalação)</dd>
+                            
+                            <dt>Instituições parceiras:</dt>
+                            <dd>IFBA, Prefeituras, Governo Federal (Programa Cisternas)</dd>
+                            
+                            <dt>Período de desenvolvimento:</dt>
+                            <dd>18 meses (março de 2024 a setembro de 2025)</dd>
+                            
+                            <dt>Tecnologias utilizadas:</dt>
+                            <dd>ESP32, Sensores ultrassônicos, API WhatsApp Business, Node.js</dd>
+                        </dl>
+                    </aside>
+
+                    <!-- Rodapé do Artigo -->
+                    <footer class="article-footer">
+                        <!-- Tags -->
+                        <div class="tags-section">
+                            <h2 class="tags-title">
+                                <i class="bi bi-tags" aria-hidden="true"></i>
+                                Assuntos relacionados
+                            </h2>
+                            <ul class="tags-list" role="list" aria-label="Tags do artigo">
+                                <li><a href="#tag-iot" class="tag">IoT</a></li>
+                                <li><a href="#tag-sertao" class="tag">Sertão</a></li>
+                                <li><a href="#tag-ifba" class="tag">IFBA</a></li>
+                                <li><a href="#tag-inovacao" class="tag">Inovação Social</a></li>
+                                <li><a href="#tag-whatsapp" class="tag">WhatsApp</a></li>
+                                <li><a href="#tag-sustentabilidade" class="tag">Sustentabilidade</a></li>
+                                <li><a href="#tag-agua" class="tag">Água</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Compartilhar -->
+                        <div class="share-section" role="region" aria-labelledby="share-titulo">
+                            <h2 id="share-titulo" class="share-title">
+                                <i class="bi bi-share" aria-hidden="true"></i>
+                                Compartilhe esta notícia
+                            </h2>
+                            <ul class="share-buttons" role="list">
+                                <li>
+                                    <a href="#share-facebook" 
+                                       class="share-btn share-facebook"
+                                       aria-label="Compartilhar no Facebook"
+                                       target="_blank"
+                                       rel="noopener noreferrer">
+                                        <i class="bi bi-facebook" aria-hidden="true"></i>
+                                        <span>Facebook</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#share-twitter" 
+                                       class="share-btn share-twitter"
+                                       aria-label="Compartilhar no Twitter"
+                                       target="_blank"
+                                       rel="noopener noreferrer">
+                                        <i class="bi bi-twitter-x" aria-hidden="true"></i>
+                                        <span>Twitter</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#share-whatsapp" 
+                                       class="share-btn share-whatsapp"
+                                       aria-label="Compartilhar no WhatsApp"
+                                       target="_blank"
+                                       rel="noopener noreferrer">
+                                        <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                                        <span>WhatsApp</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#share-linkedin" 
+                                       class="share-btn share-linkedin"
+                                       aria-label="Compartilhar no LinkedIn"
+                                       target="_blank"
+                                       rel="noopener noreferrer">
+                                        <i class="bi bi-linkedin" aria-hidden="true"></i>
+                                        <span>LinkedIn</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#share-email" 
+                                       class="share-btn share-email"
+                                       aria-label="Compartilhar por e-mail">
+                                        <i class="bi bi-envelope" aria-hidden="true"></i>
+                                        <span>E-mail</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Autor -->
+                        <aside class="author-box" aria-labelledby="autor-titulo">
+                            <h2 id="autor-titulo" class="sr-only">Sobre o autor</h2>
+                            <div class="author-content">
+                                <img src="../assets/images/avatar-redacao.jpg" 
+                                     alt="Avatar da Redação Cabra da Tech"
+                                     class="author-avatar"
+                                     width="80"
+                                     height="80"
+                                     loading="lazy">
+                                <div class="author-info">
+                                    <p class="author-name-full">Redação Cabra da Tech</p>
+                                    <p class="author-bio">
+                                        Equipe multidisciplinar de jornalistas e estudantes de tecnologia 
+                                        do IFBA Campus Santo Antônio de Jesus, dedicada a cobrir inovação, 
+                                        educação e tecnologia no sertão baiano.
+                                    </p>
+                                    <p class="author-contact">
+                                        <a href="mailto:redacao@cabradatech.ifba.br">
+                                            <i class="bi bi-envelope" aria-hidden="true"></i>
+                                            redacao@cabradatech.ifba.br
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </aside>
+                    </footer>
+                </article>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SEÇÃO DE NOTÍCIAS RELACIONADAS
+        ========================================= -->
+        <section class="noticias-section" aria-labelledby="noticias-titulo">
+            <div class="container">
+                <header class="section-header">
+                    <h2 id="noticias-titulo">
+                        <i class="bi bi-newspaper" aria-hidden="true"></i>
+                        Notícias Relacionadas
+                    </h2>
+                    <p class="section-description">
+                        Continue lendo sobre inovação e tecnologia no sertão
+                    </p>
+                </header>
+
+                <div class="noticias-grid" role="list">
+                    <!-- Notícia 1 -->
+                    <article class="noticia-card" role="listitem">
+                        <a href="#noticia-1" class="card-link">
+                            <figure class="card-figure">
+                                <img src="../assets/images/noticia-01.jpg" 
+                                     alt="Empreendedora sorridente usando tablet em feira livre, com barraca de frutas ao fundo"
+                                     loading="lazy"
+                                     width="400"
+                                     height="250">
+                                <span class="category-badge">Inteligência Artificial</span>
+                            </figure>
+
+                            <div class="card-content">
+                                <h3 class="card-title">
+                                    Arrocha da IA: chatbot em forró vira viral e ajuda negócios
+                                </h3>
+                                <p class="card-description">
+                                    Microempreendedores do Nordeste adotam assistente virtual com sotaque 
+                                    regional que entende gírias e expressões locais
+                                </p>
+                                <div class="card-meta">
+                                    <time datetime="2025-10-27T14:00:00-03:00">
+                                        <i class="bi bi-calendar3" aria-hidden="true"></i>
+                                        27 de outubro de 2025
+                                    </time>
+                                    <address>
+                                        <i class="bi bi-person" aria-hidden="true"></i>
+                                        Por Carlos Mendes
+                                    </address>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <!-- Notícia 2 -->
+                    <article class="noticia-card" role="listitem">
+                        <a href="#noticia-2" class="card-link">
+                            <figure class="card-figure">
+                                <img src="../assets/images/noticia-02.jpg" 
+                                     alt="Antena 5G instalada em poste de área rural com paisagem de caatinga ao fundo sob céu azul"
+                                     loading="lazy"
+                                     width="400"
+                                     height="250">
+                                <span class="category-badge">Conectividade</span>
+                            </figure>
+
+                            <div class="card-content">
+                                <h3 class="card-title">
+                                    Internet 5G chega ao mato: zona rural terá conexão rápida
+                                </h3>
+                                <p class="card-description">
+                                    Projeto piloto leva internet de alta velocidade para comunidades rurais 
+                                    de três municípios do sertão baiano
+                                </p>
+                                <div class="card-meta">
+                                    <time datetime="2025-10-26T09:15:00-03:00">
+                                        <i class="bi bi-calendar3" aria-hidden="true"></i>
+                                        26 de outubro de 2025
+                                    </time>
+                                    <address>
+                                        <i class="bi bi-person" aria-hidden="true"></i>
+                                        Por Ana Paula Rodrigues
+                                    </address>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <!-- Notícia 3 -->
+                    <article class="noticia-card" role="listitem">
+                        <a href="#noticia-3" class="card-link">
+                            <figure class="card-figure">
+                                <img src="../assets/images/noticia-03.jpg" 
+                                     alt="Sala de aula do IFBA com estudantes diversos trabalhando em computadores, professor auxiliando ao fundo"
+                                     loading="lazy"
+                                     width="400"
+                                     height="250">
+                                <span class="category-badge">Educação</span>
+                            </figure>
+
+                            <div class="card-content">
+                                <h3 class="card-title">
+                                    IFBA oferece curso gratuito: "Vem pro code, sô!"
+                                </h3>
+                                <p class="card-description">
+                                    Instituto abre 200 vagas para curso de programação voltado para iniciantes, 
+                                    com certificação reconhecida pelo MEC
+                                </p>
+                                <div class="card-meta">
+                                    <time datetime="2025-10-25T16:45:00-03:00">
+                                        <i class="bi bi-calendar3" aria-hidden="true"></i>
+                                        25 de outubro de 2025
+                                    </time>
+                                    <address>
+                                        <i class="bi bi-person" aria-hidden="true"></i>
+                                        Por Redação Cabra da Tech
+                                    </address>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+
+                <!-- Botão Ver Mais -->
+                <div class="section-footer">
+                    <a href="#todas-noticias" class="btn-primary">
+                        <span>Ver todas as notícias</span>
+                        <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- [Continua no próximo comentário devido ao limite de caracteres...] -->
+
+    </main>
+
+    <!-- VLibras Widget -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <!-- ========================================
+         SCRIPTS
+    ========================================= -->
+    <!-- VLibras -->
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+    
+    <!-- JavaScript da V3 -->
+    <script src="./js/wcag-aaa-emag.js"></script>
+    <script src="./js/alto-contraste.js"></script>
+    <script src="./js/atalhos-teclado.js"></script>
+    <script src="./js/aumentar-fonte.js"></script>
+    <script src="./js/barra-acessibilidade.js"></script>
+    <script src="./js/modo-dislexia.js"></script>
+
+</body>
+</html>

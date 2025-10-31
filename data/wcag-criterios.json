@@ -1,0 +1,628 @@
+{
+    "version": "2.1",
+    "language": "pt-BR",
+    "lastUpdate": "2025-10-31T10:00:00-03:00",
+    "source": "https://www.w3.org/TR/WCAG21/",
+    "description": "Critérios de Sucesso das Diretrizes de Acessibilidade para Conteúdo Web (WCAG) 2.1",
+    "principios": [
+        {
+            "id": "perceivable",
+            "numero": 1,
+            "nome": "Perceptível",
+            "descricao": "As informações e os componentes da interface do usuário devem ser apresentados em formas que possam ser percebidas pelos usuários.",
+            "diretrizes": [
+                {
+                    "id": "text-alternatives",
+                    "numero": "1.1",
+                    "nome": "Alternativas em Texto",
+                    "descricao": "Fornecer alternativas em texto para qualquer conteúdo não textual.",
+                    "criterios": [
+                        {
+                            "id": "non-text-content",
+                            "numero": "1.1.1",
+                            "nome": "Conteúdo Não Textual",
+                            "nivel": "A",
+                            "descricao": "Todo conteúdo não textual apresentado ao usuário tem uma alternativa em texto que serve um propósito equivalente.",
+                            "proposito": "Permitir que conteúdo não textual seja transformado em outras formas que as pessoas precisam, como letras grandes, braille, fala, símbolos ou linguagem mais simples.",
+                            "exemplos": [
+                                "Imagens com atributo alt descritivo",
+                                "Ícones decorativos com alt vazio",
+                                "Gráficos com descrições textuais",
+                                "Vídeos com transcrições"
+                            ],
+                            "tecnicas": [
+                                "H37: Usar atributo alt em imagens",
+                                "ARIA6: Usar aria-label para fornecer rótulos",
+                                "G94: Fornecer alternativa em texto curta"
+                            ],
+                            "falhas": [
+                                "F3: Falha ao não fornecer alternativa em texto",
+                                "F30: Falha ao usar texto alternativo que não é equivalente",
+                                "F65: Falha ao omitir alt em imagens que fazem parte de um link"
+                            ],
+                            "implementacao": {
+                                "html": "<img src='logo.png' alt='Logo Cabra da Tech'>",
+                                "css": "/* Ocultar imagens decorativas de leitores de tela */\n.decorative { aria-hidden: 'true'; }",
+                                "js": "// Adicionar alt dinamicamente\nimg.setAttribute('alt', 'Descrição da imagem');"
+                            },
+                            "testeBasico": "Verificar se todas as imagens têm atributo alt apropriado",
+                            "testeLeitores": "NVDA/JAWS devem anunciar descrição ao focar imagem"
+                        }
+                    ]
+                },
+                {
+                    "id": "time-based-media",
+                    "numero": "1.2",
+                    "nome": "Mídias com base em tempo",
+                    "descricao": "Fornecer alternativas para mídias baseadas em tempo (áudio e vídeo).",
+                    "criterios": [
+                        {
+                            "id": "audio-only-video-only-prerecorded",
+                            "numero": "1.2.1",
+                            "nome": "Apenas Áudio e Apenas Vídeo (Pré-gravado)",
+                            "nivel": "A",
+                            "descricao": "Para mídia de áudio ou vídeo pré-gravada, são fornecidas alternativas que apresentam informação equivalente.",
+                            "proposito": "Pessoas surdas ou com deficiência auditiva podem acessar informações em apresentações apenas de áudio. Pessoas cegas podem acessar informações visuais.",
+                            "exemplos": [
+                                "Transcrição de podcast",
+                                "Descrição textual de animação sem áudio",
+                                "Audiodescrição de vídeo mudo"
+                            ],
+                            "tecnicas": [
+                                "G158: Fornecer transcrição para áudio",
+                                "G159: Fornecer alternativa para vídeo",
+                                "G166: Fornecer áudio que descreve importante conteúdo visual"
+                            ],
+                            "testeLeitores": "Verificar se transcrição está acessível"
+                        },
+                        {
+                            "id": "captions-prerecorded",
+                            "numero": "1.2.2",
+                            "nome": "Legendas (Pré-gravadas)",
+                            "nivel": "A",
+                            "descricao": "São fornecidas legendas para todo o conteúdo de áudio pré-gravado em mídia sincronizada.",
+                            "proposito": "Permitir que pessoas surdas ou com deficiência auditiva acessem informações auditivas em apresentações de mídia sincronizada.",
+                            "exemplos": [
+                                "Vídeos com legendas em português",
+                                "Webinars legendados",
+                                "Tutoriais em vídeo com closed captions"
+                            ],
+                            "tecnicas": [
+                                "G87: Fornecer legendas closed",
+                                "G93: Fornecer legendas open",
+                                "H95: Usar elemento track para legendas"
+                            ],
+                            "implementacao": {
+                                "html": "<video controls>\n  <source src='video.mp4' type='video/mp4'>\n  <track kind='captions' src='legendas-pt.vtt' srclang='pt-BR' label='Português'>\n</video>"
+                            }
+                        },
+                        {
+                            "id": "audio-description-or-media-alternative-prerecorded",
+                            "numero": "1.2.3",
+                            "nome": "Audiodescrição ou Alternativa em Mídia (Pré-gravada)",
+                            "nivel": "A",
+                            "descricao": "É fornecida uma alternativa para mídia baseada em tempo ou audiodescrição do conteúdo de vídeo pré-gravado.",
+                            "proposito": "Pessoas cegas podem acessar informação visual em uma apresentação de mídia sincronizada.",
+                            "exemplos": [
+                                "Audiodescrição em vídeos educacionais",
+                                "Transcrição descritiva completa"
+                            ],
+                            "tecnicas": [
+                                "G8: Fornecer versão com audiodescrição",
+                                "G58: Colocar link para alternativa textual",
+                                "G69: Fornecer transcrição descritiva"
+                            ]
+                        },
+                        {
+                            "id": "captions-live",
+                            "numero": "1.2.4",
+                            "nome": "Legendas (Ao Vivo)",
+                            "nivel": "AA",
+                            "descricao": "São fornecidas legendas para todo o conteúdo de áudio ao vivo em mídia sincronizada.",
+                            "proposito": "Permitir que pessoas surdas assistam apresentações em tempo real.",
+                            "exemplos": [
+                                "Lives com legenda em tempo real",
+                                "Webinars ao vivo legendados",
+                                "Transmissões com closed caption"
+                            ],
+                            "tecnicas": [
+                                "G9: Criar legendas para conteúdo ao vivo",
+                                "G87: Fornecer legendas closed",
+                                "G93: Fornecer legendas open (embedded)"
+                            ]
+                        },
+                        {
+                            "id": "audio-description-prerecorded",
+                            "numero": "1.2.5",
+                            "nome": "Audiodescrição (Pré-gravada)",
+                            "nivel": "AA",
+                            "descricao": "É fornecida audiodescrição para todo o conteúdo de vídeo pré-gravado.",
+                            "proposito": "Pessoas cegas podem acessar conteúdo visual que não está disponível na trilha de áudio padrão.",
+                            "exemplos": [
+                                "Vídeos educacionais com audiodescrição",
+                                "Filmes com AD",
+                                "Tutoriais com descrição de ações visuais"
+                            ],
+                            "tecnicas": [
+                                "G8: Fornecer versão do vídeo com audiodescrição",
+                                "G78: Fornecer segunda trilha de áudio com audiodescrição",
+                                "G173: Fornecer versão do vídeo com audiodescrição estendida"
+                            ]
+                        },
+                        {
+                            "id": "sign-language-prerecorded",
+                            "numero": "1.2.6",
+                            "nome": "Língua de Sinais (Pré-gravada)",
+                            "nivel": "AAA",
+                            "descricao": "É fornecida interpretação em língua de sinais para todo o conteúdo de áudio pré-gravado.",
+                            "proposito": "Pessoas surdas cuja primeira língua é a língua de sinais podem ter melhor compreensão.",
+                            "exemplos": [
+                                "Vídeos com janela de Libras",
+                                "Aulas com intérprete de sinais",
+                                "Noticiários com interpretação"
+                            ],
+                            "tecnicas": [
+                                "G54: Incluir intérprete de língua de sinais no vídeo",
+                                "G81: Fornecer versão sincronizada com intérprete"
+                            ]
+                        },
+                        {
+                            "id": "extended-audio-description-prerecorded",
+                            "numero": "1.2.7",
+                            "nome": "Audiodescrição Estendida (Pré-gravada)",
+                            "nivel": "AAA",
+                            "descricao": "Quando pausas no áudio não são suficientes para audiodescrição, é fornecida audiodescrição estendida.",
+                            "proposito": "Fornecer tempo adequado para descrever informações visuais importantes.",
+                            "exemplos": [
+                                "Vídeos pausados para descrições longas",
+                                "Documentários com audiodescrição estendida"
+                            ],
+                            "tecnicas": [
+                                "G8: Fornecer versão com audiodescrição estendida",
+                                "SM1: Adicionar audiodescrição estendida em SMIL 1.0",
+                                "SM2: Adicionar audiodescrição estendida em SMIL 2.0"
+                            ]
+                        },
+                        {
+                            "id": "media-alternative-prerecorded",
+                            "numero": "1.2.8",
+                            "nome": "Alternativa em Mídia (Pré-gravada)",
+                            "nivel": "AAA",
+                            "descricao": "É fornecida uma alternativa para mídia baseada em tempo para toda a mídia sincronizada pré-gravada e para toda a mídia apenas de vídeo pré-gravada.",
+                            "proposito": "Fornecer acesso completo através de texto.",
+                            "exemplos": [
+                                "Transcrição completa de vídeos",
+                                "Versão textual de apresentação multimídia"
+                            ],
+                            "tecnicas": [
+                                "G69: Fornecer transcrição descritiva",
+                                "G58: Colocar link para alternativa"
+                            ]
+                        },
+                        {
+                            "id": "audio-only-live",
+                            "numero": "1.2.9",
+                            "nome": "Apenas Áudio (Ao Vivo)",
+                            "nivel": "AAA",
+                            "descricao": "É fornecida uma alternativa para mídia baseada em tempo que apresenta informação equivalente para conteúdo apenas de áudio ao vivo.",
+                            "proposito": "Pessoas surdas podem acompanhar transmissões de áudio ao vivo.",
+                            "exemplos": [
+                                "Transcrição em tempo real de rádio web",
+                                "Chat de texto sincronizado com podcast ao vivo"
+                            ],
+                            "tecnicas": [
+                                "G151: Fornecer link para transcrição de script preparado",
+                                "G150: Fornecer transcrição em tempo real"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "adaptable",
+                    "numero": "1.3",
+                    "nome": "Adaptável",
+                    "descricao": "Criar conteúdo que possa ser apresentado de diferentes formas sem perder informação ou estrutura.",
+                    "criterios": [
+                        {
+                            "id": "info-and-relationships",
+                            "numero": "1.3.1",
+                            "nome": "Informações e Relações",
+                            "nivel": "A",
+                            "descricao": "Informações, estrutura e relações transmitidas através de apresentação podem ser determinadas por software ou estão disponíveis em texto.",
+                            "proposito": "Garantir que estrutura e relações sejam preservadas quando formato de apresentação muda.",
+                            "exemplos": [
+                                "Usar elementos semânticos HTML (<header>, <nav>, <main>, <article>)",
+                                "Tabelas de dados com <th> e scope",
+                                "Formulários com <label> associados a <input>",
+                                "Listas com <ul>, <ol>, <li>"
+                            ],
+                            "tecnicas": [
+                                "G115: Usar elementos semânticos para marcar estrutura",
+                                "H49: Usar marcação semântica",
+                                "ARIA11: Usar ARIA landmarks para identificar regiões",
+                                "H51: Usar marcação de tabelas para apresentar informação tabular"
+                            ],
+                            "implementacao": {
+                                "html": "<!-- BOM -->\n<header>\n  <h1>Título</h1>\n</header>\n<nav aria-label='Principal'>\n  <ul>\n    <li><a href='#'>Link</a></li>\n  </ul>\n</nav>\n<main>\n  <article>\n    <h2>Subtítulo</h2>\n    <p>Conteúdo</p>\n  </article>\n</main>\n\n<!-- RUIM -->\n<div class='header'>\n  <div class='title'>Título</div>\n</div>\n<div class='nav'>\n  <div class='link'>Link</div>\n</div>"
+                            },
+                            "testeLeitores": "NVDA deve anunciar 'região banner', 'região navegação', 'região principal'"
+                        },
+                        {
+                            "id": "meaningful-sequence",
+                            "numero": "1.3.2",
+                            "nome": "Sequência com Significado",
+                            "nivel": "A",
+                            "descricao": "Quando a sequência na qual o conteúdo é apresentado afeta seu significado, uma sequência de leitura correta pode ser determinada por software.",
+                            "proposito": "Garantir que ordem de leitura seja lógica e compreensível.",
+                            "exemplos": [
+                                "Ordem de tabulação lógica em formulários",
+                                "Conteúdo em múltiplas colunas com ordem correta",
+                                "Elementos posicionados com CSS mantêm ordem lógica no HTML"
+                            ],
+                            "tecnicas": [
+                                "G57: Ordenar conteúdo de forma significativa",
+                                "C27: Fazer ordem do DOM corresponder à ordem visual",
+                                "F1: Falha ao mudar significado do conteúdo posicionando informação com CSS"
+                            ],
+                            "falhas": [
+                                "F1: Usar CSS para posicionar conteúdo de forma que ordem de leitura não seja significativa",
+                                "F49: Usar tabela HTML para layout que não faz sentido quando linearizada"
+                            ]
+                        },
+                        {
+                            "id": "sensory-characteristics",
+                            "numero": "1.3.3",
+                            "nome": "Características Sensoriais",
+                            "nivel": "A",
+                            "descricao": "Instruções fornecidas para compreender e operar conteúdo não dependem somente de características sensoriais.",
+                            "proposito": "Garantir que instruções sejam compreensíveis para pessoas que não podem perceber forma, tamanho, localização visual, orientação ou som.",
+                            "exemplos": [
+                                "❌ 'Clique no botão redondo à direita'",
+                                "✅ 'Clique no botão Salvar (redondo, à direita)'",
+                                "❌ 'Quando ouvir o bip, pressione Enter'",
+                                "✅ 'Quando a mensagem aparecer ou o alerta sonoro tocar, pressione Enter'"
+                            ],
+                            "tecnicas": [
+                                "G96: Fornecer rótulos textuais para identificar itens que dependem apenas de informação sensorial"
+                            ],
+                            "falhas": [
+                                "F14: Falha ao identificar conteúdo apenas por forma ou localização",
+                                "F26: Falha ao usar apresentação gráfica apenas de forma"
+                            ]
+                        },
+                        {
+                            "id": "orientation",
+                            "numero": "1.3.4",
+                            "nome": "Orientação",
+                            "nivel": "AA",
+                            "descricao": "O conteúdo não restringe sua visualização e operação a uma única orientação de tela (retrato ou paisagem).",
+                            "proposito": "Pessoas com dispositivos montados em posição fixa podem visualizar conteúdo.",
+                            "exemplos": [
+                                "Sites responsivos que funcionam em portrait e landscape",
+                                "Apps que se adaptam à rotação da tela"
+                            ],
+                            "tecnicas": [
+                                "G214: Usar controles responsivos que se adaptam à orientação"
+                            ],
+                            "falhas": [
+                                "F97: Falha ao bloquear conteúdo em orientação portrait ou landscape"
+                            ],
+                            "implementacao": {
+                                "css": "/* Não forçar orientação */\n@media (orientation: portrait) {\n  /* Adaptações para retrato */\n}\n\n@media (orientation: landscape) {\n  /* Adaptações para paisagem */\n}"
+                            }
+                        },
+                        {
+                            "id": "identify-input-purpose",
+                            "numero": "1.3.5",
+                            "nome": "Identificar Propósito da Entrada",
+                            "nivel": "AA",
+                            "descricao": "O propósito de cada campo de entrada que coleta informação sobre o usuário pode ser determinado por software quando o campo serve a um propósito identificado na seção Propósitos de Entrada para Componentes de Interface do Usuário.",
+                            "proposito": "Permitir que navegadores e tecnologias assistivas preencham campos automaticamente e usem ícones familiares.",
+                            "exemplos": [
+                                "Campos com autocomplete apropriado",
+                                "Formulários com atributos de entrada semânticos"
+                            ],
+                            "tecnicas": [
+                                "H98: Usar HTML 5.2 autocomplete"
+                            ],
+                            "implementacao": {
+                                "html": "<label for='nome'>Nome completo:</label>\n<input type='text' id='nome' name='nome' autocomplete='name'>\n\n<label for='email'>E-mail:</label>\n<input type='email' id='email' name='email' autocomplete='email'>\n\n<label for='tel'>Telefone:</label>\n<input type='tel' id='tel' name='tel' autocomplete='tel'>"
+                            }
+                        },
+                        {
+                            "id": "identify-purpose",
+                            "numero": "1.3.6",
+                            "nome": "Identificar Propósito",
+                            "nivel": "AAA",
+                            "descricao": "Em conteúdo implementado usando linguagens de marcação, o propósito de componentes de interface do usuário, ícones e regiões pode ser determinado por software.",
+                            "proposito": "Usuários podem personalizar interface com símbolos familiares.",
+                            "exemplos": [
+                                "Ícones com ARIA labels",
+                                "Botões com data-purpose",
+                                "Regiões com ARIA landmarks"
+                            ],
+                            "tecnicas": [
+                                "ARIA11: Usar ARIA landmarks",
+                                "ARIA7: Usar aria-labelledby"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "distinguishable",
+                    "numero": "1.4",
+                    "nome": "Distinguível",
+                    "descricao": "Facilitar a visualização e audição de conteúdo pelos usuários, incluindo separação entre primeiro plano e plano de fundo.",
+                    "criterios": [
+                        {
+                            "id": "use-of-color",
+                            "numero": "1.4.1",
+                            "nome": "Uso de Cor",
+                            "nivel": "A",
+                            "descricao": "A cor não é usada como o único meio visual de transmitir informação, indicar ação, solicitar resposta ou distinguir elemento visual.",
+                            "proposito": "Pessoas que não podem ver cores podem compreender conteúdo.",
+                            "exemplos": [
+                                "❌ Links apenas diferenciados por cor",
+                                "✅ Links com sublinhado + cor diferente",
+                                "❌ Gráfico com linhas apenas diferenciadas por cor",
+                                "✅ Gráfico com linhas de cores E padrões diferentes"
+                            ],
+                            "tecnicas": [
+                                "G14: Garantir que informação transmitida por cor também está disponível em texto",
+                                "G205: Incluir indicador de texto quando cor muda significado",
+                                "G182: Garantir que indicadores visuais adicionais estão disponíveis"
+                            ],
+                            "falhas": [
+                                "F13: Falha ao usar apenas cor para transmitir informação",
+                                "F73: Falha ao criar links não diferenciáveis quando cor não está disponível",
+                                "F81: Falha ao identificar campos obrigatórios apenas com cor"
+                            ]
+                        },
+                        {
+                            "id": "audio-control",
+                            "numero": "1.4.2",
+                            "nome": "Controle de Áudio",
+                            "nivel": "A",
+                            "descricao": "Se qualquer áudio toca automaticamente por mais de 3 segundos, há mecanismo para pausar ou parar, ou controlar volume independentemente do volume geral do sistema.",
+                            "proposito": "Pessoas usando leitores de tela podem ouvir a saída sem interferência.",
+                            "exemplos": [
+                                "Botão de pause em vídeo com autoplay",
+                                "Controle de volume em player de áudio",
+                                "Áudio de fundo desabilitado por padrão"
+                            ],
+                            "tecnicas": [
+                                "G60: Tocar som por menos de 3 segundos",
+                                "G170: Fornecer controle no início para desligar som",
+                                "G171: Tocar sons apenas sob demanda do usuário"
+                            ]
+                        },
+                        {
+                            "id": "contrast-minimum",
+                            "numero": "1.4.3",
+                            "nome": "Contraste (Mínimo)",
+                            "nivel": "AA",
+                            "descricao": "Texto e imagens de texto têm taxa de contraste de pelo menos 4.5:1, exceto texto grande (18pt+) e texto incidental.",
+                            "proposito": "Pessoas com baixa visão podem ler texto.",
+                            "exemplos": [
+                                "Texto preto (#000) em fundo branco (#FFF) = 21:1 ✅",
+                                "Texto cinza claro (#AAA) em fundo branco (#FFF) = 2.3:1 ❌",
+                                "Texto grande cinza (#777) em branco (#FFF) = 4.5:1 ✅"
+                            ],
+                            "tecnicas": [
+                                "G18: Garantir que taxa de contraste de 4.5:1 existe",
+                                "G145: Garantir taxa de contraste de 3:1 para texto grande"
+                            ],
+                            "ferramentas": [
+                                "WebAIM Contrast Checker",
+                                "Colour Contrast Analyser",
+                                "Chrome DevTools Lighthouse"
+                            ],
+                            "implementacao": {
+                                "css": "/* BOM - Contraste 7:1 (AAA) */\nbody {\n  color: #000000; /* Preto */\n  background-color: #FFFFFF; /* Branco */\n}\n\n/* RUIM - Contraste 2.9:1 */\n.texto-cinza {\n  color: #999999;\n  background-color: #FFFFFF;\n}"
+                            }
+                        },
+                        {
+                            "id": "resize-text",
+                            "numero": "1.4.4",
+                            "nome": "Redimensionar Texto",
+                            "nivel": "AA",
+                            "descricao": "Texto pode ser redimensionado sem tecnologia assistiva até 200% sem perda de conteúdo ou funcionalidade.",
+                            "proposito": "Pessoas com baixa visão podem aumentar tamanho do texto.",
+                            "exemplos": [
+                                "Site com zoom de texto funcional",
+                                "Layout responsivo que se adapta a fontes maiores",
+                                "Uso de unidades relativas (em, rem) ao invés de px"
+                            ],
+                            "tecnicas": [
+                                "G142: Usar tecnologias que permitem zoom",
+                                "G179: Garantir que não há perda de conteúdo ou funcionalidade em 200% zoom",
+                                "C28: Especificar tamanho de containers de texto usando unidades em"
+                            ],
+                            "implementacao": {
+                                "css": "/* BOM - Unidades relativas */\nbody {\n  font-size: 1rem; /* 16px base */\n}\n\nh1 {\n  font-size: 2.5rem; /* 40px base, escalável */\n}\n\n/* RUIM - Pixels fixos */\n.texto-fixo {\n  font-size: 14px; /* Não escala bem */\n}"
+                            }
+                        },
+                        {
+                            "id": "images-of-text",
+                            "numero": "1.4.5",
+                            "nome": "Imagens de Texto",
+                            "nivel": "AA",
+                            "descricao": "Se as tecnologias utilizadas podem proporcionar apresentação visual, é usado texto para transmitir informação em vez de imagens de texto.",
+                            "proposito": "Pessoas que precisam de apresentação particular de texto podem ajustá-lo.",
+                            "exemplos": [
+                                "✅ Usar texto HTML + CSS ao invés de texto em imagem",
+                                "✅ Usar SVG com texto real ao invés de rasterizado",
+                                "❌ Logo em PNG com texto embutido (exceto quando essencial)"
+                            ],
+                            "tecnicas": [
+                                "C22: Usar CSS para controlar apresentação visual de texto",
+                                "C30: Usar CSS para substituir texto por imagens e fornecer controles UI",
+                                "G140: Separar informação e estrutura de apresentação"
+                            ]
+                        },
+                        {
+                            "id": "contrast-enhanced",
+                            "numero": "1.4.6",
+                            "nome": "Contraste (Melhorado)",
+                            "nivel": "AAA",
+                            "descricao": "Texto e imagens de texto têm taxa de contraste de pelo menos 7:1, exceto texto grande que requer 4.5:1.",
+                            "proposito": "Pessoas com deficiência visual moderada/severa podem ler texto.",
+                            "exemplos": [
+                                "Texto preto (#000) em fundo branco (#FFF) = 21:1 ✅",
+                                "Texto cinza escuro (#555) em branco (#FFF) = 7.5:1 ✅",
+                                "Verde escuro (#228B22) em branco (#FFF) = 3.3:1 ❌ (precisa ser mais escuro)"
+                            ],
+                            "implementacao": {
+                                "css": "/* AAA - Contraste 21:1 */\n.tema-aaa {\n  color: #000000;\n  background-color: #FFFFFF;\n}\n\n/* AAA - Contraste 7.5:1 */\n.texto-secundario {\n  color: #555555;\n  background-color: #FFFFFF;\n}"
+                            }
+                        },
+                        {
+                            "id": "low-or-no-background-audio",
+                            "numero": "1.4.7",
+                            "nome": "Áudio de Fundo Baixo ou Inexistente",
+                            "nivel": "AAA",
+                            "descricao": "Para conteúdo de áudio pré-gravado com fala, o áudio de fundo é muito baixo ou pode ser desligado.",
+                            "proposito": "Pessoas com deficiência auditiva podem ouvir fala.",
+                            "exemplos": [
+                                "Podcast sem música de fundo",
+                                "Vídeo com controle separado de fala e música"
+                            ],
+                            "tecnicas": [
+                                "G56: Mixar arquivos de áudio com fala não obscurecida por sons de fundo"
+                            ]
+                        },
+                        {
+                            "id": "visual-presentation",
+                            "numero": "1.4.8",
+                            "nome": "Apresentação Visual",
+                            "nivel": "AAA",
+                            "descricao": "Para apresentação visual de blocos de texto, há mecanismo para: escolher cores, largura não superior a 80 caracteres, texto não justificado, espaçamento ajustável.",
+                            "proposito": "Pessoas com dificuldades de leitura podem personalizar apresentação.",
+                            "exemplos": [
+                                "Controles de personalização de tema",
+                                "Largura de linha limitada para leitura confortável",
+                                "Espaçamento entre linhas de 1.5+",
+                                "Espaçamento entre parágrafos de 2x tamanho da fonte"
+                            ],
+                            "tecnicas": [
+                                "C23: Especificar cores de texto e fundo separadamente",
+                                "C25: Especificar bordas e layout em CSS",
+                                "G156: Usar tecnologia que tem suporte user agent para mudar espaçamento",
+                                "G175: Fornecer ferramenta de seleção de cor de primeiro plano e fundo"
+                            ],
+                            "implementacao": {
+                                "css": "/* AAA - Apresentação visual otimizada */\n.texto-conteudo {\n  max-width: 70ch; /* ~80 caracteres */\n  line-height: 1.7; /* Espaçamento entre linhas */\n  text-align: left; /* Não justificado */\n  letter-spacing: 0.05em; /* Espaçamento entre letras */\n}\n\n.texto-conteudo p + p {\n  margin-top: 1.5em; /* Espaçamento entre parágrafos */\n}"
+                            }
+                        },
+                        {
+                            "id": "images-of-text-no-exception",
+                            "numero": "1.4.9",
+                            "nome": "Imagens de Texto (Sem Exceção)",
+                            "nivel": "AAA",
+                            "descricao": "Imagens de texto são usadas apenas para decoração pura ou quando particular apresentação de texto é essencial.",
+                            "proposito": "Permitir personalização máxima.",
+                            "exemplos": [
+                                "Logos (essencial)",
+                                "Texto decorativo em design gráfico",
+                                "Screenshots (essencial para documentação)"
+                            ],
+                            "tecnicas": [
+                                "C22: Usar CSS para controlar apresentação",
+                                "C30: Usar CSS com UI para permitir customização"
+                            ]
+                        },
+                        {
+                            "id": "reflow",
+                            "numero": "1.4.10",
+                            "nome": "Refluxo",
+                            "nivel": "AA",
+                            "descricao": "Conteúdo pode ser apresentado sem perda de informação ou funcionalidade, e sem requerer rolagem em duas dimensões para: 320 CSS pixels de largura (vertical), 256 CSS pixels de altura (horizontal).",
+                            "proposito": "Pessoas que usam zoom ou dispositivos pequenos podem visualizar conteúdo.",
+                            "exemplos": [
+                                "Layout responsivo que não requer scroll horizontal em mobile",
+                                "Conteúdo que reflui em uma coluna em telas estreitas"
+                            ],
+                            "tecnicas": [
+                                "C32: Usar media queries e grid CSS para refluxo",
+                                "C31: Usar CSS Flexbox para refluxo",
+                                "C33: Permitir refluxo de conteúdo com larguras de viewport variáveis",
+                                "C38: Usar CSS width, max-width e flexbox para ajustar rótulos e entradas"
+                            ],
+                            "implementacao": {
+                                "css": "/* Design responsivo */\n@media (max-width: 400px) {\n  .container {\n    display: flex;\n    flex-direction: column;\n    max-width: 100%;\n  }\n}"
+                            }
+                        },
+                        {
+                            "id": "non-text-contrast",
+                            "numero": "1.4.11",
+                            "nome": "Contraste Não Textual",
+                            "nivel": "AA",
+                            "descricao": "Componentes de interface do usuário e objetos gráficos têm taxa de contraste de pelo menos 3:1 contra cores adjacentes.",
+                            "proposito": "Pessoas com baixa visão podem perceber controles e gráficos.",
+                            "exemplos": [
+                                "Botões com borda visível",
+                                "Ícones com contraste adequado",
+                                "Campos de formulário com bordas distinguíveis",
+                                "Gráficos com cores contrastantes"
+                            ],
+                            "tecnicas": [
+                                "G195: Usar indicador de foco visível fornecido pelo autor",
+                                "G174: Fornecer controle com contraste suficiente"
+                            ],
+                            "implementacao": {
+                                "css": "/* Contraste 3:1 em bordas */\nbutton {\n  background: #FFF;\n  border: 2px solid #767676; /* Contraste 3.3:1 com branco */\n}\n\n/* Focus visível com contraste */\nbutton:focus {\n  outline: 3px solid #005A9C; /* Contraste 7.1:1 */\n  outline-offset: 2px;\n}"
+                            }
+                        },
+                        {
+                            "id": "text-spacing",
+                            "numero": "1.4.12",
+                            "nome": "Espaçamento de Texto",
+                            "nivel": "AA",
+                            "descricao": "Não ocorre perda de conteúdo ou funcionalidade quando são aplicados: altura de linha 1.5x, espaçamento após parágrafos 2x, espaçamento entre letras 0.12x, espaçamento entre palavras 0.16x.",
+                            "proposito": "Pessoas com dislexia ou baixa visão podem ajustar espaçamento.",
+                            "exemplos": [
+                                "Layout que suporta line-height: 1.5",
+                                "Conteúdo que não quebra com letter-spacing aumentado"
+                            ],
+                            "tecnicas": [
+                                "C36: Permitir modificação de espaçamento",
+                                "C35: Permitir ajustes de espaçamento em CSS"
+                            ],
+                            "implementacao": {
+                                "css": "/* Layout resiliente a espaçamento */\nbody {\n  line-height: 1.5;\n  letter-spacing: 0.12em;\n  word-spacing: 0.16em;\n}\n\np {\n  margin-bottom: 2em; /* 2x font-size */\n}"
+                            },
+                            "testeLeitores": "Aplicar bookmarklet de teste de espaçamento"
+                        },
+                        {
+                            "id": "content-on-hover-or-focus",
+                            "numero": "1.4.13",
+                            "nome": "Conteúdo em Hover ou Foco",
+                            "nivel": "AA",
+                            "descricao": "Conteúdo adicional que aparece em hover ou foco pode ser: dispensado sem mover foco, passível de hover, persistente até dismissal.",
+                            "proposito": "Pessoas com baixa visão usando ampliação podem visualizar conteúdo adicional.",
+                            "exemplos": [
+                                "Tooltips que podem receber hover",
+                                "Dropdowns que não desaparecem imediatamente",
+                                "Popovers com botão X para fechar"
+                            ],
+                            "tecnicas": [
+                                "SCR39: Fazer conteúdo em foco ou hover dismissível, passível de hover e persistente"
+                            ],
+                            "falhas": [
+                                "F95: Falha ao fazer conteúdo adicional dismissível sem mover ponteiro"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "metadados": {
+        "traducao": "Tradução livre para fins educacionais",
+        "referenciaOficial": "https://www.w3.org/WAI/WCAG21/quickref/",
+        "versaoPortugues": "https://www.w3.org/Translations/WCAG21-pt-BR/",
+        "licenca": "W3C Document License",
+        "autor": "W3C Web Accessibility Initiative (WAI)",
+        "adaptacao": "IFBA - Cabra da Tech"
+    }
+}

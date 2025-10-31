@@ -1,339 +1,621 @@
 {
-    "site": {
-        "nome": "Cabra da Tech",
-        "tagline": "Tecnologia do sertão pro mundo todo",
-        "descricao": "Portal de notícias sobre tecnologia, inovação e educação do sertão brasileiro"
+  "version": "1.0.0",
+  "lastUpdate": "2025-10-31T10:00:00-03:00",
+  "totalNoticias": 12,
+  "categorias": [
+    "Tecnologia",
+    "Educação",
+    "Inovação Social",
+    "Conectividade",
+    "Inteligência Artificial",
+    "Região"
+  ],
+  "noticias": [
+    {
+      "id": "not-001",
+      "titulo": "Cabras do IFBA criam app que até o véi usa",
+      "subtitulo": "Sistema de monitoramento de cisternas via WhatsApp revoluciona acesso à água no sertão",
+      "slug": "ifba-app-cisternas-whatsapp",
+      "categoria": "Inovação Social",
+      "autor": {
+        "nome": "Redação Cabra da Tech",
+        "email": "redacao@cabradatech.ifba.br",
+        "avatar": "../assets/images/avatar-redacao.jpg"
+      },
+      "dataPublicacao": "2025-10-28T10:30:00-03:00",
+      "dataAtualizacao": "2025-10-28T10:30:00-03:00",
+      "tempoLeitura": 5,
+      "visualizacoes": 1547,
+      "destaque": true,
+      "imagemDestaque": {
+        "url": "../assets/images/hero-sertao-tech.jpg",
+        "alt": "Três estudantes do IFBA Campus Senhor do Bonfim em área rural, demonstrando aplicativo em tablet para uma família de agricultores. Ao fundo, cisterna de água e paisagem da caatinga baiana",
+        "credito": "Assessoria IFBA",
+        "width": 1200,
+        "height": 675
+      },
+      "resumo": "Alunos do IFBA desenvolveram solução IoT acessível que permite famílias do sertão monitorarem cisternas via WhatsApp. Sistema já beneficia 50 residências e integra-se ao programa Cisternas do Governo Federal.",
+      "conteudo": "Alunos do Instituto Federal da Bahia desenvolveram solução de Internet das Coisas (IoT) acessível que permite famílias do sertão monitorarem o nível de água das cisternas usando apenas WhatsApp, sem necessidade de internet ou smartphones avançados.\n\nA tecnologia nem sempre precisa ser complicada para resolver problemas reais. Três estudantes do curso de Análise e Desenvolvimento de Sistemas do IFBA Campus Senhor do Bonfim provaram isso ao desenvolverem um sistema de monitoramento de cisternas que funciona via WhatsApp, acessível até para quem tem celulares mais simples.",
+      "tags": [
+        "IoT",
+        "Sertão",
+        "IFBA",
+        "Inovação Social",
+        "WhatsApp",
+        "Sustentabilidade",
+        "Água"
+      ],
+      "informacoesExtras": {
+        "custo": "R$ 150,00 por instalação",
+        "instituicoesParceiras": [
+          "IFBA",
+          "Prefeituras municipais",
+          "Governo Federal (Programa Cisternas)"
+        ],
+        "periodoDesenvolvimento": "18 meses (março/2024 - setembro/2025)",
+        "tecnologias": [
+          "ESP32",
+          "Sensores ultrassônicos",
+          "API WhatsApp Business",
+          "Node.js"
+        ],
+        "beneficiados": 200,
+        "residencias": 50,
+        "reducaoDesperdicio": "40%",
+        "aumentoEficiencia": "65%"
+      },
+      "relacionadas": [
+        "not-002",
+        "not-003",
+        "not-005"
+      ]
     },
-    "manchete": {
-        "id": "manchete-principal",
-        "titulo": "Cabras do IFBA criam app que até o véi usa",
-        "subtitulo": "Sistema de monitoramento de cisternas via WhatsApp revoluciona acesso à água no sertão",
-        "imagem": "../assets/images/hero-sertao-tech.jpg",
-        "imagemAlt": "Estudantes do IFBA-Saj testando aplicativo de monitoramento de cisternas em área rural do sertão baiano",
-        "categoria": "Inovação Social",
-        "data": "2025-10-28",
-        "dataFormatada": "28 de outubro de 2025",
-        "autor": "Redação Cabra da Tech",
-        "resumo": "Alunos do Instituto Federal da Bahia desenvolveram solução de IoT acessível que permite famílias do sertão monitorarem o nível de água das cisternas usando apenas WhatsApp, sem necessidade de internet ou smartphones avançados.",
-        "conteudo": "A tecnologia nem sempre precisa ser complicada para resolver problemas reais. Três estudantes do curso de Análise e Desenvolvimento de Sistemas do IFBA-Saj provaram isso ao desenvolverem um sistema de monitoramento de cisternas que funciona via WhatsApp, acessível até para quem tem celulares mais simples.\n\nO projeto, batizado de 'Água Inteligente', utiliza sensores de baixo custo conectados a um microcontrolador ESP32 que envia atualizações automáticas sobre o nível de água diretamente para o WhatsApp das famílias. 'A gente queria algo que o véi e a véia conseguissem usar sem dificuldade', explica João Silva, um dos desenvolvedores.\n\nAlém de informar o nível atual, o sistema envia alertas quando a água está acabando e até sugere a melhor época para solicitar o caminhão-pipa da prefeitura, baseado em dados históricos de consumo. O projeto já foi implantado em 50 residências da zona rural de Senhor do Bonfim e região.\n\n'Antes a gente só descobria que a água tinha acabado quando ia buscar. Agora recebo a mensagem no WhatsApp e já me organizo', conta Maria dos Santos, moradora da comunidade de Caldeirão Grande e uma das beneficiadas pelo projeto.\n\nO sistema também se integra ao programa Cisternas do Governo Federal, facilitando o cadastro e a manutenção dos equipamentos. Os estudantes pretendem expandir o projeto para outras comunidades e já estão em conversas com prefeituras da região.",
-        "tags": [
-            "IoT",
-            "Sertão",
-            "IFBA",
-            "Inovação Social",
-            "WhatsApp",
-            "Sustentabilidade"
+    {
+      "id": "not-002",
+      "titulo": "Arrocha da IA: chatbot em forró vira viral e ajuda negócios",
+      "subtitulo": "Microempreendedores do Nordeste adotam assistente virtual com sotaque regional que entende gírias e expressões locais",
+      "slug": "chatbot-forró-nordeste",
+      "categoria": "Inteligência Artificial",
+      "autor": {
+        "nome": "Carlos Mendes",
+        "email": "carlos.mendes@cabradatech.ifba.br",
+        "avatar": "../assets/images/avatar-carlos.jpg"
+      },
+      "dataPublicacao": "2025-10-27T14:00:00-03:00",
+      "dataAtualizacao": "2025-10-27T14:00:00-03:00",
+      "tempoLeitura": 4,
+      "visualizacoes": 2341,
+      "destaque": true,
+      "imagemDestaque": {
+        "url": "../assets/images/noticia-01.jpg",
+        "alt": "Empreendedora sorridente usando tablet em feira livre, com barraca de frutas ao fundo",
+        "credito": "Divulgação",
+        "width": 800,
+        "height": 500
+      },
+      "resumo": "Chatbot desenvolvido por startup baiana usa processamento de linguagem natural treinado com expressões nordestinas. Ferramenta já auxilia mais de 500 pequenos negócios na região.",
+      "conteudo": "Uma startup de Salvador desenvolveu um assistente virtual que fala a língua do povo nordestino. O 'Zé Chatbot' entende expressões como 'oxente', 'vixe maria' e até responde em forró quando o cliente pede música de fundo.\n\nO diferencial está no treinamento da IA com corpus linguístico regional, incluindo variações de sotaque, gírias e expressões idiomáticas. Microempreendedores relatam aumento de 35% nas vendas após implementação.",
+      "tags": [
+        "IA",
+        "Chatbot",
+        "Nordeste",
+        "Empreendedorismo",
+        "NLP",
+        "Startup",
+        "Regionalização"
+      ],
+      "informacoesExtras": {
+        "empresaDesenvolvedora": "Oxente.AI",
+        "negociosAtendidos": 500,
+        "aumentoVendas": "35%",
+        "idiomasRegionais": 3,
+        "investimento": "R$ 250.000"
+      },
+      "relacionadas": [
+        "not-001",
+        "not-004"
+      ]
+    },
+    {
+      "id": "not-003",
+      "titulo": "Internet 5G chega ao mato: zona rural terá conexão rápida",
+      "subtitulo": "Projeto piloto leva internet de alta velocidade para comunidades rurais de três municípios do sertão baiano",
+      "slug": "5g-zona-rural-bahia",
+      "categoria": "Conectividade",
+      "autor": {
+        "nome": "Ana Paula Rodrigues",
+        "email": "ana.rodrigues@cabradatech.ifba.br",
+        "avatar": "../assets/images/avatar-ana.jpg"
+      },
+      "dataPublicacao": "2025-10-26T09:15:00-03:00",
+      "dataAtualizacao": "2025-10-26T09:15:00-03:00",
+      "tempoLeitura": 6,
+      "visualizacoes": 1823,
+      "destaque": true,
+      "imagemDestaque": {
+        "url": "../assets/images/noticia-02.jpg",
+        "alt": "Antena 5G instalada em poste de área rural com paisagem de caatinga ao fundo sob céu azul",
+        "credito": "Anatel",
+        "width": 800,
+        "height": 500
+      },
+      "resumo": "Parceria entre Anatel, operadoras e prefeituras leva 5G para zona rural. Velocidades de até 1Gbps prometem transformar educação, saúde e agronegócio no interior.",
+      "conteudo": "Pela primeira vez, comunidades rurais da Bahia terão acesso à internet 5G. O projeto piloto, coordenado pela Anatel em parceria com operadoras e prefeituras locais, instalará antenas em Senhor do Bonfim, Campo Formoso e Juazeiro.\n\nA expectativa é conectar 15 mil pessoas até o final de 2025, com velocidades de até 1Gbps. Aplicações incluem telemedicina, educação à distância, agricultura de precisão e comércio eletrônico.",
+      "tags": [
+        "5G",
+        "Conectividade",
+        "Zona Rural",
+        "Inclusão Digital",
+        "Anatel",
+        "Bahia"
+      ],
+      "informacoesExtras": {
+        "municipios": [
+          "Senhor do Bonfim",
+          "Campo Formoso",
+          "Juazeiro"
+        ],
+        "pessoasConectadas": 15000,
+        "velocidadeMaxima": "1Gbps",
+        "investimentoTotal": "R$ 12 milhões",
+        "prazoImplementacao": "12 meses"
+      },
+      "relacionadas": [
+        "not-001",
+        "not-006"
+      ]
+    },
+    {
+      "id": "not-004",
+      "titulo": "IFBA oferece curso gratuito: 'Vem pro code, sô!'",
+      "subtitulo": "Instituto abre 200 vagas para curso de programação voltado para iniciantes, com certificação reconhecida pelo MEC",
+      "slug": "ifba-curso-programacao-gratuito",
+      "categoria": "Educação",
+      "autor": {
+        "nome": "Redação Cabra da Tech",
+        "email": "redacao@cabradatech.ifba.br",
+        "avatar": "../assets/images/avatar-redacao.jpg"
+      },
+      "dataPublicacao": "2025-10-25T16:45:00-03:00",
+      "dataAtualizacao": "2025-10-25T16:45:00-03:00",
+      "tempoLeitura": 3,
+      "visualizacoes": 3156,
+      "destaque": true,
+      "imagemDestaque": {
+        "url": "../assets/images/noticia-03.jpg",
+        "alt": "Sala de aula do IFBA com estudantes diversos trabalhando em computadores, professor auxiliando ao fundo",
+        "credito": "IFBA",
+        "width": 800,
+        "height": 500
+      },
+      "resumo": "Curso de 6 meses ensina Python, JavaScript e desenvolvimento web. Inscrições abertas até 15 de novembro. Prioridade para alunos de escolas públicas.",
+      "conteudo": "O IFBA Campus Senhor do Bonfim abriu 200 vagas para o curso gratuito 'Vem pro Code, Sô!', voltado para iniciantes em programação. A formação tem duração de 6 meses e ensina Python, JavaScript, HTML, CSS e Git.\n\nO curso é 100% presencial, com aulas três vezes por semana no período noturno. Há prioridade para alunos de escolas públicas, mulheres e pessoas negras. Certificação é reconhecida pelo MEC.",
+      "tags": [
+        "Educação",
+        "IFBA",
+        "Programação",
+        "Curso Gratuito",
+        "Python",
+        "JavaScript",
+        "Inclusão"
+      ],
+      "informacoesExtras": {
+        "vagas": 200,
+        "duracao": "6 meses",
+        "cargaHoraria": "240 horas",
+        "modalidade": "Presencial",
+        "turno": "Noturno",
+        "linguagens": [
+          "Python",
+          "JavaScript",
+          "HTML",
+          "CSS"
+        ],
+        "ferramentas": [
+          "Git",
+          "VS Code",
+          "GitHub"
+        ],
+        "requisitos": "Ensino médio completo ou cursando",
+        "inscricoesAte": "2025-11-15"
+      },
+      "relacionadas": [
+        "not-005",
+        "not-007"
+      ]
+    },
+    {
+      "id": "not-005",
+      "titulo": "Energia solar em escola rural reduz conta em 90%",
+      "subtitulo": "Projeto de estudantes do IFBA instala painéis fotovoltaicos em escola de assentamento, gerando economia e ensino prático",
+      "slug": "energia-solar-escola-rural",
+      "categoria": "Sustentabilidade",
+      "autor": {
+        "nome": "Pedro Santos",
+        "email": "pedro.santos@cabradatech.ifba.br",
+        "avatar": "../assets/images/avatar-pedro.jpg"
+      },
+      "dataPublicacao": "2025-10-24T11:20:00-03:00",
+      "dataAtualizacao": "2025-10-24T11:20:00-03:00",
+      "tempoLeitura": 5,
+      "visualizacoes": 1234,
+      "destaque": false,
+      "imagemDestaque": {
+        "url": "../assets/images/noticia-04.jpg",
+        "alt": "Painéis solares instalados no telhado de escola rural, com estudantes observando",
+        "credito": "IFBA",
+        "width": 800,
+        "height": 500
+      },
+      "resumo": "Sistema fotovoltaico de 10kWp reduz conta de luz de R$ 1.200 para R$ 120 mensais. Estudantes aprendem sobre energias renováveis na prática.",
+      "conteudo": "A Escola Municipal Rural do Assentamento Eldorado, em Campo Formoso, teve sua conta de energia reduzida em 90% após instalação de painéis solares. O projeto foi desenvolvido por alunos do curso de Eletrotécnica do IFBA.\n\nO sistema de 10kWp gera em média 1.200 kWh por mês, suficiente para toda a demanda da escola. Economia anual estimada em R$ 13 mil será revertida em melhorias na infraestrutura.",
+      "tags": [
+        "Energia Solar",
+        "Sustentabilidade",
+        "Educação",
+        "IFBA",
+        "Zona Rural",
+        "Economia"
+      ],
+      "informacoesExtras": {
+        "potenciaInstalada": "10kWp",
+        "reducaoConta": "90%",
+        "economiaAnual": "R$ 13.000",
+        "geracaoMensal": "1.200 kWh",
+        "investimento": "R$ 35.000",
+        "payback": "32 meses"
+      },
+      "relacionadas": [
+        "not-001",
+        "not-004"
+      ]
+    },
+    {
+      "id": "not-006",
+      "titulo": "App de caronas solidárias conecta universitários do sertão",
+      "subtitulo": "Plataforma gratuita criada por estudantes do IFBA facilita deslocamento entre cidades e reduz custos de transporte",
+      "slug": "app-caronas-universitarios",
+      "categoria": "Tecnologia",
+      "autor": {
+        "nome": "Juliana Costa",
+        "email": "juliana.costa@cabradatech.ifba.br",
+        "avatar": "../assets/images/avatar-juliana.jpg"
+      },
+      "dataPublicacao": "2025-10-23T08:30:00-03:00",
+      "dataAtualizacao": "2025-10-23T08:30:00-03:00",
+      "tempoLeitura": 4,
+      "visualizacoes": 987,
+      "destaque": false,
+      "imagemDestaque": {
+        "url": "../assets/images/noticia-05.jpg",
+        "alt": "Grupo de estudantes entrando em carro, sorrindo e segurando mochilas",
+        "credito": "Divulgação",
+        "width": 800,
+        "height": 500
+      },
+      "resumo": "CaronaDoCampi conecta mais de 2 mil estudantes de 8 municípios. Sistema de avaliações garante segurança e confiabilidade.",
+      "conteudo": "O aplicativo CaronaDoCampi, desenvolvido por alunos de Sistemas de Informação do IFBA, já conectou mais de 2 mil estudantes universitários em 8 municípios do interior da Bahia.\n\nO app funciona como rede social fechada para estudantes verificados, com sistema de avaliações mútuas, chat integrado e divisão automática de custos. Usuários relatam economia média de 60% com transporte.",
+      "tags": [
+        "App",
+        "Mobilidade",
+        "Economia Compartilhada",
+        "Universitários",
+        "IFBA",
+        "Sustentabilidade"
+      ],
+      "informacoesExtras": {
+        "usuariosAtivos": 2000,
+        "municipiosAtendidos": 8,
+        "economiMedia": "60%",
+        "caronasRealizadas": 15000,
+        "avaliacaoMedia": 4.8
+      },
+      "relacionadas": [
+        "not-002",
+        "not-008"
+      ]
+    },
+    {
+      "id": "not-007",
+      "titulo": "Robótica educacional: IFBA conquista 1º lugar nacional",
+      "subtitulo": "Equipe baiana vence competição com robô que auxilia colheita de frutas sem danificar plantas",
+      "slug": "robotica-ifba-primeiro-lugar",
+      "categoria": "Educação",
+      "autor": {
+        "nome": "Roberto Lima",
+        "email": "roberto.lima@cabradatech.ifba.br",
+        "avatar": "../assets/images/avatar-roberto.jpg"
+      },
+      "dataPublicacao": "2025-10-22T14:15:00-03:00",
+      "dataAtualizacao": "2025-10-22T14:15:00-03:00",
+      "tempoLeitura": 5,
+      "visualizacoes": 1567,
+      "destaque": false,
+      "imagemDestaque": {
+        "url": "../assets/images/noticia-06.jpg",
+        "alt": "Estudantes apresentando robô agrícola em competição, com troféu ao lado",
+        "credito": "OBR",
+        "width": 800,
+        "height": 500
+      },
+      "resumo": "Robô autônomo usa visão computacional para identificar frutas maduras e colhê-las sem danos. Solução pode revolucionar agricultura familiar.",
+      "conteudo": "A equipe 'Cabras Mecânicos' do IFBA Campus Senhor do Bonfim conquistou o primeiro lugar na Olimpíada Brasileira de Robótica (OBR) com um robô agrícola inovador.\n\nO robô usa câmeras e inteligência artificial para identificar o ponto ideal de colheita de manga, goiaba e outras frutas regionais. Sistema de braço robótico delicado evita danos às plantas e frutos.",
+      "tags": [
+        "Robótica",
+        "Educação",
+        "IFBA",
+        "Competição",
+        "IA",
+        "Agricultura",
+        "Inovação"
+      ],
+      "informacoesExtras": {
+        "competicao": "Olimpíada Brasileira de Robótica 2025",
+        "colocacao": "1º lugar",
+        "frutasSuportadas": [
+          "Manga",
+          "Goiaba",
+          "Acerola",
+          "Caju"
+        ],
+        "custoProjeto": "R$ 8.000",
+        "tempoDesenvolvimento": "8 meses"
+      },
+      "relacionadas": [
+        "not-004",
+        "not-009"
+      ]
+    },
+    {
+      "id": "not-008",
+      "titulo": "Telemedicina chega a 20 comunidades rurais baianas",
+      "subtitulo": "Projeto piloto permite consultas médicas remotas via aplicativo, reduzindo deslocamentos e filas",
+      "slug": "telemedicina-rural-bahia",
+      "categoria": "Saúde Digital",
+      "autor": {
+        "nome": "Dra. Mariana Souza",
+        "email": "mariana.souza@cabradatech.ifba.br",
+        "avatar": "../assets/images/avatar-mariana.jpg"
+      },
+      "dataPublicacao": "2025-10-21T10:00:00-03:00",
+      "dataAtualizacao": "2025-10-21T10:00:00-03:00",
+      "tempoLeitura": 6,
+      "visualizacoes": 2109,
+      "destaque": false,
+      "imagemDestaque": {
+        "url": "../assets/images/noticia-07.jpg",
+        "alt": "Agente de saúde auxiliando idosa em consulta por videochamada em tablet",
+        "credito": "Secretaria de Saúde",
+        "width": 800,
+        "height": 500
+      },
+      "resumo": "Programa SaúdeConecta já realizou mais de 5 mil atendimentos. Especialistas de Salvador atendem pacientes do interior por vídeo.",
+      "conteudo": "O programa SaúdeConecta, parceria entre Secretaria de Saúde e IFBA, leva telemedicina para 20 comunidades rurais da Bahia. Mais de 5 mil consultas já foram realizadas desde agosto.\n\nPacientes têm acesso a especialistas de Salvador sem sair de suas cidades. Sistema integrado permite envio de exames, receitas digitais e acompanhamento contínuo.",
+      "tags": [
+        "Telemedicina",
+        "Saúde",
+        "Zona Rural",
+        "Tecnologia",
+        "Inclusão",
+        "Bahia"
+      ],
+      "informacoesExtras": {
+        "comunidadesAtendidas": 20,
+        "consultasRealizadas": 5000,
+        "especialidades": [
+          "Clínica Geral",
+          "Pediatria",
+          "Cardiologia",
+          "Ginecologia"
+        ],
+        "reducaoDeslocamento": "80%",
+        "tempoMedioAtendimento": "25 minutos"
+      },
+      "relacionadas": [
+        "not-003",
+        "not-006"
+      ]
+    },
+    {
+      "id": "not-009",
+      "titulo": "Feira de tecnologia do IFBA reúne 50 projetos inovadores",
+      "subtitulo": "Soluções criadas por estudantes abordam desde IoT até inteligência artificial aplicada ao sertão",
+      "slug": "feira-tecnologia-ifba-2025",
+      "categoria": "Evento",
+      "autor": {
+        "nome": "Redação Cabra da Tech",
+        "email": "redacao@cabradatech.ifba.br",
+        "avatar": "../assets/images/avatar-redacao.jpg"
+      },
+      "dataPublicacao": "2025-10-20T09:00:00-03:00",
+      "dataAtualizacao": "2025-10-20T09:00:00-03:00",
+      "tempoLeitura": 4,
+      "visualizacoes": 1678,
+      "destaque": false,
+      "imagemDestaque": {
+        "url": "../assets/images/noticia-08.jpg",
+        "alt": "Vista panorâmica de feira de ciências com diversos estandes e visitantes",
+        "credito": "IFBA",
+        "width": 800,
+        "height": 500
+      },
+      "resumo": "TechFest IFBA 2025 acontece de 15 a 17 de novembro. Entrada gratuita e aberta ao público.",
+      "conteudo": "A quinta edição da TechFest IFBA acontecerá de 15 a 17 de novembro no Campus Senhor do Bonfim, reunindo 50 projetos de inovação tecnológica desenvolvidos por estudantes.\n\nDestaques incluem sistema de irrigação inteligente, app de diagnóstico veterinário por IA, drone para monitoramento de queimadas e impressora 3D de baixo custo.",
+      "tags": [
+        "Evento",
+        "Feira",
+        "IFBA",
+        "Inovação",
+        "Tecnologia",
+        "Estudantes"
+      ],
+      "informacoesExtras": {
+        "data": "15 a 17 de novembro de 2025",
+        "local": "IFBA Campus Senhor do Bonfim",
+        "projetos": 50,
+        "visitantesEsperados": 3000,
+        "entrada": "Gratuita",
+        "horario": "9h às 18h"
+      },
+      "relacionadas": [
+        "not-001",
+        "not-007"
+      ]
+    },
+    {
+      "id": "not-010",
+      "titulo": "Hackathon do sertão premia soluções para agricultura familiar",
+      "subtitulo": "Maratona de programação de 48 horas busca apps e sistemas para pequenos produtores rurais",
+      "slug": "hackathon-agricultura-familiar",
+      "categoria": "Evento",
+      "autor": {
+        "nome": "Lucas Ferreira",
+        "email": "lucas.ferreira@cabradatech.ifba.br",
+        "avatar": "../assets/images/avatar-lucas.jpg"
+      },
+      "dataPublicacao": "2025-10-19T15:30:00-03:00",
+      "dataAtualizacao": "2025-10-19T15:30:00-03:00",
+      "tempoLeitura": 5,
+      "visualizacoes": 1345,
+      "destaque": false,
+      "imagemDestaque": {
+        "url": "../assets/images/noticia-09.jpg",
+        "alt": "Equipes de programadores trabalhando em computadores durante hackathon",
+        "credito": "Divulgação",
+        "width": 800,
+        "height": 500
+      },
+      "resumo": "Inscrições abertas até 10 de novembro. Premiação total de R$ 15 mil e mentorias com startups do agronegócio.",
+      "conteudo": "O HackAgro 2025, organizado pelo IFBA em parceria com Sebrae e Embrapa, acontece de 22 a 24 de novembro. Maratona busca soluções tecnológicas para desafios da agricultura familiar.\n\nTemas incluem: controle de pragas, gestão financeira, comercialização de produtos, previsão climática e rastreabilidade. Equipes terão 48 horas para desenvolver protótipos funcionais.",
+      "tags": [
+        "Hackathon",
+        "Agricultura",
+        "Inovação",
+        "IFBA",
+        "Empreendedorismo",
+        "Agronegócio"
+      ],
+      "informacoesExtras": {
+        "data": "22 a 24 de novembro de 2025",
+        "duracao": "48 horas",
+        "premiacao": "R$ 15.000",
+        "vagas": 100,
+        "parceiros": [
+          "IFBA",
+          "Sebrae",
+          "Embrapa"
+        ],
+        "inscricoesAte": "2025-11-10"
+      },
+      "relacionadas": [
+        "not-001",
+        "not-005"
+      ]
+    },
+    {
+      "id": "not-011",
+      "titulo": "Podcast 'Cabra da Tech' completa 50 episódios",
+      "subtitulo": "Programa semanal sobre tecnologia e inovação no sertão atinge 100 mil downloads",
+      "slug": "podcast-cabra-tech-50-episodios",
+      "categoria": "Mídia",
+      "autor": {
+        "nome": "Rafael Oliveira",
+        "email": "rafael.oliveira@cabradatech.ifba.br",
+        "avatar": "../assets/images/avatar-rafael.jpg"
+      },
+      "dataPublicacao": "2025-10-18T12:00:00-03:00",
+      "dataAtualizacao": "2025-10-18T12:00:00-03:00",
+      "tempoLeitura": 3,
+      "visualizacoes": 876,
+      "destaque": false,
+      "imagemDestaque": {
+        "url": "../assets/images/noticia-10.jpg",
+        "alt": "Estúdio de podcast com microfones e equipamentos de gravação",
+        "credito": "Cabra da Tech",
+        "width": 800,
+        "height": 500
+      },
+      "resumo": "Episódio especial de número 50 traz entrevista com fundadores do programa e principais convidados dos últimos meses.",
+      "conteudo": "O podcast 'Cabra da Tech' celebra seu 50º episódio com marca de 100 mil downloads. O programa, produzido por estudantes do IFBA, entrevista semanalmente empreendedores, pesquisadores e desenvolvedores da região.\n\nDisponível no Spotify, Apple Podcasts, YouTube e principais agregadores. Novos episódios toda quinta-feira.",
+      "tags": [
+        "Podcast",
+        "Mídia",
+        "IFBA",
+        "Tecnologia",
+        "Entrevistas"
+      ],
+      "informacoesExtras": {
+        "episodios": 50,
+        "downloads": 100000,
+        "frequencia": "Semanal (quintas-feiras)",
+        "duracaoMedia": "45 minutos",
+        "plataformas": [
+          "Spotify",
+          "Apple Podcasts",
+          "YouTube",
+          "Deezer"
         ]
+      },
+      "relacionadas": [
+        "not-004",
+        "not-009"
+      ]
     },
-    "noticias": [
-        {
-            "id": "noticia-1",
-            "titulo": "Arrocha da IA: chatbot em forró vira viral e ajuda negócios",
-            "resumo": "Microempreendedores do Nordeste adotam assistente virtual com sotaque regional que entende gírias e expressões locais",
-            "imagem": "../assets/images/noticia-01.jpg",
-            "imagemAlt": "Empreendedora usando chatbot em tablet na feira livre",
-            "categoria": "Inteligência Artificial",
-            "data": "2025-10-27",
-            "dataFormatada": "27 de outubro de 2025",
-            "autor": "Carlos Mendes",
-            "link": "#noticia-1",
-            "destaque": true,
-            "tags": [
-                "IA",
-                "Negócios",
-                "Nordeste",
-                "Chatbot"
-            ]
-        },
-        {
-            "id": "noticia-2",
-            "titulo": "Internet 5G chega ao mato: zona rural terá conexão rápida",
-            "resumo": "Projeto piloto leva internet de alta velocidade para comunidades rurais de três municípios do sertão baiano",
-            "imagem": "../assets/images/noticia-02.jpg",
-            "imagemAlt": "Antena 5G instalada em área rural com paisagem de caatinga ao fundo",
-            "categoria": "Conectividade",
-            "data": "2025-10-26",
-            "dataFormatada": "26 de outubro de 2025",
-            "autor": "Ana Paula Rodrigues",
-            "link": "#noticia-2",
-            "destaque": true,
-            "tags": [
-                "5G",
-                "Internet",
-                "Inclusão Digital",
-                "Zona Rural"
-            ]
-        },
-        {
-            "id": "noticia-3",
-            "titulo": "IFBA oferece curso gratuito: 'Vem pro code, sô!'",
-            "resumo": "Instituto abre 200 vagas para curso de programação voltado para iniciantes, com certificação reconhecida pelo MEC",
-            "imagem": "../assets/images/noticia-03.jpg",
-            "imagemAlt": "Sala de aula do IFBA com alunos aprendendo programação em computadores",
-            "categoria": "Educação",
-            "data": "2025-10-25",
-            "dataFormatada": "25 de outubro de 2025",
-            "autor": "Redação Cabra da Tech",
-            "link": "#noticia-3",
-            "destaque": true,
-            "tags": [
-                "IFBA",
-                "Educação",
-                "Programação",
-                "Curso Gratuito"
-            ]
-        },
-        {
-            "id": "noticia-4",
-            "titulo": "Startup do sertão: app de delivery chega a 20 cidades",
-            "resumo": "Aplicativo desenvolvido em Juazeiro conecta pequenos comerciantes a clientes em cidades do interior",
-            "imagem": "../assets/images/noticia-01.jpg",
-            "imagemAlt": "Entregador usando aplicativo em smartphone",
-            "categoria": "Empreendedorismo",
-            "data": "2025-10-24",
-            "dataFormatada": "24 de outubro de 2025",
-            "autor": "Pedro Santos",
-            "link": "#noticia-4",
-            "destaque": false,
-            "tags": [
-                "Startup",
-                "Delivery",
-                "App",
-                "Economia Local"
-            ]
-        },
-        {
-            "id": "noticia-5",
-            "titulo": "Energia solar + IoT: produtores rurais economizam 70%",
-            "resumo": "Sistema inteligente de irrigação movido a energia solar reduz drasticamente custos de agricultores familiares",
-            "imagem": "../assets/images/noticia-02.jpg",
-            "imagemAlt": "Painéis solares em propriedade rural com sistema de irrigação automatizado",
-            "categoria": "Sustentabilidade",
-            "data": "2025-10-23",
-            "dataFormatada": "23 de outubro de 2025",
-            "autor": "Juliana Costa",
-            "link": "#noticia-5",
-            "destaque": false,
-            "tags": [
-                "Energia Solar",
-                "IoT",
-                "Agricultura",
-                "Sustentabilidade"
-            ]
-        }
-    ],
-    "sidebar": {
-        "maisLidas": [
-            {
-                "titulo": "HTML semântico: por que todo dev deveria usar",
-                "link": "#html-semantico",
-                "views": "12.5k visualizações"
-            },
-            {
-                "titulo": "WCAG 3.0: o que muda para desenvolvedores",
-                "link": "#wcag-3",
-                "views": "9.8k visualizações"
-            },
-            {
-                "titulo": "Acessibilidade não é opcional: entenda a lei",
-                "link": "#acessibilidade-lei",
-                "views": "8.2k visualizações"
-            }
+    {
+      "id": "not-012",
+      "titulo": "Biblioteca digital do IFBA disponibiliza 5 mil e-books gratuitos",
+      "subtitulo": "Acervo inclui livros técnicos, literatura e materiais didáticos acessíveis para toda comunidade",
+      "slug": "biblioteca-digital-ifba",
+      "categoria": "Educação",
+      "autor": {
+        "nome": "Camila Alves",
+        "email": "camila.alves@cabradatech.ifba.br",
+        "avatar": "../assets/images/avatar-camila.jpg"
+      },
+      "dataPublicacao": "2025-10-17T08:45:00-03:00",
+      "dataAtualizacao": "2025-10-17T08:45:00-03:00",
+      "tempoLeitura": 4,
+      "visualizacoes": 1456,
+      "destaque": false,
+      "imagemDestaque": {
+        "url": "../assets/images/noticia-11.jpg",
+        "alt": "Estudante lendo e-book em tablet em biblioteca",
+        "credito": "IFBA",
+        "width": 800,
+        "height": 500
+      },
+      "resumo": "Plataforma oferece livros em formatos acessíveis (PDF, EPUB, áudio). Cadastro gratuito e acesso ilimitado.",
+      "conteudo": "A Biblioteca Digital do IFBA inaugurou nova plataforma com mais de 5 mil títulos gratuitos. Acervo inclui livros técnicos de tecnologia, literatura brasileira, materiais didáticos e obras em domínio público.\n\nTodos os materiais estão disponíveis em formatos acessíveis, incluindo versões em áudio e compatibilidade com leitores de tela. Acesso aberto para toda comunidade.",
+      "tags": [
+        "Biblioteca",
+        "E-books",
+        "Educação",
+        "IFBA",
+        "Acessibilidade",
+        "Literatura"
+      ],
+      "informacoesExtras": {
+        "titulos": 5000,
+        "formatos": [
+          "PDF",
+          "EPUB",
+          "MOBI",
+          "Audiobook"
         ],
-        "newsletter": {
-            "titulo": "Receba no Zap!",
-            "descricao": "Digite seu WhatsApp e receba as notícias tech do sertão toda semana",
-            "placeholder": "+55 75 99999-9999",
-            "botao": "Quero receber!"
-        },
-        "video": {
-            "titulo": "O que é acessibilidade digital?",
-            "descricao": "Entenda em 3 minutos por que sites acessíveis são importantes para todos",
-            "thumbnail": "../assets/videos/placeholder-video.mp4",
-            "duracao": "3:24",
-            "link": "#video-acessibilidade"
-        }
-    },
-    "footer": {
-        "sobre": {
-            "titulo": "Sobre o Cabra da Tech",
-            "texto": "Portal de notícias sobre tecnologia, inovação e educação do sertão brasileiro. Desenvolvido por estudantes do IFBA-Saj como projeto de acessibilidade web."
-        },
-        "links": {
-            "titulo": "Links Rápidos",
-            "itens": [
-                {
-                    "texto": "Início",
-                    "url": "#home"
-                },
-                {
-                    "texto": "Tecnologia",
-                    "url": "#tecnologia"
-                },
-                {
-                    "texto": "Educação",
-                    "url": "#educacao"
-                },
-                {
-                    "texto": "Sobre",
-                    "url": "#sobre"
-                },
-                {
-                    "texto": "Contato",
-                    "url": "#contato"
-                }
-            ]
-        },
-        "acessibilidade": {
-            "titulo": "Acessibilidade",
-            "itens": [
-                {
-                    "texto": "Declaração de Acessibilidade",
-                    "url": "#declaracao"
-                },
-                {
-                    "texto": "Atalhos de Teclado",
-                    "url": "#atalhos"
-                },
-                {
-                    "texto": "Mapa do Site",
-                    "url": "#mapa"
-                },
-                {
-                    "texto": "Política de Privacidade",
-                    "url": "#privacidade"
-                }
-            ]
-        },
-        "contato": {
-            "titulo": "Contato",
-            "email": "contato@cabradatech.ifba.br",
-            "telefone": "+55 74 3541-2345",
-            "endereco": "IFBA Campus Santo Antônio de Jesus - BA"
-        },
-        "social": [
-            {
-                "nome": "GitHub",
-                "icone": "bi-github",
-                "url": "https://github.com/VII-exe",
-                "ariaLabel": "Visite nosso GitHub"
-            },
-            {
-                "nome": "Instagram",
-                "icone": "bi-instagram",
-                "url": "#instagram",
-                "ariaLabel": "Siga no Instagram"
-            },
-            {
-                "nome": "YouTube",
-                "icone": "bi-youtube",
-                "url": "#youtube",
-                "ariaLabel": "Inscreva-se no YouTube"
-            },
-            {
-                "nome": "LinkedIn",
-                "icone": "bi-linkedin",
-                "url": "#linkedin",
-                "ariaLabel": "Conecte no LinkedIn"
-            }
-        ],
-        "copyright": "© 2025 Cabra da Tech. Desenvolvido por Vinicius Xavier e Flávio Costa. Todos os direitos reservados.",
-        "badges": [
-            {
-                "texto": "WCAG 2.1 AA",
-                "descricao": "Conformidade com diretrizes de acessibilidade"
-            },
-            {
-                "texto": "eMAG",
-                "descricao": "Modelo de Acessibilidade em Governo Eletrônico"
-            },
-            {
-                "texto": "HTML5 Semântico",
-                "descricao": "Estrutura web moderna e acessível"
-            }
-        ]
-    },
-    "navegacao": {
-        "principal": [
-            {
-                "texto": "Início",
-                "url": "#home",
-                "icone": "bi-house-door-fill",
-                "atalho": "Alt+1"
-            },
-            {
-                "texto": "Tecnologia",
-                "url": "#tecnologia",
-                "icone": "bi-cpu"
-            },
-            {
-                "texto": "Educação",
-                "url": "#educacao",
-                "icone": "bi-book"
-            },
-            {
-                "texto": "Rolé",
-                "url": "#regiao",
-                "icone": "bi-compass",
-                "descricao": "Notícias da região"
-            }
-        ],
-        "secundaria": [
-            {
-                "texto": "Sobre",
-                "url": "#sobre"
-            },
-            {
-                "texto": "Contato",
-                "url": "#contato"
-            },
-            {
-                "texto": "Acessibilidade",
-                "url": "#acessibilidade"
-            }
-        ]
-    },
-    "formularioComentario": {
-        "titulo": "Bora Comentar",
-        "descricao": "Deixe sua opinião sobre essa notícia. Seu feedback é importante pra gente!",
-        "campos": [
-            {
-                "id": "nome",
-                "label": "Nome",
-                "tipo": "text",
-                "placeholder": "Seu nome",
-                "obrigatorio": true,
-                "autocomplete": "name"
-            },
-            {
-                "id": "email",
-                "label": "E-mail",
-                "tipo": "email",
-                "placeholder": "seu@email.com",
-                "obrigatorio": true,
-                "autocomplete": "email"
-            },
-            {
-                "id": "comentario",
-                "label": "Comentário",
-                "tipo": "textarea",
-                "placeholder": "Escreva seu comentário aqui...",
-                "obrigatorio": true,
-                "maxlength": 500,
-                "dica": "Máximo de 500 caracteres"
-            }
-        ],
-        "botaoEnviar": "Enviar Comentário",
-        "mensagens": {
-            "sucesso": "Arretado! Seu comentário foi enviado com sucesso.",
-            "erro": "Eita! Algo deu errado. Tente novamente.",
-            "campoObrigatorio": "Por favor, preencha este campo."
-        }
-    },
-    "metadata": {
-        "versao": "1.0.0",
-        "ultimaAtualizacao": "2025-10-29",
-        "idioma": "pt-BR",
-        "charset": "UTF-8"
+        "acessibilidade": "100% compatível com leitores de tela",
+        "cadastro": "Gratuito",
+        "url": "https://biblioteca.ifba.edu.br"
+      },
+      "relacionadas": [
+        "not-004",
+        "not-011"
+      ]
     }
+  ],
+  "metadados": {
+    "licenca": "CC BY-SA 4.0",
+    "autor": "IFBA - Cabra da Tech",
+    "proposito": "Dados fictícios para projeto educacional de acessibilidade web",
+    "contato": "redacao@cabradatech.ifba.br"
+  }
 }
