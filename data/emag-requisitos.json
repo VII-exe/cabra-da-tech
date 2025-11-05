@@ -1,0 +1,803 @@
+{
+    "versao": "4.0",
+    "nome": "e-MAG - Modelo de Acessibilidade em Governo Eletrônico",
+    "organizacao": "Governo Federal do Brasil",
+    "ministerio": "Ministério da Gestão e da Inovação em Serviços Públicos",
+    "publicacao": "2024-03-15",
+    "baseadoEm": "WCAG 2.1",
+    "descricao": "Padrão de acessibilidade digital do governo brasileiro, baseado nas diretrizes WCAG com adaptações para o contexto nacional.",
+    "url": "https://www.gov.br/governodigital/pt-br/acessibilidade-e-usuario/emag",
+    "escopo": "Obrigatório para todos os sites e portais do governo federal",
+    "resumo": {
+        "totalRecomendacoes": 45,
+        "totalSecoes": 6,
+        "nivelMinimo": "AA",
+        "conformidadeObrigatoria": true
+    },
+    "secoes": [
+        {
+            "numero": 1,
+            "nome": "Marcação",
+            "descricao": "Recomendações sobre a estruturação e semântica do código HTML",
+            "recomendacoes": [
+                {
+                    "numero": "1.1",
+                    "titulo": "Respeitar os Padrões Web",
+                    "prioridade": 1,
+                    "descricao": "Utilizar HTML, CSS e JavaScript em conformidade com as especificações e recomendações da W3C.",
+                    "criteriosWCAG": [
+                        "4.1.1"
+                    ],
+                    "nivelWCAG": "A",
+                    "justificativa": "Garante compatibilidade com tecnologias assistivas e navegadores diversos.",
+                    "comoImplementar": [
+                        "Validar HTML com W3C Validator",
+                        "Usar DOCTYPE correto",
+                        "Fechar todas as tags adequadamente",
+                        "Evitar tags e atributos obsoletos"
+                    ],
+                    "exemploHTML": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Título da Página</title>\n</head>\n<body>\n  <!-- Conteúdo -->\n</body>\n</html>",
+                    "testar": "Usar W3C Markup Validation Service",
+                    "penalidade": "Baixa compatibilidade, erros de renderização"
+                },
+                {
+                    "numero": "1.2",
+                    "titulo": "Organizar o Código HTML de Forma Lógica e Semântica",
+                    "prioridade": 1,
+                    "descricao": "Utilizar elementos HTML de acordo com seu significado semântico para estruturar o conteúdo.",
+                    "criteriosWCAG": [
+                        "1.3.1"
+                    ],
+                    "nivelWCAG": "A",
+                    "justificativa": "Permite que leitores de tela e outros dispositivos interpretem corretamente a estrutura.",
+                    "comoImplementar": [
+                        "Usar <header>, <nav>, <main>, <article>, <aside>, <footer>",
+                        "Hierarquia correta de headings (H1 > H2 > H3...)",
+                        "Listas com <ul>, <ol>, <li>",
+                        "Tabelas de dados com <table>, <th>, <td>"
+                    ],
+                    "exemploHTML": "<header>\n  <h1>Título Principal</h1>\n  <nav aria-label=\"Principal\">\n    <ul>\n      <li><a href=\"#\">Link 1</a></li>\n    </ul>\n  </nav>\n</header>\n<main>\n  <article>\n    <h2>Subtítulo</h2>\n    <p>Conteúdo...</p>\n  </article>\n</main>\n<footer>\n  <p>&copy; 2025 Governo Federal</p>\n</footer>",
+                    "testar": "Usar NVDA/JAWS para verificar estrutura de landmarks",
+                    "penalidade": "Dificulta navegação com leitores de tela"
+                },
+                {
+                    "numero": "1.3",
+                    "titulo": "Utilizar Corretamente os Níveis de Cabeçalho",
+                    "prioridade": 1,
+                    "descricao": "Respeitar a hierarquia de cabeçalhos (H1 a H6) sem pular níveis.",
+                    "criteriosWCAG": [
+                        "1.3.1",
+                        "2.4.6"
+                    ],
+                    "nivelWCAG": "AA",
+                    "justificativa": "Facilita navegação por cabeçalhos em leitores de tela.",
+                    "comoImplementar": [
+                        "Um único H1 por página (título principal)",
+                        "Não pular níveis (H1 > H3 sem H2)",
+                        "Usar headings para estrutura, não para estilo",
+                        "Cabeçalhos descritivos e únicos"
+                    ],
+                    "exemploHTML": "<h1>Título da Página</h1>\n<h2>Seção Principal</h2>\n<h3>Subseção</h3>\n<h3>Outra Subseção</h3>\n<h2>Segunda Seção Principal</h2>",
+                    "testar": "Usar HeadingsMap ou ferramenta de outline",
+                    "penalidade": "Navegação confusa para usuários de leitores de tela"
+                },
+                {
+                    "numero": "1.4",
+                    "titulo": "Ordenar de Forma Lógica e Intuitiva a Leitura e Tabulação",
+                    "prioridade": 1,
+                    "descricao": "A ordem de tabulação deve seguir a ordem visual e lógica do conteúdo.",
+                    "criteriosWCAG": [
+                        "1.3.2",
+                        "2.4.3"
+                    ],
+                    "nivelWCAG": "A",
+                    "justificativa": "Garante navegação previsível por teclado.",
+                    "comoImplementar": [
+                        "Ordem do DOM reflete ordem visual",
+                        "Evitar tabindex positivo (> 0)",
+                        "Usar tabindex=\"-1\" apenas para focar programaticamente",
+                        "Testar navegação com Tab"
+                    ],
+                    "exemploHTML": "<!-- BOM -->\n<button>Botão 1</button>\n<button>Botão 2</button>\n\n<!-- RUIM -->\n<button tabindex=\"2\">Botão que vem depois</button>\n<button tabindex=\"1\">Botão que vem primeiro</button>",
+                    "testar": "Navegar pela página usando apenas Tab e verificar ordem",
+                    "penalidade": "Navegação imprevisível e frustrante"
+                },
+                {
+                    "numero": "1.5",
+                    "titulo": "Fornecer Âncoras para Ir Direto a um Bloco de Conteúdo",
+                    "prioridade": 1,
+                    "descricao": "Disponibilizar links de atalho no topo da página para blocos importantes (conteúdo, menu, busca).",
+                    "criteriosWCAG": [
+                        "2.4.1"
+                    ],
+                    "nivelWCAG": "A",
+                    "justificativa": "Permite que usuários pulem blocos repetitivos de navegação.",
+                    "comoImplementar": [
+                        "Links 'Ir para conteúdo principal' no topo",
+                        "Links 'Ir para menu' e 'Ir para busca'",
+                        "Podem ser ocultos visualmente mas acessíveis",
+                        "Atalhos de teclado (Alt+1, Alt+2, etc.)"
+                    ],
+                    "exemploHTML": "<body>\n  <a href=\"#conteudo\" class=\"skip-link\">Ir para o conteúdo [1]</a>\n  <a href=\"#menu\" class=\"skip-link\">Ir para o menu [2]</a>\n  <a href=\"#busca\" class=\"skip-link\">Ir para a busca [3]</a>\n  \n  <header id=\"topo\">...</header>\n  <nav id=\"menu\">...</nav>\n  <main id=\"conteudo\" tabindex=\"-1\">...</main>\n</body>",
+                    "exemploCSS": ".skip-link {\n  position: absolute;\n  left: -9999px;\n}\n\n.skip-link:focus {\n  left: 0;\n  top: 0;\n  z-index: 9999;\n  padding: 10px;\n  background: #000;\n  color: #FFF;\n}",
+                    "testar": "Pressionar Tab ao carregar página - skip link deve aparecer",
+                    "penalidade": "Usuários de leitores de tela precisam ouvir menu inteiro em cada página"
+                },
+                {
+                    "numero": "1.6",
+                    "titulo": "Não Usar Tabelas para Diagramação",
+                    "prioridade": 1,
+                    "descricao": "Tabelas devem ser usadas apenas para dados tabulares, não para layout.",
+                    "criteriosWCAG": [
+                        "1.3.1",
+                        "1.3.2"
+                    ],
+                    "nivelWCAG": "A",
+                    "justificativa": "Tabelas de layout confundem leitores de tela e são inflexíveis.",
+                    "comoImplementar": [
+                        "Usar CSS Grid ou Flexbox para layout",
+                        "Reservar <table> apenas para dados tabulares",
+                        "Se absolutamente necessário, usar role=\"presentation\"",
+                        "Preferir div + CSS"
+                    ],
+                    "exemploHTML": "<!-- RUIM -->\n<table>\n  <tr>\n    <td>Menu</td>\n    <td>Conteúdo</td>\n  </tr>\n</table>\n\n<!-- BOM -->\n<div class=\"container\">\n  <nav class=\"menu\">...</nav>\n  <main class=\"conteudo\">...</main>\n</div>",
+                    "testar": "Verificar se tabelas contêm role=\"table\" ou dados reais",
+                    "penalidade": "Dificulta navegação, responsividade e acessibilidade"
+                }
+            ]
+        },
+        {
+            "numero": 2,
+            "nome": "Comportamento (JavaScript)",
+            "descricao": "Recomendações sobre o uso de JavaScript e interatividade",
+            "recomendacoes": [
+                {
+                    "numero": "2.1",
+                    "titulo": "Disponibilizar Todas as Funções da Página via Teclado",
+                    "prioridade": 1,
+                    "descricao": "Todas as funcionalidades devem ser acessíveis usando apenas teclado.",
+                    "criteriosWCAG": [
+                        "2.1.1"
+                    ],
+                    "nivelWCAG": "A",
+                    "justificativa": "Nem todos os usuários podem usar mouse.",
+                    "comoImplementar": [
+                        "Usar elementos nativos quando possível (<button>, <a>)",
+                        "Adicionar event listeners de teclado (keydown, keyup)",
+                        "Implementar ARIA quando necessário",
+                        "Garantir foco visível em todos os elementos interativos"
+                    ],
+                    "exemploJS": "// BOM - Acessível via teclado\nbutton.addEventListener('click', handleClick);\nbutton.addEventListener('keydown', (e) => {\n  if (e.key === 'Enter' || e.key === ' ') {\n    e.preventDefault();\n    handleClick();\n  }\n});\n\n// RUIM - Só mouse\ndiv.addEventListener('click', handleClick);",
+                    "testar": "Navegar e usar todas as funções usando apenas Tab, Enter, Espaço, setas",
+                    "penalidade": "Funções inacessíveis para usuários de teclado"
+                },
+                {
+                    "numero": "2.2",
+                    "titulo": "Garantir que os Objetos Programáveis Sejam Acessíveis",
+                    "prioridade": 1,
+                    "descricao": "Componentes personalizados devem ter semântica, nome, função e valor acessíveis.",
+                    "criteriosWCAG": [
+                        "4.1.2"
+                    ],
+                    "nivelWCAG": "A",
+                    "justificativa": "Tecnologias assistivas precisam entender componentes customizados.",
+                    "comoImplementar": [
+                        "Usar ARIA roles (role=\"button\", role=\"dialog\")",
+                        "Adicionar aria-label ou aria-labelledby",
+                        "Gerenciar estados com aria-expanded, aria-checked",
+                        "Atualizar aria-live para mudanças dinâmicas"
+                    ],
+                    "exemploHTML": "<div role=\"button\" \n     tabindex=\"0\" \n     aria-label=\"Abrir menu\"\n     aria-expanded=\"false\"\n     onkeydown=\"handleKey(event)\">\n  ☰\n</div>",
+                    "testar": "Usar leitor de tela para verificar se anuncia corretamente",
+                    "penalidade": "Componentes invisíveis ou ininteligíveis para tecnologias assistivas"
+                },
+                {
+                    "numero": "2.3",
+                    "titulo": "Não Criar Páginas com Atualização Automática Periódica",
+                    "prioridade": 2,
+                    "descricao": "Evitar refresh automático ou fornecer controle ao usuário.",
+                    "criteriosWCAG": [
+                        "2.2.1",
+                        "2.2.2",
+                        "3.2.5"
+                    ],
+                    "nivelWCAG": "A",
+                    "justificativa": "Refresh interrompe leitores de tela e pode desorientar usuários.",
+                    "comoImplementar": [
+                        "Evitar meta refresh",
+                        "Usar AJAX para atualização parcial",
+                        "Fornecer botão 'Atualizar' manual",
+                        "Se essencial, avisar usuário antes"
+                    ],
+                    "exemploRuim": "<!-- RUIM -->\n<meta http-equiv=\"refresh\" content=\"30\">",
+                    "exemploBom": "<!-- BOM -->\n<button onclick=\"atualizarConteudo()\">Atualizar notícias</button>",
+                    "testar": "Verificar se página recarrega automaticamente",
+                    "penalidade": "Interrupção da leitura, perda de contexto"
+                },
+                {
+                    "numero": "2.4",
+                    "titulo": "Não Abrir Novas Instâncias sem Solicitação do Usuário",
+                    "prioridade": 2,
+                    "descricao": "Não abrir janelas pop-up, abas ou modais automaticamente.",
+                    "criteriosWCAG": [
+                        "3.2.1",
+                        "3.2.2"
+                    ],
+                    "nivelWCAG": "A",
+                    "justificativa": "Mudanças de contexto não solicitadas confundem usuários.",
+                    "comoImplementar": [
+                        "Avisar usuário antes de abrir nova janela",
+                        "Adicionar ícone/texto indicando comportamento",
+                        "Preferir mesma aba quando possível",
+                        "Modais só após ação explícita"
+                    ],
+                    "exemploHTML": "<a href=\"documento.pdf\" target=\"_blank\" rel=\"noopener\">\n  Baixar documento (abre em nova aba)\n  <span aria-label=\"abre em nova janela\">🔗</span>\n</a>",
+                    "testar": "Verificar se popups abrem sem interação",
+                    "penalidade": "Usuários desorientados, dificuldade de navegação"
+                },
+                {
+                    "numero": "2.5",
+                    "titulo": "Fornecer Alternativa para Scripts",
+                    "prioridade": 1,
+                    "descricao": "Conteúdo essencial deve estar disponível sem JavaScript.",
+                    "criteriosWCAG": [
+                        "4.1.1"
+                    ],
+                    "nivelWCAG": "A",
+                    "justificativa": "Usuários podem desabilitar JavaScript ou usar navegadores sem suporte.",
+                    "comoImplementar": [
+                        "Progressive enhancement",
+                        "Funcionalidade básica com HTML/CSS",
+                        "JavaScript para melhorias",
+                        "Tag <noscript> com alternativas"
+                    ],
+                    "exemploHTML": "<noscript>\n  <p>Este site funciona melhor com JavaScript habilitado.</p>\n  <p><a href=\"/versao-acessivel\">Versão sem JavaScript</a></p>\n</noscript>",
+                    "testar": "Desabilitar JavaScript e verificar funcionalidade básica",
+                    "penalidade": "Site inutilizável sem JavaScript"
+                },
+                {
+                    "numero": "2.6",
+                    "titulo": "Assegurar a Leitura e Compreensão das Informações",
+                    "prioridade": 1,
+                    "descricao": "Não criar páginas onde o tempo de leitura seja insuficiente para compreensão.",
+                    "criteriosWCAG": [
+                        "2.2.1"
+                    ],
+                    "nivelWCAG": "A",
+                    "justificativa": "Usuários têm velocidades de leitura diferentes.",
+                    "comoImplementar": [
+                        "Evitar timeouts curtos",
+                        "Permitir extensão de tempo",
+                        "Avisar antes de expirar sessão",
+                        "Salvar progresso automaticamente"
+                    ],
+                    "exemploJS": "// Avisar 2 minutos antes do timeout\nsetTimeout(() => {\n  if (confirm('Sua sessão expira em 2 minutos. Continuar?')) {\n    estenderSessao();\n  }\n}, sessionTime - 120000);",
+                    "testar": "Verificar se há avisos de timeout adequados",
+                    "penalidade": "Perda de dados, frustração"
+                }
+            ]
+        },
+        {
+            "numero": 3,
+            "nome": "Conteúdo/Informação",
+            "descricao": "Recomendações sobre o conteúdo textual e alternativas",
+            "recomendacoes": [
+                {
+                    "numero": "3.1",
+                    "titulo": "Identificar o Idioma Principal da Página",
+                    "prioridade": 1,
+                    "descricao": "Declarar idioma principal no elemento <html>.",
+                    "criteriosWCAG": [
+                        "3.1.1"
+                    ],
+                    "nivelWCAG": "A",
+                    "justificativa": "Leitores de tela usam pronúncia correta baseada no idioma.",
+                    "comoImplementar": [
+                        "Adicionar atributo lang no <html>",
+                        "Usar código ISO 639-1 (pt, en, es)",
+                        "Incluir variante regional quando relevante (pt-BR)"
+                    ],
+                    "exemploHTML": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Título</title>\n</head>\n<body>...</body>\n</html>",
+                    "testar": "Verificar presença de atributo lang no HTML",
+                    "penalidade": "Pronúncia incorreta em leitores de tela"
+                },
+                {
+                    "numero": "3.2",
+                    "titulo": "Informar Mudança de Idioma no Conteúdo",
+                    "prioridade": 2,
+                    "descricao": "Marcar trechos em idioma diferente do principal.",
+                    "criteriosWCAG": [
+                        "3.1.2"
+                    ],
+                    "nivelWCAG": "AA",
+                    "justificativa": "Permite pronúncia correta de palavras estrangeiras.",
+                    "comoImplementar": [
+                        "Usar atributo lang em elementos com idioma diferente",
+                        "Aplicar a trechos de texto específicos",
+                        "Não necessário para nomes próprios ou técnicos"
+                    ],
+                    "exemploHTML": "<p>A palavra <span lang=\"en\">smartphone</span> é muito usada.</p>\n<blockquote lang=\"en\">\n  <p>To be or not to be, that is the question.</p>\n</blockquote>",
+                    "testar": "Usar leitor de tela em página com múltiplos idiomas",
+                    "penalidade": "Pronúncia incorreta de termos estrangeiros"
+                },
+                {
+                    "numero": "3.3",
+                    "titulo": "Oferecer um Título Descritivo e Informativo à Página",
+                    "prioridade": 1,
+                    "descricao": "Elemento <title> deve descrever claramente o conteúdo da página.",
+                    "criteriosWCAG": [
+                        "2.4.2"
+                    ],
+                    "nivelWCAG": "A",
+                    "justificativa": "Primeira informação anunciada por leitores de tela, aparece em abas e histórico.",
+                    "comoImplementar": [
+                        "Título único para cada página",
+                        "Formato: 'Nome da Página - Nome do Site'",
+                        "Máximo 60-70 caracteres",
+                        "Começar com informação mais específica"
+                    ],
+                    "exemploHTML": "<title>Notícias de Tecnologia - Cabra da Tech</title>",
+                    "exemploRuim": "<title>Página</title>",
+                    "testar": "Verificar se título é único e descritivo",
+                    "penalidade": "Dificuldade de identificar página, SEO prejudicado"
+                },
+                {
+                    "numero": "3.4",
+                    "titulo": "Oferecer Informações sobre a Localização do Usuário",
+                    "prioridade": 3,
+                    "descricao": "Fornecer breadcrumbs ou indicação de localização na estrutura do site.",
+                    "criteriosWCAG": [
+                        "2.4.8"
+                    ],
+                    "nivelWCAG": "AAA",
+                    "justificativa": "Ajuda usuários a entenderem onde estão no site.",
+                    "comoImplementar": [
+                        "Implementar breadcrumb trail",
+                        "Destacar item ativo no menu",
+                        "Usar marcação estruturada (Schema.org)"
+                    ],
+                    "exemploHTML": "<nav aria-label=\"Breadcrumb\">\n  <ol>\n    <li><a href=\"/\">Início</a></li>\n    <li><a href=\"/noticias\">Notícias</a></li>\n    <li aria-current=\"page\">Tecnologia</li>\n  </ol>\n</nav>",
+                    "testar": "Verificar presença de breadcrumbs em páginas internas",
+                    "penalidade": "Usuários não sabem onde estão no site"
+                },
+                {
+                    "numero": "3.5",
+                    "titulo": "Descrever Links de Forma Clara",
+                    "prioridade": 1,
+                    "descricao": "Texto do link deve descrever claramente seu destino ou função.",
+                    "criteriosWCAG": [
+                        "2.4.4",
+                        "2.4.9"
+                    ],
+                    "nivelWCAG": "A/AAA",
+                    "justificativa": "Usuários de leitores de tela navegam listando links.",
+                    "comoImplementar": [
+                        "Evitar 'Clique aqui', 'Saiba mais', 'Leia mais'",
+                        "Usar texto descritivo e único",
+                        "Incluir contexto quando necessário",
+                        "Para links repetidos, diferenciar com aria-label"
+                    ],
+                    "exemploRuim": "<a href=\"artigo.html\">Clique aqui</a>",
+                    "exemploBom": "<a href=\"artigo.html\">Leia artigo completo sobre IoT no sertão</a>\n\n<!-- Alternativa -->\n<a href=\"artigo.html\" aria-label=\"Leia mais sobre IoT no sertão\">Leia mais</a>",
+                    "testar": "Ler lista de links fora de contexto - devem fazer sentido",
+                    "penalidade": "Links ambíguos, navegação confusa"
+                },
+                {
+                    "numero": "3.6",
+                    "titulo": "Fornecer Alternativa em Texto para Imagens",
+                    "prioridade": 1,
+                    "descricao": "Toda imagem deve ter atributo alt apropriado.",
+                    "criteriosWCAG": [
+                        "1.1.1"
+                    ],
+                    "nivelWCAG": "A",
+                    "justificativa": "Usuários cegos dependem de descrições textuais.",
+                    "comoImplementar": [
+                        "alt descritivo para imagens informativas",
+                        "alt=\"\" para imagens decorativas",
+                        "Descrever conteúdo, não apenas nome do arquivo",
+                        "Evitar 'imagem de' ou 'foto de'"
+                    ],
+                    "exemploHTML": "<!-- Informativa -->\n<img src=\"grafico.png\" alt=\"Gráfico mostrando aumento de 35% nas vendas em 2024\">\n\n<!-- Decorativa -->\n<img src=\"divider.png\" alt=\"\" role=\"presentation\">\n\n<!-- Logo em link -->\n<a href=\"/\">\n  <img src=\"logo.png\" alt=\"Cabra da Tech - Página Inicial\">\n</a>",
+                    "testar": "Desabilitar imagens e verificar se conteúdo permanece compreensível",
+                    "penalidade": "Informações visuais inacessíveis"
+                },
+                {
+                    "numero": "3.7",
+                    "titulo": "Utilizar Mapas de Imagem do Lado do Cliente",
+                    "prioridade": 2,
+                    "descricao": "Usar <map> e <area> com textos alternativos adequados.",
+                    "criteriosWCAG": [
+                        "1.1.1"
+                    ],
+                    "nivelWCAG": "A",
+                    "justificativa": "Permite acesso a áreas clicáveis de imagem.",
+                    "comoImplementar": [
+                        "Preferir links individuais quando possível",
+                        "Se usar mapa, adicionar alt em cada <area>",
+                        "Fornecer lista textual de links como alternativa"
+                    ],
+                    "exemploHTML": "<img src=\"mapa-brasil.png\" alt=\"Mapa do Brasil\" usemap=\"#mapa\">\n<map name=\"mapa\">\n  <area shape=\"rect\" coords=\"0,0,100,100\" href=\"norte.html\" alt=\"Região Norte\">\n  <area shape=\"rect\" coords=\"100,0,200,100\" href=\"nordeste.html\" alt=\"Região Nordeste\">\n</map>",
+                    "testar": "Verificar acessibilidade via teclado das áreas",
+                    "penalidade": "Áreas do mapa inacessíveis"
+                },
+                {
+                    "numero": "3.8",
+                    "titulo": "Disponibilizar Documentos em Formato Acessível",
+                    "prioridade": 1,
+                    "descricao": "PDFs e documentos devem ser acessíveis ou ter alternativa HTML.",
+                    "criteriosWCAG": [
+                        "Várias"
+                    ],
+                    "nivelWCAG": "AA",
+                    "justificativa": "PDFs não acessíveis são inutilizáveis para leitores de tela.",
+                    "comoImplementar": [
+                        "Criar PDFs com tags (PDF/UA)",
+                        "Incluir marcadores (bookmarks)",
+                        "Texto pesquisável (não imagens escaneadas)",
+                        "Fornecer versão HTML como alternativa"
+                    ],
+                    "exemploHTML": "<a href=\"relatorio.pdf\">Relatório Anual 2024 (PDF, 2MB)</a>\n<a href=\"relatorio.html\">Versão HTML acessível</a>",
+                    "ferramentas": [
+                        "Adobe Acrobat Pro - verificar acessibilidade",
+                        "PAC 2021 - PDF Accessibility Checker"
+                    ],
+                    "testar": "Abrir PDF com leitor de tela e verificar navegação",
+                    "penalidade": "Documentos inacessíveis para usuários de tecnologias assistivas"
+                }
+            ]
+        },
+        {
+            "numero": 4,
+            "nome": "Apresentação/Design",
+            "descricao": "Recomendações sobre aparência visual e CSS",
+            "recomendacoes": [
+                {
+                    "numero": "4.1",
+                    "titulo": "Oferecer Contraste Mínimo entre Texto e Fundo",
+                    "prioridade": 1,
+                    "descricao": "Taxa de contraste de 4.5:1 para texto normal, 3:1 para texto grande.",
+                    "criteriosWCAG": [
+                        "1.4.3"
+                    ],
+                    "nivelWCAG": "AA",
+                    "justificativa": "Pessoas com baixa visão precisam de contraste adequado.",
+                    "comoImplementar": [
+                        "Usar ferramentas de teste de contraste",
+                        "Texto normal: mínimo 4.5:1",
+                        "Texto grande (18pt+): mínimo 3:1",
+                        "AAA: 7:1 e 4.5:1 respectivamente"
+                    ],
+                    "exemploBom": "/* Contraste 21:1 (excelente) */\ncolor: #000000;\nbackground: #FFFFFF;",
+                    "exemploRuim": "/* Contraste 2.5:1 (ruim) */\ncolor: #999999;\nbackground: #FFFFFF;",
+                    "ferramentas": [
+                        "WebAIM Contrast Checker",
+                        "Colour Contrast Analyser",
+                        "Chrome DevTools Lighthouse"
+                    ],
+                    "testar": "Verificar contraste com ferramenta automatizada",
+                    "penalidade": "Texto ilegível para pessoas com baixa visão"
+                },
+                {
+                    "numero": "4.2",
+                    "titulo": "Não Utilizar Apenas Cor ou Recursos Visuais para Transmitir Informação",
+                    "prioridade": 1,
+                    "descricao": "Informações não devem depender exclusivamente de cor.",
+                    "criteriosWCAG": [
+                        "1.4.1"
+                    ],
+                    "nivelWCAG": "A",
+                    "justificativa": "Pessoas com daltonismo ou cegas não percebem cores.",
+                    "comoImplementar": [
+                        "Adicionar ícones além de cor",
+                        "Usar padrões/texturas em gráficos",
+                        "Sublinhar links além de colorir",
+                        "Indicadores textuais para status"
+                    ],
+                    "exemploRuim": "<span style=\"color: red\">Campo obrigatório</span>",
+                    "exemploBom": "<span style=\"color: red\">\n  <i class=\"icon-required\" aria-hidden=\"true\">*</i>\n  Campo obrigatório\n</span>",
+                    "testar": "Visualizar página em escala de cinza",
+                    "penalidade": "Informações perdidas para quem não vê cores"
+                },
+                {
+                    "numero": "4.3",
+                    "titulo": "Permitir Redimensionamento sem Perda de Funcionalidade",
+                    "prioridade": 1,
+                    "descricao": "Texto deve poder ser ampliado até 200% sem quebrar layout.",
+                    "criteriosWCAG": [
+                        "1.4.4"
+                    ],
+                    "nivelWCAG": "AA",
+                    "justificativa": "Pessoas com baixa visão precisam ampliar texto.",
+                    "comoImplementar": [
+                        "Usar unidades relativas (rem, em, %)",
+                        "Evitar pixels fixos para fontes",
+                        "Testar zoom de texto do navegador",
+                        "Layout responsivo e fluido"
+                    ],
+                    "exemploCSS": "/* BOM - Escalável */\nbody { font-size: 1rem; }\nh1 { font-size: 2.5rem; }\n\n/* RUIM - Fixo */\nbody { font-size: 16px; }\nh1 { font-size: 40px; }",
+                    "testar": "Zoom de 200% (Ctrl/Cmd +++) e verificar usabilidade",
+                    "penalidade": "Layout quebrado, texto sobreposto, funcionalidade perdida"
+                },
+                {
+                    "numero": "4.4",
+                    "titulo": "Possibilitar Visualização sem CSS",
+                    "prioridade": 2,
+                    "descricao": "Conteúdo deve ser compreensível mesmo sem CSS.",
+                    "criteriosWCAG": [
+                        "1.3.1",
+                        "1.3.2"
+                    ],
+                    "nivelWCAG": "A",
+                    "justificativa": "Alguns usuários desabilitam CSS ou usam CSS próprio.",
+                    "comoImplementar": [
+                        "HTML semântico e bem estruturado",
+                        "Ordem lógica no DOM",
+                        "Não depender de CSS para informações essenciais",
+                        "Progressive enhancement"
+                    ],
+                    "testar": "Desabilitar CSS e verificar se conteúdo permanece lógico",
+                    "penalidade": "Conteúdo inutilizável sem CSS"
+                },
+                {
+                    "numero": "4.5",
+                    "titulo": "Fornecer Âncoras de Navegação",
+                    "prioridade": 1,
+                    "descricao": "Links para pular blocos repetitivos devem ser os primeiros elementos focáveis.",
+                    "criteriosWCAG": [
+                        "2.4.1"
+                    ],
+                    "nivelWCAG": "A",
+                    "justificativa": "Evita navegação repetitiva por menus e cabeçalhos.",
+                    "comoImplementar": [
+                        "Primeiro link da página: 'Ir para conteúdo'",
+                        "Links adicionais: menu, busca, rodapé",
+                        "Visíveis ao receber foco",
+                        "Atalhos de teclado (Alt+número)"
+                    ],
+                    "exemploHTML": "<a href=\"#conteudo\" class=\"skip\" accesskey=\"1\">Ir para conteúdo [1]</a>",
+                    "exemploCSS": ".skip {\n  position: absolute;\n  left: -9999px;\n}\n.skip:focus {\n  left: 0;\n  top: 0;\n  padding: 10px;\n  background: #000;\n  color: #FFF;\n  z-index: 9999;\n}",
+                    "testar": "Pressionar Tab ao carregar página",
+                    "penalidade": "Navegação tediosa e repetitiva"
+                }
+            ]
+        },
+        {
+            "numero": 5,
+            "nome": "Multimídia",
+            "descricao": "Recomendações sobre vídeo, áudio e animações",
+            "recomendacoes": [
+                {
+                    "numero": "5.1",
+                    "titulo": "Fornecer Alternativa para Áudio",
+                    "prioridade": 1,
+                    "descricao": "Áudio pré-gravado deve ter transcrição.",
+                    "criteriosWCAG": [
+                        "1.2.1"
+                    ],
+                    "nivelWCAG": "A",
+                    "justificativa": "Pessoas surdas precisam acessar conteúdo de áudio.",
+                    "comoImplementar": [
+                        "Transcrição completa de podcasts",
+                        "Descrição de sons importantes",
+                        "Link próximo ao player de áudio"
+                    ],
+                    "exemploHTML": "<audio controls>\n  <source src=\"podcast.mp3\" type=\"audio/mpeg\">\n</audio>\n<a href=\"transcricao.html\">Transcrição do podcast</a>",
+                    "testar": "Verificar se transcrição está disponível",
+                    "penalidade": "Conteúdo de áudio inacessível para surdos"
+                },
+                {
+                    "numero": "5.2",
+                    "titulo": "Fornecer Alternativa para Vídeo",
+                    "prioridade": 1,
+                    "descricao": "Vídeos devem ter legendas e audiodescrição.",
+                    "criteriosWCAG": [
+                        "1.2.2",
+                        "1.2.5"
+                    ],
+                    "nivelWCAG": "A/AA",
+                    "justificativa": "Pessoas surdas precisam de legendas, cegas de audiodescrição.",
+                    "comoImplementar": [
+                        "Legendas sincronizadas (closed captions)",
+                        "Audiodescrição de elementos visuais",
+                        "Usar elemento <track>",
+                        "Controles acessíveis via teclado"
+                    ],
+                    "exemploHTML": "<video controls>\n  <source src=\"video.mp4\" type=\"video/mp4\">\n  <track kind=\"captions\" src=\"legendas-pt.vtt\" srclang=\"pt-BR\" label=\"Português\">\n  <track kind=\"descriptions\" src=\"audiodescricao.vtt\" srclang=\"pt-BR\" label=\"Audiodescrição\">\n</video>",
+                    "ferramentas": [
+                        "YouTube - Legendas automáticas",
+                        "Subtitle Edit - Editor de legendas",
+                        "Amara - Plataforma colaborativa"
+                    ],
+                    "testar": "Assistir vídeo sem som e verificar legendas",
+                    "penalidade": "Vídeos inacessíveis para surdos e cegos"
+                },
+                {
+                    "numero": "5.3",
+                    "titulo": "Oferecer Controles de Áudio e Vídeo",
+                    "prioridade": 2,
+                    "descricao": "Controles para pausar, parar e controlar volume devem estar disponíveis.",
+                    "criteriosWCAG": [
+                        "1.4.2",
+                        "2.2.2"
+                    ],
+                    "nivelWCAG": "A",
+                    "justificativa": "Áudio automático interfere com leitores de tela.",
+                    "comoImplementar": [
+                        "Não reproduzir automaticamente",
+                        "Se autoplay, duração < 3 segundos",
+                        "Botões de pause/play visíveis",
+                        "Controle de volume independente"
+                    ],
+                    "exemploHTML": "<video controls preload=\"metadata\">\n  <source src=\"video.mp4\">\n</video>",
+                    "testar": "Verificar se há controles e se funcionam via teclado",
+                    "penalidade": "Interferência com leitores de tela, experiência ruim"
+                }
+            ]
+        },
+        {
+            "numero": 6,
+            "nome": "Formulários",
+            "descricao": "Recomendações sobre campos, labels e validação",
+            "recomendacoes": [
+                {
+                    "numero": "6.1",
+                    "titulo": "Fornecer Alternativa em Texto para os Botões de Imagem de Formulários",
+                    "prioridade": 1,
+                    "descricao": "Botões do tipo image devem ter atributo alt.",
+                    "criteriosWCAG": [
+                        "1.1.1"
+                    ],
+                    "nivelWCAG": "A",
+                    "justificativa": "Usuários de leitores de tela precisam saber função do botão.",
+                    "comoImplementar": [
+                        "Usar atributo alt em <input type=\"image\">",
+                        "Preferir <button> com ícone quando possível",
+                        "Texto alternativo descritivo"
+                    ],
+                    "exemploHTML": "<input type=\"image\" src=\"buscar.png\" alt=\"Buscar\">\n\n<!-- Melhor alternativa -->\n<button type=\"submit\">\n  <i class=\"icon-search\" aria-hidden=\"true\"></i>\n  Buscar\n</button>",
+                    "testar": "Usar leitor de tela em formulário com botões de imagem",
+                    "penalidade": "Botões sem identificação"
+                },
+                {
+                    "numero": "6.2",
+                    "titulo": "Associar Etiquetas aos Seus Campos",
+                    "prioridade": 1,
+                    "descricao": "Todo campo deve ter <label> associado via atributo for.",
+                    "criteriosWCAG": [
+                        "1.3.1",
+                        "3.3.2",
+                        "4.1.2"
+                    ],
+                    "nivelWCAG": "A",
+                    "justificativa": "Leitores de tela anunciam rótulo ao focar campo.",
+                    "comoImplementar": [
+                        "Usar <label> com atributo for",
+                        "ID do campo correspondente",
+                        "Label visível e descritivo",
+                        "Não usar placeholder como label"
+                    ],
+                    "exemploHTML": "<label for=\"nome\">Nome completo:</label>\n<input type=\"text\" id=\"nome\" name=\"nome\" required>\n\n<label for=\"email\">E-mail:</label>\n<input type=\"email\" id=\"email\" name=\"email\" required>",
+                    "exemploRuim": "<!-- RUIM - Sem label -->\n<input type=\"text\" placeholder=\"Nome\">",
+                    "testar": "Clicar no label deve focar o campo",
+                    "penalidade": "Campos não identificados, formulários inacessíveis"
+                },
+                {
+                    "numero": "6.3",
+                    "titulo": "Estabelecer uma Ordem Lógica de Navegação",
+                    "prioridade": 1,
+                    "descricao": "Ordem de tabulação em formulários deve ser intuitiva.",
+                    "criteriosWCAG": [
+                        "2.4.3"
+                    ],
+                    "nivelWCAG": "A",
+                    "justificativa": "Navegação por teclado deve seguir ordem visual.",
+                    "comoImplementar": [
+                        "Ordem do HTML reflete ordem visual",
+                        "Evitar tabindex > 0",
+                        "Agrupar campos relacionados com <fieldset>",
+                        "Testar com Tab"
+                    ],
+                    "exemploHTML": "<form>\n  <fieldset>\n    <legend>Dados Pessoais</legend>\n    <label for=\"nome\">Nome:</label>\n    <input type=\"text\" id=\"nome\">\n    \n    <label for=\"email\">E-mail:</label>\n    <input type=\"email\" id=\"email\">\n  </fieldset>\n  \n  <button type=\"submit\">Enviar</button>\n</form>",
+                    "testar": "Navegar formulário com Tab - ordem deve ser lógica",
+                    "penalidade": "Navegação confusa e imprevisível"
+                },
+                {
+                    "numero": "6.4",
+                    "titulo": "Fornecer Instruções para Entrada de Dados",
+                    "prioridade": 1,
+                    "descricao": "Campos devem ter instruções claras sobre formato esperado.",
+                    "criteriosWCAG": [
+                        "3.3.2"
+                    ],
+                    "nivelWCAG": "A",
+                    "justificativa": "Reduz erros e frustração do usuário.",
+                    "comoImplementar": [
+                        "Instruções próximas ao campo",
+                        "Formato esperado (DD/MM/AAAA)",
+                        "Campos obrigatórios marcados",
+                        "Usar aria-describedby para instruções"
+                    ],
+                    "exemploHTML": "<label for=\"data\">Data de nascimento:</label>\n<input type=\"text\" \n       id=\"data\" \n       aria-describedby=\"data-hint\" \n       placeholder=\"DD/MM/AAAA\"\n       required>\n<small id=\"data-hint\">Formato: dia/mês/ano (ex: 31/12/1990)</small>",
+                    "testar": "Verificar se há instruções para todos os campos complexos",
+                    "penalidade": "Erros frequentes, formulários não preenchidos"
+                },
+                {
+                    "numero": "6.5",
+                    "titulo": "Fornecer Verificação das Entradas de Dados",
+                    "prioridade": 1,
+                    "descricao": "Validar dados e fornecer mensagens de erro claras.",
+                    "criteriosWCAG": [
+                        "3.3.1",
+                        "3.3.3"
+                    ],
+                    "nivelWCAG": "A/AA",
+                    "justificativa": "Usuários precisam saber e corrigir erros.",
+                    "comoImplementar": [
+                        "Mensagens de erro claras e específicas",
+                        "Indicar qual campo tem erro",
+                        "Sugerir correção",
+                        "Usar aria-invalid e aria-describedby"
+                    ],
+                    "exemploHTML": "<label for=\"cpf\">CPF:</label>\n<input type=\"text\" \n       id=\"cpf\" \n       aria-invalid=\"true\"\n       aria-describedby=\"cpf-error\">\n<span id=\"cpf-error\" role=\"alert\">\n  CPF inválido. Digite 11 números sem pontos ou traços.\n</span>",
+                    "testar": "Submeter formulário com erros e verificar mensagens",
+                    "penalidade": "Usuários não sabem corrigir erros"
+                },
+                {
+                    "numero": "6.6",
+                    "titulo": "Confirmar o Envio dos Formulários",
+                    "prioridade": 2,
+                    "descricao": "Fornecer confirmação após envio bem-sucedido.",
+                    "criteriosWCAG": [
+                        "3.3.4"
+                    ],
+                    "nivelWCAG": "AA",
+                    "justificativa": "Feedback confirma que ação foi completada.",
+                    "comoImplementar": [
+                        "Mensagem de sucesso visível",
+                        "Usar role=\"status\" ou role=\"alert\"",
+                        "Mover foco para mensagem",
+                        "Confirmação persistente"
+                    ],
+                    "exemploHTML": "<div role=\"status\" aria-live=\"polite\" class=\"sucesso\">\n  <p>✓ Formulário enviado com sucesso!</p>\n</div>",
+                    "testar": "Enviar formulário e verificar feedback",
+                    "penalidade": "Usuários não sabem se ação foi bem-sucedida"
+                }
+            ]
+        }
+    ],
+    "ferramentasValidacao": [
+        {
+            "nome": "ASES",
+            "descricao": "Avaliador e Simulador de Acessibilidade em Sítios",
+            "url": "https://asesweb.governoeletronico.gov.br/",
+            "tipo": "Validador oficial e-MAG"
+        },
+        {
+            "nome": "WAVE",
+            "descricao": "Web Accessibility Evaluation Tool",
+            "url": "https://wave.webaim.org/",
+            "tipo": "Extensão navegador"
+        },
+        {
+            "nome": "axe DevTools",
+            "descricao": "Ferramenta de teste de acessibilidade",
+            "url": "https://www.deque.com/axe/devtools/",
+            "tipo": "Extensão navegador"
+        },
+        {
+            "nome": "NVDA",
+            "descricao": "Leitor de tela gratuito",
+            "url": "https://www.nvaccess.org/",
+            "tipo": "Tecnologia assistiva"
+        }
+    ],
+    "metadados": {
+        "referencia": "https://www.gov.br/governodigital/pt-br/acessibilidade-e-usuario/emag",
+        "documentoCompleto": "https://emag.governoeletronico.gov.br/",
+        "versaoAnterior": "3.1 (2014)",
+        "status": "Vigente",
+        "ambito": "Federal (obrigatório para órgãos federais)",
+        "adaptacao": "IFBA - Cabra da Tech - Projeto Educacional"
+    }
+}

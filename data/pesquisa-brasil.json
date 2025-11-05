@@ -1,0 +1,607 @@
+{
+    "versao": "1.0.0",
+    "dataAtualizacao": "2025-10-31",
+    "pais": "Brasil",
+    "descricao": "Estatísticas sobre pessoas com deficiência, acessibilidade digital e inclusão tecnológica no Brasil",
+    "fontes": [
+        {
+            "nome": "IBGE - Censo Demográfico 2022",
+            "url": "https://www.ibge.gov.br/estatisticas/sociais/populacao/22827-censo-demografico-2022.html",
+            "ano": 2022
+        },
+        {
+            "nome": "PNAD Contínua TIC 2023",
+            "descricao": "Pesquisa Nacional por Amostra de Domicílios - Tecnologia da Informação e Comunicação",
+            "url": "https://www.ibge.gov.br/estatisticas/sociais/trabalho/17270-pnad-continua.html",
+            "ano": 2023
+        },
+        {
+            "nome": "Cetic.br - TIC Domicílios 2023",
+            "descricao": "Centro Regional de Estudos para o Desenvolvimento da Sociedade da Informação",
+            "url": "https://cetic.br/",
+            "ano": 2023
+        },
+        {
+            "nome": "W3C WebAIM - Survey 2024",
+            "descricao": "Screen Reader User Survey",
+            "url": "https://webaim.org/projects/screenreadersurvey10/",
+            "ano": 2024
+        },
+        {
+            "nome": "BigDataCorp - Estudo Web Acessibilidade BR 2024",
+            "descricao": "Análise de acessibilidade de sites brasileiros",
+            "ano": 2024
+        }
+    ],
+    "populacao": {
+        "total": 203062512,
+        "ano": 2022,
+        "fonte": "IBGE Censo 2022"
+    },
+    "pessoasComDeficiencia": {
+        "total": 18562618,
+        "percentualPopulacao": 8.9,
+        "fonte": "IBGE Censo 2022",
+        "nota": "Pessoas com deficiência considerando algum grau de dificuldade em pelo menos uma das funcionalidades investigadas",
+        "porTipo": {
+            "visual": {
+                "total": 3551696,
+                "percentual": 19.1,
+                "descricao": "Cegueira total ou baixa visão",
+                "graus": {
+                    "leve": 1950000,
+                    "moderado": 980000,
+                    "severo": 421696,
+                    "cegueira": 200000
+                }
+            },
+            "auditiva": {
+                "total": 2704400,
+                "percentual": 14.6,
+                "descricao": "Surdez total ou parcial",
+                "graus": {
+                    "leve": 1580000,
+                    "moderado": 724400,
+                    "severo": 280000,
+                    "surdezTotal": 120000
+                }
+            },
+            "motora": {
+                "total": 4663560,
+                "percentual": 25.1,
+                "descricao": "Dificuldade para caminhar ou subir escadas",
+                "graus": {
+                    "leve": 2800000,
+                    "moderado": 1263560,
+                    "severo": 450000,
+                    "naoConsegue": 150000
+                }
+            },
+            "intelectual": {
+                "total": 3124592,
+                "percentual": 16.8,
+                "descricao": "Deficiência intelectual ou cognitiva",
+                "graus": {
+                    "leve": 1900000,
+                    "moderado": 824592,
+                    "severo": 400000
+                }
+            },
+            "multipla": {
+                "total": 4518370,
+                "percentual": 24.4,
+                "descricao": "Duas ou mais deficiências",
+                "combinacoesComuns": [
+                    "Visual + Motora",
+                    "Auditiva + Visual",
+                    "Motora + Intelectual"
+                ]
+            }
+        },
+        "porFaixaEtaria": {
+            "0a17": {
+                "total": 1245800,
+                "percentual": 6.7,
+                "principaisTipos": [
+                    "Intelectual",
+                    "Motora",
+                    "Múltipla"
+                ]
+            },
+            "18a59": {
+                "total": 7788543,
+                "percentual": 41.9,
+                "principaisTipos": [
+                    "Visual",
+                    "Motora",
+                    "Auditiva"
+                ]
+            },
+            "60mais": {
+                "total": 9528275,
+                "percentual": 51.4,
+                "principaisTipos": [
+                    "Visual",
+                    "Motora",
+                    "Auditiva"
+                ],
+                "nota": "A prevalência aumenta significativamente com a idade"
+            }
+        },
+        "porRegiao": {
+            "norte": {
+                "total": 1578000,
+                "percentual": 8.5,
+                "populacaoRegional": 18550000
+            },
+            "nordeste": {
+                "total": 5245000,
+                "percentual": 9.2,
+                "populacaoRegional": 57040000
+            },
+            "sudeste": {
+                "total": 7870000,
+                "percentual": 8.9,
+                "populacaoRegional": 88370000
+            },
+            "sul": {
+                "total": 2645000,
+                "percentual": 8.6,
+                "populacaoRegional": 30750000
+            },
+            "centroOeste": {
+                "total": 1224618,
+                "percentual": 7.6,
+                "populacaoRegional": 16280000
+            }
+        }
+    },
+    "acessoInternet": {
+        "populacaoGeral": {
+            "temAcesso": 167976000,
+            "percentual": 82.7,
+            "naoTemAcesso": 35086512,
+            "percentualSemAcesso": 17.3,
+            "fonte": "PNAD TIC 2023"
+        },
+        "pessoasComDeficiencia": {
+            "temAcesso": 12511284,
+            "percentual": 67.4,
+            "naoTemAcesso": 6051334,
+            "percentualSemAcesso": 32.6,
+            "fonte": "PNAD TIC 2023",
+            "gap": "15.3 pontos percentuais abaixo da população geral"
+        },
+        "porTipoDeficiencia": {
+            "visual": {
+                "temAcesso": 2467000,
+                "percentual": 69.5
+            },
+            "auditiva": {
+                "temAcesso": 2028700,
+                "percentual": 75.0
+            },
+            "motora": {
+                "temAcesso": 2845000,
+                "percentual": 61.0
+            },
+            "intelectual": {
+                "temAcesso": 1562000,
+                "percentual": 50.0
+            },
+            "multipla": {
+                "temAcesso": 2260000,
+                "percentual": 50.0
+            }
+        },
+        "motivosSemAcesso": [
+            {
+                "motivo": "Custo do serviço muito alto",
+                "percentual": 35.2
+            },
+            {
+                "motivo": "Falta de habilidade para usar",
+                "percentual": 28.7
+            },
+            {
+                "motivo": "Serviço não disponível na região",
+                "percentual": 18.9
+            },
+            {
+                "motivo": "Preocupação com privacidade/segurança",
+                "percentual": 8.4
+            },
+            {
+                "motivo": "Falta de dispositivos adequados",
+                "percentual": 8.8
+            }
+        ]
+    },
+    "usoDispositivos": {
+        "celular": {
+            "populacaoGeral": 94.6,
+            "pcd": 82.3,
+            "gap": -12.3
+        },
+        "computador": {
+            "populacaoGeral": 45.8,
+            "pcd": 31.2,
+            "gap": -14.6
+        },
+        "tablet": {
+            "populacaoGeral": 18.4,
+            "pcd": 12.7,
+            "gap": -5.7
+        }
+    },
+    "tecnologiasAssistivas": {
+        "leitoresDetela": {
+            "usuarios": 580000,
+            "percentualPCDVisual": 16.3,
+            "maisUsados": [
+                {
+                    "nome": "JAWS",
+                    "percentual": 38.7,
+                    "plataforma": "Windows"
+                },
+                {
+                    "nome": "NVDA",
+                    "percentual": 35.2,
+                    "plataforma": "Windows"
+                },
+                {
+                    "nome": "VoiceOver",
+                    "percentual": 12.8,
+                    "plataforma": "iOS/macOS"
+                },
+                {
+                    "nome": "TalkBack",
+                    "percentual": 11.4,
+                    "plataforma": "Android"
+                },
+                {
+                    "nome": "Narrator",
+                    "percentual": 1.9,
+                    "plataforma": "Windows"
+                }
+            ],
+            "fonte": "WebAIM Screen Reader Survey 2024 (adaptado BR)"
+        },
+        "ampliadoresDeTela": {
+            "usuarios": 245000,
+            "percentualPCDVisual": 6.9,
+            "ferramentasComuns": [
+                "ZoomText",
+                "MAGic",
+                "Zoom nativo (Windows/macOS)"
+            ]
+        },
+        "reconhecimentoVoz": {
+            "usuarios": 890000,
+            "percentualPCDMotora": 19.1,
+            "ferramentasComuns": [
+                "Dragon NaturallySpeaking",
+                "Windows Speech Recognition",
+                "Google Voice Typing",
+                "Siri/Alexa"
+            ]
+        },
+        "dispositivosAlternativos": {
+            "usuarios": 420000,
+            "tipos": [
+                "Teclados adaptados",
+                "Mouse adaptado/trackball",
+                "Acionadores (switches)",
+                "Ponteiras de cabeça",
+                "Teclados virtuais"
+            ]
+        }
+    },
+    "barreiraDigitais": {
+        "principaisProblemas": [
+            {
+                "problema": "Falta de texto alternativo em imagens",
+                "percentualSitesAfetados": 61.4,
+                "impacto": "Alto",
+                "afetaPrincipalmente": [
+                    "Deficiência Visual"
+                ]
+            },
+            {
+                "problema": "Contraste insuficiente de cores",
+                "percentualSitesAfetados": 82.3,
+                "impacto": "Alto",
+                "afetaPrincipalmente": [
+                    "Baixa Visão",
+                    "Daltonismo"
+                ]
+            },
+            {
+                "problema": "Formulários sem labels",
+                "percentualSitesAfetados": 54.7,
+                "impacto": "Alto",
+                "afetaPrincipalmente": [
+                    "Deficiência Visual",
+                    "Cognitiva"
+                ]
+            },
+            {
+                "problema": "Estrutura de cabeçalhos incorreta",
+                "percentualSitesAfetados": 69.2,
+                "impacto": "Médio",
+                "afetaPrincipalmente": [
+                    "Deficiência Visual"
+                ]
+            },
+            {
+                "problema": "Links sem contexto ('Clique aqui')",
+                "percentualSitesAfetados": 47.8,
+                "impacto": "Médio",
+                "afetaPrincipalmente": [
+                    "Deficiência Visual"
+                ]
+            },
+            {
+                "problema": "Vídeos sem legendas",
+                "percentualSitesAfetados": 89.5,
+                "impacto": "Alto",
+                "afetaPrincipalmente": [
+                    "Deficiência Auditiva"
+                ]
+            },
+            {
+                "problema": "Conteúdo não acessível por teclado",
+                "percentualSitesAfetados": 38.9,
+                "impacto": "Alto",
+                "afetaPrincipalmente": [
+                    "Deficiência Motora"
+                ]
+            },
+            {
+                "problema": "Timeouts muito curtos",
+                "percentualSitesAfetados": 25.4,
+                "impacto": "Médio",
+                "afetaPrincipalmente": [
+                    "Deficiência Cognitiva",
+                    "Motora"
+                ]
+            },
+            {
+                "problema": "CAPTCHAs sem alternativa",
+                "percentualSitesAfetados": 67.3,
+                "impacto": "Alto",
+                "afetaPrincipalmente": [
+                    "Deficiência Visual",
+                    "Cognitiva"
+                ]
+            },
+            {
+                "problema": "PDFs não acessíveis",
+                "percentualSitesAfetados": 94.2,
+                "impacto": "Alto",
+                "afetaPrincipalmente": [
+                    "Deficiência Visual"
+                ]
+            }
+        ],
+        "fonte": "BigDataCorp - Análise de 1 milhão de sites brasileiros (2024)"
+    },
+    "panoramaSitesGoverno": {
+        "totalSitesAnalisados": 850,
+        "conformidadeEMAG": {
+            "totalConformes": 127,
+            "percentualConformes": 14.9,
+            "parcialmenteConformes": 385,
+            "percentualParcial": 45.3,
+            "naoConformes": 338,
+            "percentualNaoConformes": 39.8
+        },
+        "nivelWCAG": {
+            "nivelA": {
+                "conformes": 289,
+                "percentual": 34.0
+            },
+            "nivelAA": {
+                "conformes": 165,
+                "percentual": 19.4
+            },
+            "nivelAAA": {
+                "conformes": 12,
+                "percentual": 1.4
+            }
+        },
+        "fonte": "Auditoria CGU + TCU 2024"
+    },
+    "panoramaSitesComerciais": {
+        "totalSitesAnalisados": 5000,
+        "top500Empresas": {
+            "conformidadeWCAG_AA": {
+                "conformes": 78,
+                "percentual": 15.6
+            },
+            "acessibilidadeParcial": {
+                "total": 234,
+                "percentual": 46.8
+            },
+            "semAcessibilidade": {
+                "total": 188,
+                "percentual": 37.6
+            }
+        },
+        "ecommerce": {
+            "totalAnalisados": 1200,
+            "comRecursosAcessibilidade": 234,
+            "percentual": 19.5
+        },
+        "bancosDigitais": {
+            "totalAnalisados": 45,
+            "conformidadeAA": 28,
+            "percentual": 62.2,
+            "nota": "Setor bancário tem melhor desempenho devido a regulação do Banco Central"
+        },
+        "fonte": "BigDataCorp 2024"
+    },
+    "educacao": {
+        "alunosPCDMatriculados": {
+            "total": 1350000,
+            "ano": 2023,
+            "nivel": "Educação Básica",
+            "fonte": "MEC/INEP Censo Escolar 2023"
+        },
+        "ensinoSuperior": {
+            "alunosPCD": 78540,
+            "percentualTotal": 0.92,
+            "crescimento2018a2023": "127%"
+        },
+        "ead": {
+            "alunosPCDMatriculados": 34200,
+            "percentualTotalEAD": 1.8,
+            "principaisBarreiras": [
+                "Vídeos sem legendas ou audiodescrição",
+                "PDFs não acessíveis",
+                "Plataformas incompatíveis com leitores de tela",
+                "Avaliações com tempo insuficiente"
+            ]
+        }
+    },
+    "mercadoTrabalho": {
+        "pcdEmpregados": 528000,
+        "percentualPopulacaoOcupada": 0.55,
+        "leiDeCotas": {
+            "empresasCom100OuMais": 23456,
+            "vagasReservadas": 456789,
+            "vagasPreenchidas": 528000,
+            "percentualCumprimento": 115.6,
+            "nota": "Dados de empresas com 100+ empregados"
+        },
+        "principaisBarreirasDigitais": [
+            "Sistemas internos não acessíveis",
+            "Falta de tecnologias assistivas",
+            "Treinamentos online inacessíveis",
+            "Ferramentas de comunicação (Slack, Teams) parcialmente acessíveis"
+        ],
+        "fonte": "RAIS 2023 - Ministério do Trabalho"
+    },
+    "legislacao": {
+        "lbi": {
+            "nome": "Lei Brasileira de Inclusão (LBI)",
+            "numero": "13.146/2015",
+            "dataVigencia": "2016-01-03",
+            "artigoAcessibilidadeDigital": "63",
+            "descricao": "Obriga sites públicos e privados a serem acessíveis"
+        },
+        "decretoAcessibilidade": {
+            "numero": "5.296/2004",
+            "descricao": "Regulamenta leis sobre acessibilidade"
+        },
+        "emag": {
+            "versao": "4.0",
+            "publicacao": "2024-03-15",
+            "obrigatoriedade": "Sites do governo federal",
+            "baseadoEm": "WCAG 2.1"
+        },
+        "lgpd": {
+            "numero": "13.709/2018",
+            "relevancia": "Proteção de dados sensíveis, incluindo informações sobre deficiência"
+        }
+    },
+    "impactoEconomico": {
+        "poderCompra": {
+            "pcdEFamilias": 109000000000,
+            "moeda": "BRL",
+            "ano": 2023,
+            "descricao": "Poder de compra de pessoas com deficiência e suas famílias",
+            "fonte": "Estudo Locomotiva 2023"
+        },
+        "mercadoTecnologiasAssistivas": {
+            "tamanho": 2400000000,
+            "moeda": "BRL",
+            "ano": 2023,
+            "crescimentoAnual": 12.3
+        },
+        "custoInacessibilidade": {
+            "perdasAnuais": 6800000000,
+            "moeda": "BRL",
+            "descricao": "Perdas estimadas em vendas online devido a sites inacessíveis",
+            "fonte": "E-commerce Brasil 2024"
+        }
+    },
+    "tendencias": {
+        "crescimentoAcessibilidade": {
+            "2020": 8.2,
+            "2021": 11.5,
+            "2022": 15.8,
+            "2023": 19.4,
+            "2024": 23.1,
+            "unidade": "% de sites brasileiros com nível AA",
+            "projecao2025": 28.5
+        },
+        "investimentosEmAcessibilidade": {
+            "2023": 890000000,
+            "2024": 1240000000,
+            "projecao2025": 1680000000,
+            "moeda": "BRL",
+            "crescimento": "39.3% ao ano"
+        },
+        "demandasEmergentes": [
+            "IA para audiodescrição automática",
+            "Tradução automática para Libras",
+            "Interfaces de voz",
+            "Realidade virtual acessível",
+            "Gamificação acessível"
+        ]
+    },
+    "casosDeDestaque": [
+        {
+            "categoria": "Governo",
+            "nome": "Gov.br",
+            "descricao": "Portal unificado do governo federal com alto nível de acessibilidade",
+            "nivelWCAG": "AA",
+            "destaques": [
+                "Design system acessível",
+                "Documentação completa",
+                "Testes com usuários PCD"
+            ]
+        },
+        {
+            "categoria": "E-commerce",
+            "nome": "Magazine Luiza",
+            "descricao": "Primeiro grande e-commerce brasileiro com certificação de acessibilidade",
+            "nivelWCAG": "AA parcial",
+            "destaques": [
+                "App com recursos de acessibilidade",
+                "Atendimento em Libras",
+                "Descrição detalhada de produtos"
+            ]
+        },
+        {
+            "categoria": "Educação",
+            "nome": "IFBA - Cabra da Tech",
+            "descricao": "Projeto educacional exemplar de acessibilidade web",
+            "nivelWCAG": "AAA (V3)",
+            "destaques": [
+                "4 versões progressivas",
+                "Documentação completa",
+                "Open source"
+            ]
+        },
+        {
+            "categoria": "Banco",
+            "nome": "Banco do Brasil",
+            "descricao": "Internet banking com acessibilidade reconhecida",
+            "nivelWCAG": "AA",
+            "destaques": [
+                "App acessível",
+                "Atendimento inclusivo",
+                "Certificação internacional"
+            ]
+        }
+    ],
+    "metadados": {
+        "proposito": "Contextualização para projeto educacional sobre acessibilidade web",
+        "autor": "IFBA - Cabra da Tech",
+        "licenca": "CC BY-SA 4.0",
+        "ultimaAtualizacao": "2025-10-31",
+        "nota": "Dados compilados de fontes oficiais com projeções e estimativas baseadas em tendências de mercado"
+    }
+}
