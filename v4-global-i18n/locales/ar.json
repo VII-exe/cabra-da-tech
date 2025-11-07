@@ -1,0 +1,240 @@
+{
+    "locale": "ar",
+    "language": "Arabic",
+    "nativeName": "العربية",
+    "direction": "rtl",
+    "version": "1.0.0",
+    "lastUpdate": "2025-11-07",
+    "translations": {
+        "page": {
+            "title": "كابرا دا تيك - بوابة التكنولوجيا العالمية"
+        },
+        "skip": {
+            "content": "الانتقال إلى المحتوى الرئيسي [1]",
+            "menu": "الانتقال إلى القائمة [2]",
+            "language": "الانتقال إلى محدد اللغة [3]",
+            "search": "الانتقال إلى البحث [4]"
+        },
+        "accessibility": {
+            "language": "اللغة:",
+            "fontSize": "حجم الخط:",
+            "decrease": "أ-",
+            "normal": "أ",
+            "increase": "أ+",
+            "theme": "المظهر:",
+            "spacing": "التباعد:",
+            "libras": "لغة الإشارة",
+            "dyslexia": "عسر القراءة",
+            "shortcuts": "الاختصارات"
+        },
+        "theme": {
+            "default": "افتراضي",
+            "contrast": "تباين عالي",
+            "dark": "داكن"
+        },
+        "spacing": {
+            "normal": "عادي",
+            "large": "كبير"
+        },
+        "nav": {
+            "menu": "القائمة",
+            "home": "الرئيسية",
+            "technology": "التكنولوجيا",
+            "education": "التعليم",
+            "region": "المنطقة",
+            "about": "حول"
+        },
+        "search": {
+            "label": "البحث في الأخبار",
+            "placeholder": "بحث...",
+            "button": "بحث"
+        },
+        "hero": {
+            "title": "التكنولوجيا المتاحة للجميع",
+            "subtitle": "بوابة متعددة اللغات بأقصى قدر من إمكانية الوصول - WCAG AAA + التدويل",
+            "badge": {
+                "wcag": "WCAG AAA",
+                "languages": "7 لغات",
+                "rtl": "دعم RTL",
+                "i18n": "تدويل كامل"
+            }
+        },
+        "news": {
+            "featured": "الأخبار المميزة",
+            "readMore": "اقرأ المزيد",
+            "published": "نُشر في",
+            "updated": "تم التحديث في",
+            "author": "بواسطة",
+            "readTime": "{{minutes}} دقيقة قراءة",
+            "views": "{{count}} مشاهدة",
+            "category": "الفئة:",
+            "tags": "الوسوم:"
+        },
+        "categories": {
+            "all": "الكل",
+            "technology": "التكنولوجيا",
+            "education": "التعليم",
+            "innovation": "الابتكار الاجتماعي",
+            "connectivity": "الاتصال",
+            "ai": "الذكاء الاصطناعي",
+            "region": "المنطقة"
+        },
+        "loading": "جاري التحميل...",
+        "error": {
+            "general": "حدث خطأ. يرجى المحاولة مرة أخرى.",
+            "network": "خطأ في الاتصال. تحقق من الإنترنت.",
+            "notFound": "المحتوى غير موجود.",
+            "loadFailed": "فشل تحميل البيانات."
+        },
+        "about": {
+            "title": "حول المشروع",
+            "description": "هذا مشروع تعليمي يوضح تطبيق الحد الأقصى من إمكانية الوصول (WCAG AAA) جنبًا إلى جنب مع التدويل الكامل (i18n)، بما في ذلك دعم اللغات من اليمين إلى اليسار (RTL) مثل العربية.",
+            "features": {
+                "title": "الميزات الرئيسية:",
+                "multilingual": "متعدد اللغات: دعم 7 لغات (البرتغالية البرازيلية، الإنجليزية، الإسبانية، العربية، الهندية، اليابانية، الروسية)",
+                "rtl": "RTL/LTR: تخطيط قابل للتكيف للغات من اليمين إلى اليسار",
+                "wcag": "WCAG AAA: أقصى مستوى من الامتثال لإرشادات إمكانية الوصول",
+                "formats": "التنسيق المحلي: التواريخ والأرقام والعملات المتكيفة حسب المنطقة",
+                "fonts": "خطوط خاصة: طباعة محسّنة لكل نص (لاتيني، عربي، ديفاناغاري، كانجي)"
+            },
+            "version": "الإصدار 4 - التدويل العالمي",
+            "backToComparison": "العودة إلى المقارنة"
+        },
+        "footer": {
+            "description": "بوابة أخبار تقنية متاحة ومتعددة اللغات",
+            "links": {
+                "title": "روابط مفيدة",
+                "privacy": "سياسة الخصوصية",
+                "terms": "شروط الاستخدام",
+                "accessibility": "بيان إمكانية الوصول",
+                "contact": "اتصل بنا"
+            },
+            "accessibility": {
+                "title": "إمكانية الوصول"
+            },
+            "copyright": "© 2025 IFBA - كابرا دا تيك. مشروع تعليمي لإمكانية الوصول على الويب.",
+            "license": "الترخيص: CC BY-SA 4.0"
+        },
+        "time": {
+            "justNow": "الآن",
+            "minutesAgo": {
+                "one": "منذ دقيقة واحدة",
+                "other": "منذ {{count}} دقيقة"
+            },
+            "hoursAgo": {
+                "one": "منذ ساعة واحدة",
+                "other": "منذ {{count}} ساعة"
+            },
+            "daysAgo": {
+                "one": "منذ يوم واحد",
+                "other": "منذ {{count}} يوم"
+            },
+            "weeksAgo": {
+                "one": "منذ أسبوع واحد",
+                "other": "منذ {{count}} أسبوع"
+            },
+            "monthsAgo": {
+                "one": "منذ شهر واحد",
+                "other": "منذ {{count}} شهر"
+            },
+            "yearsAgo": {
+                "one": "منذ عام واحد",
+                "other": "منذ {{count}} عام"
+            }
+        },
+        "plurals": {
+            "items": {
+                "zero": "لا توجد عناصر",
+                "one": "عنصر واحد",
+                "other": "{{count}} عنصر"
+            },
+            "results": {
+                "zero": "لا توجد نتائج",
+                "one": "نتيجة واحدة",
+                "other": "{{count}} نتيجة"
+            },
+            "notifications": {
+                "zero": "لا توجد إشعارات",
+                "one": "إشعار واحد",
+                "other": "{{count}} إشعار"
+            }
+        },
+        "actions": {
+            "submit": "إرسال",
+            "cancel": "إلغاء",
+            "save": "حفظ",
+            "delete": "حذف",
+            "edit": "تعديل",
+            "close": "إغلاق",
+            "open": "فتح",
+            "next": "التالي",
+            "previous": "السابق",
+            "confirm": "تأكيد",
+            "back": "رجوع"
+        },
+        "aria": {
+            "loading": "جاري تحميل المحتوى",
+            "menu": "قائمة التنقل",
+            "search": "حقل البحث",
+            "close": "إغلاق",
+            "open": "فتح",
+            "expand": "توسيع",
+            "collapse": "طي"
+        },
+        "validation": {
+            "required": "هذا الحقل مطلوب",
+            "email": "أدخل بريدًا إلكترونيًا صالحًا",
+            "minLength": "الحد الأدنى {{min}} حرفًا",
+            "maxLength": "الحد الأقصى {{max}} حرفًا",
+            "pattern": "تنسيق غير صالح"
+        },
+        "months": {
+            "january": "يناير",
+            "february": "فبراير",
+            "march": "مارس",
+            "april": "أبريل",
+            "may": "مايو",
+            "june": "يونيو",
+            "july": "يوليو",
+            "august": "أغسطس",
+            "september": "سبتمبر",
+            "october": "أكتوبر",
+            "november": "نوفمبر",
+            "december": "ديسمبر"
+        },
+        "days": {
+            "sunday": "الأحد",
+            "monday": "الاثنين",
+            "tuesday": "الثلاثاء",
+            "wednesday": "الأربعاء",
+            "thursday": "الخميس",
+            "friday": "الجمعة",
+            "saturday": "السبت"
+        },
+        "shortcuts": {
+            "title": "اختصارات لوحة المفاتيح",
+            "description": "استخدم الاختصارات التالية للتنقل بسرعة:",
+            "list": {
+                "content": "Alt + 1: الانتقال إلى المحتوى الرئيسي",
+                "menu": "Alt + 2: الانتقال إلى القائمة",
+                "language": "Alt + 3: الانتقال إلى محدد اللغة",
+                "search": "Alt + 4: الانتقال إلى البحث",
+                "increaseFontSize": "Ctrl + +: زيادة حجم الخط",
+                "decreaseFontSize": "Ctrl + -: تقليل حجم الخط",
+                "resetFontSize": "Ctrl + 0: إعادة تعيين حجم الخط",
+                "focusLanguage": "Ctrl + Shift + L: التركيز على محدد اللغة"
+            }
+        },
+        "announcements": {
+            "languageChanged": "تم تغيير اللغة إلى {{language}}",
+            "themeChanged": "تم تغيير المظهر إلى {{theme}}",
+            "fontSizeIncreased": "تم زيادة حجم الخط",
+            "fontSizeDecreased": "تم تقليل حجم الخط",
+            "fontSizeReset": "تم إعادة تعيين حجم الخط",
+            "highContrastEnabled": "تم تفعيل التباين العالي",
+            "highContrastDisabled": "تم تعطيل التباين العالي",
+            "dyslexiaFontEnabled": "تم تفعيل خط عسر القراءة",
+            "dyslexiaFontDisabled": "تم تعطيل خط عسر القراءة"
+        }
+    }
+}

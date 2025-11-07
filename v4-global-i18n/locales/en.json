@@ -1,0 +1,240 @@
+{
+    "locale": "en",
+    "language": "English",
+    "nativeName": "English (US)",
+    "direction": "ltr",
+    "version": "1.0.0",
+    "lastUpdate": "2025-11-07",
+    "translations": {
+        "page": {
+            "title": "Cabra da Tech - Global Technology Portal"
+        },
+        "skip": {
+            "content": "Skip to main content [1]",
+            "menu": "Skip to menu [2]",
+            "language": "Skip to language selector [3]",
+            "search": "Skip to search [4]"
+        },
+        "accessibility": {
+            "language": "Language:",
+            "fontSize": "Font Size:",
+            "decrease": "A-",
+            "normal": "A",
+            "increase": "A+",
+            "theme": "Theme:",
+            "spacing": "Spacing:",
+            "libras": "Sign Language",
+            "dyslexia": "Dyslexia",
+            "shortcuts": "Shortcuts"
+        },
+        "theme": {
+            "default": "Default",
+            "contrast": "High Contrast",
+            "dark": "Dark"
+        },
+        "spacing": {
+            "normal": "Normal",
+            "large": "Large"
+        },
+        "nav": {
+            "menu": "Menu",
+            "home": "Home",
+            "technology": "Technology",
+            "education": "Education",
+            "region": "Region",
+            "about": "About"
+        },
+        "search": {
+            "label": "Search news",
+            "placeholder": "Search...",
+            "button": "Search"
+        },
+        "hero": {
+            "title": "Accessible Technology for Everyone",
+            "subtitle": "Multilingual portal with maximum accessibility - WCAG AAA + Internationalization",
+            "badge": {
+                "wcag": "WCAG AAA",
+                "languages": "7 Languages",
+                "rtl": "RTL Support",
+                "i18n": "Full i18n"
+            }
+        },
+        "news": {
+            "featured": "Featured News",
+            "readMore": "Read more",
+            "published": "Published on",
+            "updated": "Updated on",
+            "author": "By",
+            "readTime": "{{minutes}} min read",
+            "views": "{{count}} views",
+            "category": "Category:",
+            "tags": "Tags:"
+        },
+        "categories": {
+            "all": "All",
+            "technology": "Technology",
+            "education": "Education",
+            "innovation": "Social Innovation",
+            "connectivity": "Connectivity",
+            "ai": "Artificial Intelligence",
+            "region": "Region"
+        },
+        "loading": "Loading...",
+        "error": {
+            "general": "An error occurred. Please try again.",
+            "network": "Connection error. Check your internet.",
+            "notFound": "Content not found.",
+            "loadFailed": "Failed to load data."
+        },
+        "about": {
+            "title": "About the Project",
+            "description": "This is an educational project demonstrating the implementation of maximum accessibility (WCAG AAA) combined with complete internationalization (i18n), including support for RTL (right-to-left) languages such as Arabic.",
+            "features": {
+                "title": "Key Features:",
+                "multilingual": "Multilingual: Support for 7 languages (Brazilian Portuguese, English, Spanish, Arabic, Hindi, Japanese, Russian)",
+                "rtl": "RTL/LTR: Adaptable layout for right-to-left languages",
+                "wcag": "WCAG AAA: Maximum level of accessibility guidelines compliance",
+                "formats": "Localized Formatting: Dates, numbers and currencies adapted by region",
+                "fonts": "Specific Fonts: Typography optimized for each script (Latin, Arabic, Devanagari, Kanji)"
+            },
+            "version": "V4 - Global i18n",
+            "backToComparison": "Back to Comparison"
+        },
+        "footer": {
+            "description": "Accessible and multilingual technology news portal",
+            "links": {
+                "title": "Useful Links",
+                "privacy": "Privacy Policy",
+                "terms": "Terms of Use",
+                "accessibility": "Accessibility Statement",
+                "contact": "Contact"
+            },
+            "accessibility": {
+                "title": "Accessibility"
+            },
+            "copyright": "© 2025 IFBA - Cabra da Tech. Educational Web Accessibility Project.",
+            "license": "License: CC BY-SA 4.0"
+        },
+        "time": {
+            "justNow": "just now",
+            "minutesAgo": {
+                "one": "{{count}} minute ago",
+                "other": "{{count}} minutes ago"
+            },
+            "hoursAgo": {
+                "one": "{{count}} hour ago",
+                "other": "{{count}} hours ago"
+            },
+            "daysAgo": {
+                "one": "{{count}} day ago",
+                "other": "{{count}} days ago"
+            },
+            "weeksAgo": {
+                "one": "{{count}} week ago",
+                "other": "{{count}} weeks ago"
+            },
+            "monthsAgo": {
+                "one": "{{count}} month ago",
+                "other": "{{count}} months ago"
+            },
+            "yearsAgo": {
+                "one": "{{count}} year ago",
+                "other": "{{count}} years ago"
+            }
+        },
+        "plurals": {
+            "items": {
+                "zero": "No items",
+                "one": "{{count}} item",
+                "other": "{{count}} items"
+            },
+            "results": {
+                "zero": "No results",
+                "one": "{{count}} result",
+                "other": "{{count}} results"
+            },
+            "notifications": {
+                "zero": "No notifications",
+                "one": "{{count}} notification",
+                "other": "{{count}} notifications"
+            }
+        },
+        "actions": {
+            "submit": "Submit",
+            "cancel": "Cancel",
+            "save": "Save",
+            "delete": "Delete",
+            "edit": "Edit",
+            "close": "Close",
+            "open": "Open",
+            "next": "Next",
+            "previous": "Previous",
+            "confirm": "Confirm",
+            "back": "Back"
+        },
+        "aria": {
+            "loading": "Loading content",
+            "menu": "Navigation menu",
+            "search": "Search field",
+            "close": "Close",
+            "open": "Open",
+            "expand": "Expand",
+            "collapse": "Collapse"
+        },
+        "validation": {
+            "required": "This field is required",
+            "email": "Enter a valid email",
+            "minLength": "Minimum {{min}} characters",
+            "maxLength": "Maximum {{max}} characters",
+            "pattern": "Invalid format"
+        },
+        "months": {
+            "january": "January",
+            "february": "February",
+            "march": "March",
+            "april": "April",
+            "may": "May",
+            "june": "June",
+            "july": "July",
+            "august": "August",
+            "september": "September",
+            "october": "October",
+            "november": "November",
+            "december": "December"
+        },
+        "days": {
+            "sunday": "Sunday",
+            "monday": "Monday",
+            "tuesday": "Tuesday",
+            "wednesday": "Wednesday",
+            "thursday": "Thursday",
+            "friday": "Friday",
+            "saturday": "Saturday"
+        },
+        "shortcuts": {
+            "title": "Keyboard Shortcuts",
+            "description": "Use the following shortcuts to navigate quickly:",
+            "list": {
+                "content": "Alt + 1: Go to main content",
+                "menu": "Alt + 2: Go to menu",
+                "language": "Alt + 3: Go to language selector",
+                "search": "Alt + 4: Go to search",
+                "increaseFontSize": "Ctrl + +: Increase font size",
+                "decreaseFontSize": "Ctrl + -: Decrease font size",
+                "resetFontSize": "Ctrl + 0: Reset font size",
+                "focusLanguage": "Ctrl + Shift + L: Focus language selector"
+            }
+        },
+        "announcements": {
+            "languageChanged": "Language changed to {{language}}",
+            "themeChanged": "Theme changed to {{theme}}",
+            "fontSizeIncreased": "Font size increased",
+            "fontSizeDecreased": "Font size decreased",
+            "fontSizeReset": "Font size reset",
+            "highContrastEnabled": "High contrast enabled",
+            "highContrastDisabled": "High contrast disabled",
+            "dyslexiaFontEnabled": "Dyslexia font enabled",
+            "dyslexiaFontDisabled": "Dyslexia font disabled"
+        }
+    }
+}
