@@ -1,0 +1,747 @@
+/**
+ * ============================================
+ * COMPARADOR.CSS - Página de Comparação
+ * ============================================
+ * 
+ * Estilos para a página que compara as 4 versões
+ * do projeto (V1, V2, V3, V4)
+ */
+
+/* ============================================
+   VARIÁVEIS ESPECÍFICAS
+   ============================================ */
+
+:root {
+    /* Cores das versões */
+    --color-v1: #e53e3e;
+    /* Vermelho - Antipadrão */
+    --color-v2: #ed8936;
+    /* Laranja - WCAG AA */
+    --color-v3: #38b2ac;
+    /* Teal - AAA + eMAG */
+    --color-v4: #667eea;
+    /* Roxo - Global i18n */
+
+    /* Backgrounds suaves */
+    --bg-v1: rgba(229, 62, 62, 0.1);
+    --bg-v2: rgba(237, 137, 54, 0.1);
+    --bg-v3: rgba(56, 178, 172, 0.1);
+    --bg-v4: rgba(102, 126, 234, 0.1);
+
+    /* Grid */
+    --grid-gap: 2rem;
+    --card-padding: 2rem;
+}
+
+/* ============================================
+   LAYOUT PRINCIPAL
+   ============================================ */
+
+.comparador {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 4rem 0;
+}
+
+.comparador-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* ============================================
+   CABEÇALHO DO COMPARADOR
+   ============================================ */
+
+.comparador-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    color: white;
+}
+
+.comparador-header h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.comparador-header p {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    opacity: 0.95;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.comparador-subtitle {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* ============================================
+   GRADE DE VERSÕES
+   ============================================ */
+
+.versoes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--grid-gap);
+    margin-bottom: 3rem;
+}
+
+/* Para garantir 4 colunas em telas grandes */
+@media (min-width: 1200px) {
+    .versoes-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ============================================
+   CARD DE VERSÃO
+   ============================================ */
+
+.versao-card {
+    background: white;
+    border-radius: 16px;
+    padding: var(--card-padding);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.versao-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+/* Barra colorida no topo */
+.versao-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--versao-color);
+}
+
+/* Cores específicas por versão */
+.versao-card.v1 {
+    --versao-color: var(--color-v1);
+}
+
+.versao-card.v2 {
+    --versao-color: var(--color-v2);
+}
+
+.versao-card.v3 {
+    --versao-color: var(--color-v3);
+}
+
+.versao-card.v4 {
+    --versao-color: var(--color-v4);
+}
+
+/* ============================================
+   CABEÇALHO DO CARD
+   ============================================ */
+
+.versao-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.versao-numero {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: var(--versao-color);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 800;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.versao-titulo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+.versao-descricao {
+    font-size: 0.95rem;
+    color: #718096;
+    line-height: 1.5;
+}
+
+/* ============================================
+   BADGES DE STATUS
+   ============================================ */
+
+.versao-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.8rem;
+    background: var(--bg-v1);
+    color: var(--color-v1);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.badge i {
+    font-size: 0.9rem;
+}
+
+/* Badges específicos por tipo */
+.badge.wcag-a {
+    background: rgba(229, 62, 62, 0.15);
+    color: #c53030;
+}
+
+.badge.wcag-aa {
+    background: rgba(237, 137, 54, 0.15);
+    color: #c05621;
+}
+
+.badge.wcag-aaa {
+    background: rgba(56, 178, 172, 0.15);
+    color: #2c7a7b;
+}
+
+.badge.i18n {
+    background: rgba(102, 126, 234, 0.15);
+    color: #5a67d8;
+}
+
+.badge.emag {
+    background: rgba(72, 187, 120, 0.15);
+    color: #2f855a;
+}
+
+.badge.libras {
+    background: rgba(159, 122, 234, 0.15);
+    color: #6b46c1;
+}
+
+/* ============================================
+   LISTA DE CARACTERÍSTICAS
+   ============================================ */
+
+.versao-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+}
+
+.versao-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 0.95rem;
+    color: #4a5568;
+    line-height: 1.5;
+}
+
+.versao-features li:last-child {
+    border-bottom: none;
+}
+
+.versao-features li i {
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+    color: var(--versao-color);
+    font-size: 1rem;
+}
+
+/* Ícones de check/cross */
+.feature-check {
+    color: #48bb78 !important;
+}
+
+.feature-cross {
+    color: #f56565 !important;
+}
+
+.feature-partial {
+    color: #ed8936 !important;
+}
+
+/* ============================================
+   BOTÃO DE ACESSO
+   ============================================ */
+
+.versao-link {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background: var(--versao-color);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.versao-link:hover {
+    background: color-mix(in srgb, var(--versao-color) 85%, black);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.versao-link:active {
+    transform: translateY(0);
+}
+
+.versao-link i {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.versao-link:hover i {
+    transform: translateX(4px);
+}
+
+/* ============================================
+   TABELA COMPARATIVA
+   ============================================ */
+
+.comparacao-tabela {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    overflow-x: auto;
+    margin-bottom: 3rem;
+}
+
+.comparacao-tabela h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.comparacao-tabela table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.comparacao-tabela thead {
+    background: #f7fafc;
+}
+
+.comparacao-tabela th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 700;
+    color: #2d3748;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.comparacao-tabela th:first-child {
+    border-top-left-radius: 8px;
+}
+
+.comparacao-tabela th:last-child {
+    border-top-right-radius: 8px;
+}
+
+.comparacao-tabela td {
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+    color: #4a5568;
+}
+
+.comparacao-tabela tbody tr:hover {
+    background: #f7fafc;
+}
+
+.comparacao-tabela tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Células com ícones */
+.tabela-check {
+    color: #48bb78;
+    font-size: 1.25rem;
+}
+
+.tabela-cross {
+    color: #f56565;
+    font-size: 1.25rem;
+}
+
+.tabela-partial {
+    color: #ed8936;
+    font-size: 1.25rem;
+}
+
+/* ============================================
+   SEÇÃO DE LEGENDAS
+   ============================================ */
+
+.legendas {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    margin-bottom: 3rem;
+}
+
+.legendas h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 1rem;
+}
+
+.legendas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.legenda-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: #f7fafc;
+    border-radius: 8px;
+}
+
+.legenda-icon {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1rem;
+}
+
+.legenda-icon.check {
+    background: rgba(72, 187, 120, 0.2);
+    color: #48bb78;
+}
+
+.legenda-icon.cross {
+    background: rgba(245, 101, 101, 0.2);
+    color: #f56565;
+}
+
+.legenda-icon.partial {
+    background: rgba(237, 137, 54, 0.2);
+    color: #ed8936;
+}
+
+.legenda-texto {
+    font-size: 0.9rem;
+    color: #4a5568;
+}
+
+/* ============================================
+   FOOTER DO COMPARADOR
+   ============================================ */
+
+.comparador-footer {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    color: white;
+}
+
+.comparador-footer p {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    opacity: 0.95;
+}
+
+.comparador-footer a {
+    color: white;
+    text-decoration: underline;
+    font-weight: 600;
+    transition: opacity 0.3s ease;
+}
+
+.comparador-footer a:hover {
+    opacity: 0.8;
+}
+
+/* ============================================
+   RESPONSIVIDADE
+   ============================================ */
+
+/* Tablets */
+@media (max-width: 768px) {
+    .comparador {
+        padding: 2rem 0;
+    }
+
+    .comparador-container {
+        padding: 0 1rem;
+    }
+
+    .comparador-header h1 {
+        font-size: 2rem;
+    }
+
+    .versoes-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .versao-card {
+        padding: 1.5rem;
+    }
+
+    .comparacao-tabela {
+        padding: 1rem;
+    }
+
+    .comparacao-tabela table {
+        font-size: 0.85rem;
+    }
+
+    .comparacao-tabela th,
+    .comparacao-tabela td {
+        padding: 0.75rem 0.5rem;
+    }
+
+    .legendas-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .comparador-header h1 {
+        font-size: 1.75rem;
+    }
+
+    .comparador-header p {
+        font-size: 0.95rem;
+    }
+
+    .versao-numero {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+    }
+
+    .versao-titulo {
+        font-size: 1.25rem;
+    }
+
+    .versao-badges {
+        gap: 0.35rem;
+    }
+
+    .badge {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+    }
+
+    .versao-features li {
+        font-size: 0.9rem;
+        padding: 0.6rem 0;
+    }
+
+    .versao-link {
+        padding: 0.85rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* ============================================
+   MODO ESCURO
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+    .versao-card {
+        background: #2d3748;
+    }
+
+    .versao-titulo {
+        color: #f7fafc;
+    }
+
+    .versao-descricao {
+        color: #cbd5e0;
+    }
+
+    .versao-features li {
+        color: #e2e8f0;
+        border-bottom-color: #4a5568;
+    }
+
+    .comparacao-tabela {
+        background: #2d3748;
+    }
+
+    .comparacao-tabela h2 {
+        color: #f7fafc;
+    }
+
+    .comparacao-tabela thead {
+        background: #1a202c;
+    }
+
+    .comparacao-tabela th {
+        color: #f7fafc;
+        border-bottom-color: #4a5568;
+    }
+
+    .comparacao-tabela td {
+        color: #e2e8f0;
+        border-bottom-color: #4a5568;
+    }
+
+    .comparacao-tabela tbody tr:hover {
+        background: #1a202c;
+    }
+
+    .legendas {
+        background: #2d3748;
+    }
+
+    .legendas h3 {
+        color: #f7fafc;
+    }
+
+    .legenda-item {
+        background: #1a202c;
+    }
+
+    .legenda-texto {
+        color: #e2e8f0;
+    }
+}
+
+/* ============================================
+   ALTO CONTRASTE
+   ============================================ */
+
+@media (prefers-contrast: high) {
+    .versao-card {
+        border: 2px solid currentColor;
+    }
+
+    .badge {
+        border: 1px solid currentColor;
+    }
+
+    .versao-link {
+        border: 2px solid white;
+    }
+
+    .comparacao-tabela th,
+    .comparacao-tabela td {
+        border: 1px solid currentColor;
+    }
+}
+
+/* ============================================
+   IMPRESSÃO
+   ============================================ */
+
+@media print {
+    .comparador {
+        background: white;
+        padding: 0;
+    }
+
+    .versao-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+
+    .versao-link {
+        display: none;
+    }
+
+    .comparacao-tabela {
+        box-shadow: none;
+    }
+
+    .comparador-footer {
+        background: none;
+        color: #000;
+    }
+}
+
+/* ============================================
+   ANIMAÇÕES DE ENTRADA
+   ============================================ */
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.versao-card {
+    animation: slideInUp 0.6s ease-out backwards;
+}
+
+.versao-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.versao-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.versao-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.versao-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+/* Desabilitar animações se usuário preferir */
+@media (prefers-reduced-motion: reduce) {
+    .versao-card {
+        animation: none;
+    }
+}
