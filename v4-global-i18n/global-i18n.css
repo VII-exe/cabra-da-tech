@@ -769,6 +769,10 @@ html[dir="rtl"] .features-list li {
     text-decoration: underline;
 }
 
+.footer-content h3, .footer-title {
+    color: #fff;
+}
+
 /* ============================================
    RESPONSIVE
    ============================================ */

@@ -1,553 +1,458 @@
 /**
  * ============================================
- * MAIN.JS - Script Principal V4 i18n
+ * MAIN.JS - Script Principal V4
  * ============================================
  * 
- * Orquestra inicialização e coordenação de
- * todos os módulos da versão multilíngue
- * 
- * Dependências (carregadas antes):
- * - locale-detector.js
- * - i18n.js
- * - intl-formatter.js
- * - font-loader.js
- * - rtl-support.js
- * - language-switcher.js
+ * VERSÃO COM DEBUG MELHORADO
+ * Identifica problemas com idiomas específicos
  */
 
-(function () {
-    'use strict';
-
-    // ============================================
-    // CONFIGURAÇÃO GLOBAL
-    // ============================================
-
-    const CONFIG = {
-        version: '4.0.0',
-        versionName: 'Global i18n',
-        appName: 'Cabra da Tech',
-        debug: true,
-        analytics: false,
-
-        // Módulos
-        modules: {
-            localeDetector: true,
-            i18n: true,
-            intlFormatter: true,
-            fontLoader: true,
-            rtlSupport: true,
-            languageSwitcher: true
-        },
-
-        // Configuração de carregamento
-        loading: {
-            showSplash: false,
-            minLoadTime: 500 // ms mínimo de loading
-        }
-    };
-
-    // ============================================
-    // CLASSE APP PRINCIPAL
-    // ============================================
-
-    class CabraDaTechApp {
-        constructor() {
-            this.version = CONFIG.version;
-            this.isInitialized = false;
-            this.startTime = Date.now();
-            this.modules = {};
-            this.loadedModules = new Set();
-        }
-
-        /**
-         * Verificar disponibilidade de módulos
-         */
-        checkModules() {
-            this.log('🔍 Verificando módulos...');
-
-            const requiredModules = {
-                LocaleDetector: window.LocaleDetector,
-                i18n: window.i18n,
-                IntlFormatter: window.IntlFormatter,
-                FontLoader: window.FontLoader,
-                RTLSupport: window.RTLSupport,
-                LanguageSwitcher: window.LanguageSwitcher
-            };
-
-            const missing = [];
-
-            Object.entries(requiredModules).forEach(([name, module]) => {
-                if (module) {
-                    this.modules[name] = module;
-                    this.loadedModules.add(name);
-                    this.log(`  ✅ ${name}`);
-                } else {
-                    missing.push(name);
-                    this.warn(`  ❌ ${name} não encontrado`);
-                }
-            });
-
-            if (missing.length > 0) {
-                this.error(`Módulos ausentes: ${missing.join(', ')}`);
-                return false;
-            }
-
-            this.log(`✅ Todos os ${this.loadedModules.size} módulos disponíveis`);
-            return true;
-        }
-
-        /**
-         * Carregar dados iniciais (notícias)
-         */
-        async loadData() {
-            this.log('📦 Carregando dados...');
-
-            try {
-                // Carregar notícias
-                const response = await fetch('../data/noticias.json');
-
-                if (!response.ok) {
-                    throw new Error(`HTTP ${response.status}`);
-                }
-
-                const data = await response.json();
-                this.data = data;
-
-                this.log(`✅ ${data.noticias.length} notícias carregadas`);
-                return data;
-
-            } catch (error) {
-                this.error('Erro ao carregar dados:', error);
-                return null;
-            }
-        }
-
-        /**
-         * Renderizar notícias
-         */
-        renderNoticias() {
-            if (!this.data || !this.data.noticias) {
-                this.warn('Dados de notícias não disponíveis');
-                return;
-            }
-
-            const container = document.querySelector('.noticias-grid');
-            if (!container) return;
-
-            // Remover loading spinner
-            const spinner = container.querySelector('.loading-spinner');
-            if (spinner) {
-                spinner.remove();
-            }
-
-            // Filtrar notícias em destaque
-            const destaque = this.data.noticias.filter(n => n.destaque).slice(0, 3);
-
-            // Renderizar cards
-            destaque.forEach(noticia => {
-                const card = this.createNoticiaCard(noticia);
-                container.appendChild(card);
-            });
-
-            this.log(`✅ ${destaque.length} notícias renderizadas`);
-        }
-
-        /**
-         * Criar card de notícia
-         */
-        createNoticiaCard(noticia) {
-            const card = document.createElement('article');
-            card.className = 'noticia-card';
-            card.setAttribute('role', 'listitem');
-
-            // Imagem
-            const img = document.createElement('img');
-            img.src = noticia.imagemDestaque.url;
-            img.alt = noticia.imagemDestaque.alt;
-            img.className = 'noticia-imagem';
-            img.loading = 'lazy';
-            img.width = noticia.imagemDestaque.width;
-            img.height = noticia.imagemDestaque.height;
-
-            // Conteúdo
-            const conteudo = document.createElement('div');
-            conteudo.className = 'noticia-conteudo';
-
-            // Categoria
-            const categoria = document.createElement('span');
-            categoria.className = 'noticia-categoria';
-            categoria.textContent = noticia.categoria;
-
-            // Título
-            const titulo = document.createElement('h3');
-            titulo.className = 'noticia-titulo';
-            titulo.textContent = noticia.titulo;
-
-            // Resumo
-            const resumo = document.createElement('p');
-            resumo.className = 'noticia-resumo';
-            resumo.textContent = noticia.resumo;
-
-            // Meta (data e tempo de leitura)
-            const meta = document.createElement('div');
-            meta.className = 'noticia-meta';
-
-            const data = document.createElement('span');
-            data.setAttribute('data-format', 'relative');
-            data.setAttribute('data-value', noticia.dataPublicacao);
-            data.textContent = window.formatRelativeTime?.(noticia.dataPublicacao) || 'Recente';
-
-            const tempo = document.createElement('span');
-            tempo.textContent = `${noticia.tempoLeitura} min`;
-
-            meta.appendChild(data);
-            meta.appendChild(tempo);
-
-            // Link
-            const link = document.createElement('a');
-            link.href = `#noticia-${noticia.id}`;
-            link.className = 'noticia-link';
-            link.setAttribute('data-i18n', 'news.readMore');
-            link.textContent = 'Ler mais';
-
-            const icon = document.createElement('i');
-            icon.className = 'bi bi-arrow-right';
-            icon.setAttribute('aria-hidden', 'true');
-            link.appendChild(icon);
-
-            // Montar estrutura
-            conteudo.appendChild(categoria);
-            conteudo.appendChild(titulo);
-            conteudo.appendChild(resumo);
-            conteudo.appendChild(meta);
-            conteudo.appendChild(link);
-
-            card.appendChild(img);
-            card.appendChild(conteudo);
-
-            return card;
-        }
-
-        /**
-         * Configurar menu mobile
-         */
-        setupMobileMenu() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const menuList = document.querySelector('.menu-list');
-
-            if (!menuToggle || !menuList) return;
-
-            menuToggle.addEventListener('click', () => {
-                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-
-                menuToggle.setAttribute('aria-expanded', !isExpanded);
-                menuList.classList.toggle('active');
-
-                this.log(`Menu mobile ${!isExpanded ? 'aberto' : 'fechado'}`);
-            });
-
-            // Fechar ao clicar fora
-            document.addEventListener('click', (e) => {
-                if (!menuToggle.contains(e.target) && !menuList.contains(e.target)) {
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    menuList.classList.remove('active');
-                }
-            });
-
-            // Fechar ao pressionar ESC
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    menuList.classList.remove('active');
-                }
-            });
-
-            this.log('✅ Menu mobile configurado');
-        }
-
-        /**
-         * Configurar busca
-         */
-        setupSearch() {
-            const searchForm = document.querySelector('form[role="search"]');
-            const searchInput = document.getElementById('search');
-
-            if (!searchForm || !searchInput) return;
-
-            searchForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const query = searchInput.value.trim();
-
-                if (query) {
-                    this.performSearch(query);
-                }
-            });
-
-            this.log('✅ Busca configurada');
-        }
-
-        /**
-         * Realizar busca (placeholder)
-         */
-        performSearch(query) {
-            this.log(`🔍 Buscando por: "${query}"`);
-
-            // Anunciar para leitores de tela
-            const liveRegion = document.getElementById('live-region');
-            if (liveRegion) {
-                liveRegion.textContent = `Buscando por ${query}...`;
-            }
-
-            // TODO: Implementar busca real
-            setTimeout(() => {
-                if (liveRegion) {
-                    liveRegion.textContent = `Busca por ${query} concluída.`;
-                }
-            }, 1000);
-        }
-
-        /**
-         * Configurar smooth scroll
-         */
-        setupSmoothScroll() {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', (e) => {
-                    const href = anchor.getAttribute('href');
-
-                    // Ignorar links vazios ou apenas "#"
-                    if (!href || href === '#') return;
-
-                    const target = document.querySelector(href);
-                    if (target) {
-                        e.preventDefault();
-
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-
-                        // Focar elemento alvo para acessibilidade
-                        target.focus({ preventScroll: true });
-                    }
-                });
-            });
-
-            this.log('✅ Smooth scroll configurado');
-        }
-
-        /**
-         * Adicionar analytics (se habilitado)
-         */
-        setupAnalytics() {
-            if (!CONFIG.analytics) return;
-
-            // Rastrear mudanças de idioma
-            window.addEventListener('languagechanged', (e) => {
-                this.log('📊 Analytics: idioma alterado para', e.detail.locale);
-                // TODO: Enviar para Google Analytics, etc.
-            });
-
-            this.log('✅ Analytics configurado');
-        }
-
-        /**
-         * Configurar tratamento de erros
-         */
-        setupErrorHandling() {
-            window.addEventListener('error', (e) => {
-                this.error('Erro não capturado:', e.error);
-            });
-
-            window.addEventListener('unhandledrejection', (e) => {
-                this.error('Promise rejeitada:', e.reason);
-            });
-
-            this.log('✅ Tratamento de erros configurado');
-        }
-
-        /**
-         * Exibir informações de debug
-         */
-        showDebugInfo() {
-            if (!CONFIG.debug) return;
-
-            const loadTime = Date.now() - this.startTime;
-
-            console.log('%c════════════════════════════════════════', 'color: #667eea');
-            console.log('%c🌍 CABRA DA TECH - V4 GLOBAL i18n', 'color: #667eea; font-size: 16px; font-weight: bold');
-            console.log('%c════════════════════════════════════════', 'color: #667eea');
-            console.log('');
-            console.log('📦 Versão:', CONFIG.version);
-            console.log('⏱️ Tempo de carregamento:', `${loadTime}ms`);
-            console.log('🌍 Idioma:', window.getLocale?.());
-            console.log('↔️ Direção:', document.documentElement.getAttribute('dir'));
-            console.log('');
-            console.log('📚 Módulos carregados:', Array.from(this.loadedModules));
-            console.log('');
-            console.log('🔧 API Global disponível:');
-            console.log('  - window.CabraDaTech');
-            console.log('  - window.getLocale()');
-            console.log('  - window.changeLanguage(locale)');
-            console.log('  - window.t(key, params)');
-            console.log('  - window.formatDate(date)');
-            console.log('  - window.formatCurrency(amount)');
-            console.log('');
-            console.log('⌨️ Atalhos de teclado:');
-            console.log('  - Alt+1: Ir para conteúdo');
-            console.log('  - Alt+2: Ir para menu');
-            console.log('  - Alt+3: Ir para idioma');
-            console.log('  - Ctrl+Shift+L: Focar seletor de idioma');
-            console.log('');
-            console.log('%c════════════════════════════════════════', 'color: #667eea');
-        }
-
-        /**
-         * Logging
-         */
-        log(...args) {
-            if (CONFIG.debug) {
-                console.log('[App]', ...args);
-            }
-        }
-
-        warn(...args) {
-            if (CONFIG.debug) {
-                console.warn('[App]', ...args);
-            }
-        }
-
-        error(...args) {
-            console.error('[App]', ...args);
-        }
-
-        /**
-         * Inicializar aplicação
-         */
-        async init() {
-            this.log('🚀 Inicializando Cabra da Tech V4...');
-
-            try {
-                // 1. Verificar módulos
-                const modulesOk = this.checkModules();
-                if (!modulesOk) {
-                    throw new Error('Módulos obrigatórios ausentes');
-                }
-
-                // 2. Aguardar i18n estar pronto
-                await new Promise((resolve) => {
-                    if (window.i18n?.isLoaded?.(window.getLocale?.())) {
-                        resolve();
-                    } else {
-                        window.addEventListener('i18nready', resolve, { once: true });
-                    }
-                });
-
-                // 3. Carregar dados
-                await this.loadData();
-
-                // 4. Renderizar conteúdo
-                this.renderNoticias();
-
-                // 5. Configurar funcionalidades
-                this.setupMobileMenu();
-                this.setupSearch();
-                this.setupSmoothScroll();
-                this.setupAnalytics();
-                this.setupErrorHandling();
-
-                // 6. Marcar como inicializado
-                this.isInitialized = true;
-                document.body.classList.add('app-ready');
-
-                // 7. Disparar evento
-                const event = new CustomEvent('appready', {
-                    detail: {
-                        version: this.version,
-                        loadTime: Date.now() - this.startTime
-                    }
-                });
-                window.dispatchEvent(event);
-
-                // 8. Exibir debug info
-                this.showDebugInfo();
-
-                this.log('✅ Aplicação inicializada com sucesso');
-
-            } catch (error) {
-                this.error('❌ Erro fatal ao inicializar aplicação:', error);
-                document.body.classList.add('app-error');
-            }
-        }
-
-        /**
-         * Obter informações da aplicação
-         */
-        getInfo() {
-            return {
-                version: this.version,
-                versionName: CONFIG.versionName,
-                isInitialized: this.isInitialized,
-                loadTime: Date.now() - this.startTime,
-                modules: Array.from(this.loadedModules),
-                locale: window.getLocale?.(),
-                direction: document.documentElement.getAttribute('dir')
-            };
+// ============================================
+// SERVIÇO DE TRADUÇÃO - GOOGLE TRANSLATE
+// ============================================
+
+class TranslationService {
+    constructor() {
+        this.apiUrl = 'https://translate.googleapis.com/translate_a/single';
+        this.cache = new Map();
+        this.debugMode = true; // Debug ativado
+        this.loadCache();
+    }
+
+    log(message, data) {
+        if (this.debugMode) {
+            console.log(`[Translator] ${message}`, data || '');
         }
     }
 
-    // ============================================
-    // INICIALIZAÇÃO AUTOMÁTICA
-    // ============================================
+    loadCache() {
+        try {
+            const cached = localStorage.getItem('news-translations-google-v2');
+            if (cached) {
+                const data = JSON.parse(cached);
+                this.cache = new Map(Object.entries(data));
+                this.log(`✅ Cache carregado: ${this.cache.size} traduções`);
+            }
+        } catch (error) {
+            console.warn('⚠️ Erro ao carregar cache');
+        }
+    }
 
-    // Criar instância global
-    window.CabraDaTech = new CabraDaTechApp();
+    saveCache() {
+        try {
+            const data = Object.fromEntries(this.cache);
+            localStorage.setItem('news-translations-google-v2', JSON.stringify(data));
+            this.log(`💾 Cache salvo: ${this.cache.size} traduções`);
+        } catch (error) {
+            console.warn('⚠️ Erro ao salvar cache');
+        }
+    }
 
-    // Inicializar quando DOM estiver pronto
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => {
-            window.CabraDaTech.init();
+    getCacheKey(text, targetLang) {
+        return `${targetLang}:${text.substring(0, 50)}`;
+    }
+
+    /**
+     * Traduzir com DEBUG detalhado
+     */
+    async translate(text, targetLang) {
+        if (!text || text.trim() === '') {
+            this.log('⚠️ Texto vazio');
+            return text;
+        }
+
+        // Não traduzir português
+        if (targetLang === 'pt-BR' || targetLang === 'pt') {
+            return text;
+        }
+
+        // Mapear idiomas (CORRIGIDO)
+        const langMap = {
+            'pt-BR': 'pt',
+            'pt': 'pt',
+            'en': 'en',
+            'es': 'es',
+            'ar': 'ar',
+            'hi': 'hi',
+            'ja': 'ja',  // Japonês
+            'ru': 'ru'
+        };
+
+        const target = langMap[targetLang];
+
+        if (!target) {
+            console.error(`❌ Idioma não mapeado: ${targetLang}`);
+            return text;
+        }
+
+        this.log(`🌐 Traduzindo para ${target}:`, text.substring(0, 50) + '...');
+
+        // Verificar cache
+        const cacheKey = this.getCacheKey(text, target);
+        if (this.cache.has(cacheKey)) {
+            const cached = this.cache.get(cacheKey);
+            this.log(`📦 Cache HIT para ${target}:`, cached.substring(0, 50) + '...');
+            return cached;
+        }
+
+        try {
+            // Construir URL
+            const url = `${this.apiUrl}?client=gtx&sl=pt&tl=${target}&dt=t&q=${encodeURIComponent(text)}`;
+
+            this.log(`📡 Fazendo requisição para ${target}...`);
+
+            const response = await fetch(url);
+
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            this.log(`📥 Resposta da API para ${target}:`, data);
+
+            // Google Translate retorna array aninhado
+            let translated = '';
+
+            if (data && data[0]) {
+                for (const item of data[0]) {
+                    if (item && item[0]) {
+                        translated += item[0];
+                    }
+                }
+            }
+
+            if (!translated || translated.trim() === '') {
+                console.warn(`⚠️ Tradução vazia para ${target}, usando original`);
+                console.warn('Resposta completa:', JSON.stringify(data));
+                return text;
+            }
+
+            this.log(`✅ Traduzido para ${target}:`, translated.substring(0, 50) + '...');
+
+            // Salvar no cache
+            this.cache.set(cacheKey, translated);
+            this.saveCache();
+
+            return translated;
+
+        } catch (error) {
+            console.error(`❌ Erro ao traduzir para ${target}:`, error);
+            console.error('Texto original:', text);
+            return text;
+        }
+    }
+
+    clearCache() {
+        this.cache.clear();
+        localStorage.removeItem('news-translations-google-v2');
+        console.log('🗑️ Cache limpo completamente');
+    }
+}
+
+// ============================================
+// GERENCIADOR DE NOTÍCIAS
+// ============================================
+
+class NewsManager {
+    constructor() {
+        this.news = [];
+        this.translatedNews = [];
+        this.isLoading = false;
+        this.isTranslating = false;
+        this.currentLocale = 'pt-BR';
+        this.translator = new TranslationService();
+        this.debugMode = true;
+        this.init();
+    }
+
+    log(message, data) {
+        if (this.debugMode) {
+            console.log(`[NewsManager] ${message}`, data || '');
+        }
+    }
+
+    async init() {
+        this.log('🚀 Inicializando...');
+
+        await this.waitForI18n();
+        this.currentLocale = window.i18n ? window.i18n.currentLocale : 'pt-BR';
+
+        this.log(`📍 Idioma inicial: ${this.currentLocale}`);
+
+        await this.loadNews();
+        await this.render();
+
+        document.addEventListener('languageChanged', async (e) => {
+            const newLocale = e.detail.locale || window.i18n.currentLocale;
+            this.log(`🔄 Mudança de idioma: ${this.currentLocale} → ${newLocale}`);
+            this.currentLocale = newLocale;
+            await this.render();
         });
-    } else {
-        window.CabraDaTech.init();
     }
 
-    // ============================================
-    // API GLOBAL
-    // ============================================
+    async waitForI18n() {
+        return new Promise((resolve) => {
+            if (window.i18n && window.i18n.isLoaded) {
+                resolve();
+            } else {
+                const check = setInterval(() => {
+                    if (window.i18n && window.i18n.isLoaded) {
+                        clearInterval(check);
+                        resolve();
+                    }
+                }, 100);
+                setTimeout(() => { clearInterval(check); resolve(); }, 10000);
+            }
+        });
+    }
 
-    /**
-     * Obter informações da aplicação
-     */
-    window.getAppInfo = () => {
-        return window.CabraDaTech.getInfo();
-    };
+    async loadNews() {
+        try {
+            this.log('📡 Carregando notícias...');
+            this.isLoading = true;
+            this.showLoading();
 
-    /**
-     * Recarregar aplicação
-     */
-    window.reloadApp = () => {
-        window.location.reload();
-    };
+            const response = await fetch('../data/noticias.json');
 
-    /**
-     * Console helper
-     */
-    window.cabra = {
-        version: CONFIG.version,
-        info: () => window.CabraDaTech.getInfo(),
-        changeLanguage: (locale) => window.changeLanguage(locale),
-        getLocale: () => window.getLocale(),
-        modules: () => Array.from(window.CabraDaTech.loadedModules),
-        help: () => {
-            console.log('🌍 Cabra da Tech - Comandos disponíveis:');
-            console.log('  cabra.info() - Informações da aplicação');
-            console.log('  cabra.changeLanguage(locale) - Mudar idioma');
-            console.log('  cabra.getLocale() - Idioma atual');
-            console.log('  cabra.modules() - Módulos carregados');
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+
+            const data = await response.json();
+            this.news = data.noticias || [];
+
+            this.log(`✅ ${this.news.length} notícias carregadas`);
+            this.isLoading = false;
+
+            return true;
+
+        } catch (error) {
+            console.error('❌ Erro ao carregar notícias:', error);
+            this.isLoading = false;
+            this.showError();
+            return false;
         }
-    };
+    }
 
-    console.log('✅ Main.js carregado');
-    console.log('💡 Digite "cabra.help()" no console para ver comandos disponíveis');
+    async translateNews() {
+        if (this.currentLocale === 'pt-BR' || this.currentLocale === 'pt') {
+            this.log('ℹ️ Idioma português, sem tradução necessária');
+            this.translatedNews = this.news;
+            return;
+        }
 
-})();
+        this.log(`🌐 Iniciando tradução para: ${this.currentLocale}`);
+        this.isTranslating = true;
+        this.showTranslating();
+
+        try {
+            const translated = [];
+
+            for (let i = 0; i < this.news.length; i++) {
+                const noticia = this.news[i];
+
+                this.log(`📄 Notícia ${i + 1}/${this.news.length}: "${noticia.titulo.substring(0, 30)}..."`);
+
+                // Traduzir em paralelo
+                const [titulo, resumo] = await Promise.all([
+                    this.translator.translate(noticia.titulo, this.currentLocale),
+                    this.translator.translate(noticia.resumo, this.currentLocale)
+                ]);
+
+                this.log(`✅ Traduzido ${i + 1}:`, {
+                    tituloOriginal: noticia.titulo.substring(0, 30),
+                    tituloTraduzido: titulo.substring(0, 30),
+                    resumoOriginal: noticia.resumo.substring(0, 30),
+                    resumoTraduzido: resumo.substring(0, 30)
+                });
+
+                translated.push({
+                    ...noticia,
+                    titulo,
+                    resumo
+                });
+
+                const progress = Math.round(((i + 1) / this.news.length) * 100);
+                this.updateTranslationProgress(progress, i + 1, this.news.length);
+            }
+
+            this.translatedNews = translated;
+            this.log('✅ Tradução completa!');
+
+        } catch (error) {
+            console.error('❌ Erro ao traduzir:', error);
+            this.translatedNews = this.news;
+        } finally {
+            this.isTranslating = false;
+        }
+    }
+
+    async render() {
+        if (!this.news.length) {
+            this.log('⚠️ Nenhuma notícia para renderizar');
+            return;
+        }
+
+        this.log(`🎨 Renderizando para: ${this.currentLocale}`);
+
+        if (this.currentLocale !== 'pt-BR' && this.currentLocale !== 'pt') {
+            await this.translateNews();
+        } else {
+            this.translatedNews = this.news;
+        }
+
+        const container = document.querySelector('.noticias-grid');
+        if (!container) {
+            console.error('❌ Container .noticias-grid não encontrado');
+            return;
+        }
+
+        this.hideLoading();
+
+        const newsToShow = this.translatedNews.slice(0, 6);
+        container.innerHTML = newsToShow.map(news => this.createNewsCard(news)).join('');
+
+        this.log(`✅ ${newsToShow.length} notícias renderizadas`);
+
+        // Log da primeira notícia para debug
+        if (newsToShow.length > 0) {
+            this.log('📰 Primeira notícia renderizada:', {
+                titulo: newsToShow[0].titulo,
+                resumo: newsToShow[0].resumo.substring(0, 50)
+            });
+        }
+    }
+
+    createNewsCard(noticia) {
+        const t = (key, params) => {
+            if (window.i18n && window.i18n.t) {
+                return window.i18n.t(key, params);
+            }
+            return key;
+        };
+
+        const date = this.formatDate(noticia.dataPublicacao);
+        const categoryKey = this.getCategoryKey(noticia.categoria);
+        const category = t(`categories.${categoryKey}`);
+        const readMore = t('news.readMore');
+
+        return `
+      <article class="noticia-card" role="listitem">
+        <img 
+          src="${noticia.imagemDestaque?.url || '../assets/images/placeholder.jpg'}" 
+          alt="${noticia.imagemDestaque?.alt || noticia.titulo}"
+          loading="lazy"
+          width="${noticia.imagemDestaque?.width || 800}"
+          height="${noticia.imagemDestaque?.height || 500}"
+        >
+        <div class="noticia-conteudo">
+          <span class="categoria-badge">${category}</span>
+          <h3>${noticia.titulo}</h3>
+          <p>${noticia.resumo}</p>
+          <div class="noticia-meta">
+            <time datetime="${noticia.dataPublicacao}">${date}</time>
+            ${noticia.tempoLeitura ? `<span>${noticia.tempoLeitura} min</span>` : ''}
+          </div>
+          <a href="#${noticia.slug}" class="ler-mais" aria-label="${readMore} - ${noticia.titulo}">
+            ${readMore}
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </article>
+    `;
+    }
+
+    getCategoryKey(categoria) {
+        const map = {
+            'Tecnologia': 'technology',
+            'Educação': 'education',
+            'Inovação Social': 'innovation',
+            'Conectividade': 'connectivity',
+            'Inteligência Artificial': 'ai',
+            'Região': 'region'
+        };
+        return map[categoria] || 'technology';
+    }
+
+    formatDate(dateString) {
+        if (window.i18n && typeof window.i18n.formatDate === 'function') {
+            return window.i18n.formatDate(dateString);
+        }
+        return new Date(dateString).toLocaleDateString();
+    }
+
+    showLoading() {
+        const container = document.querySelector('.noticias-grid');
+        if (container) {
+            container.innerHTML = `
+        <div class="loading-spinner" role="status">
+          <div class="spinner"></div>
+          <p>${window.i18n ? window.i18n.t('loading') : 'Carregando...'}</p>
+        </div>
+      `;
+        }
+    }
+
+    showTranslating() {
+        const container = document.querySelector('.noticias-grid');
+        if (container) {
+            container.innerHTML = `
+        <div class="loading-spinner translation-spinner" role="status">
+          <div class="spinner"></div>
+          <p id="translation-progress">🌐 Traduzindo...</p>
+          <small style="color: #718096; margin-top: 0.5rem;">Aguarde ~5 segundos</small>
+        </div>
+      `;
+        }
+    }
+
+    updateTranslationProgress(percent, current, total) {
+        const progress = document.getElementById('translation-progress');
+        if (progress) {
+            progress.innerHTML = `
+                🌐 Traduzindo...<br>
+                <strong style="font-size: 1.5rem; color: #667eea;">${percent}%</strong><br>
+                <small>${current}/${total} notícias</small>
+            `;
+        }
+    }
+
+    hideLoading() {
+        const spinner = document.querySelector('.loading-spinner');
+        if (spinner) spinner.remove();
+    }
+
+    showError() {
+        const container = document.querySelector('.noticias-grid');
+        if (container) {
+            container.innerHTML = `
+        <div class="error-message">
+          <i class="bi bi-exclamation-triangle"></i>
+          <p>Erro ao carregar notícias</p>
+          <button onclick="window.newsManager.loadNews().then(() => window.newsManager.render())" class="retry-button">
+            Tentar novamente
+          </button>
+        </div>
+      `;
+        }
+    }
+}
+
+// ============================================
+// INICIALIZAÇÃO
+// ============================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('🚀 Inicializando V4 (Google Translate + DEBUG)...');
+
+    window.newsManager = new NewsManager();
+    window.translator = window.newsManager.translator;
+
+    console.log('✅ Pronto! Modo DEBUG ativado');
+    console.log('💡 Comandos úteis:');
+    console.log('   - window.translator.clearCache() // Limpar cache');
+    console.log('   - window.translator.translate("texto", "ja") // Testar japonês');
+});
+
+console.log('📦 main.js carregado (DEBUG MODE)');

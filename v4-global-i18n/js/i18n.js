@@ -1,527 +1,326 @@
 /**
  * ============================================
- * i18n - INTERNACIONALIZAÇÃO
+ * I18N.JS - Sistema de Internacionalização
  * ============================================
  * 
- * Sistema completo de tradução multilíngue
- * 
- * Funcionalidades:
- * - Carregamento dinâmico de arquivos de idioma
- * - Tradução de textos via data-i18n
- * - Suporte a pluralização
- * - Interpolação de variáveis
- * - Cache de traduções
- * - Fallback para idioma padrão
+ * VERSÃO CORRIGIDA - isLoaded funciona corretamente
  */
 
-(function () {
-    'use strict';
+class I18n {
+    constructor() {
+        this.currentLocale = this.detectLocale();
+        this.translations = {};
+        this.isLoaded = false;
+        this.observers = [];
+        this.translationCache = new Map();
+        
+        console.log('📦 i18n construído, locale:', this.currentLocale);
+    }
 
-    // ============================================
-    // CONFIGURAÇÃO
-    // ============================================
+    detectLocale() {
+        // 1. Verificar localStorage
+        const saved = localStorage.getItem('preferredLocale');
+        if (saved) return saved;
 
-    const CONFIG = {
-        defaultLocale: 'pt-BR',
-        fallbackLocale: 'en',
-        translationsPath: './locales/',
-        cacheExpiration: 3600000, // 1 hora em ms
-        debug: true
-    };
+        // 2. Verificar atributo HTML
+        const htmlLang = document.documentElement.getAttribute('lang');
+        if (htmlLang) return htmlLang;
 
-    // ============================================
-    // CLASSE i18n
-    // ============================================
+        // 3. Detectar do navegador
+        const browserLang = navigator.language || navigator.userLanguage;
 
-    class I18n {
-        constructor() {
-            this.currentLocale = CONFIG.defaultLocale;
-            this.translations = {};
-            this.cache = new Map();
-            this.loadingPromises = new Map();
-            this.observers = [];
-        }
+        // Mapear locales
+        const localeMap = {
+            'pt': 'pt-BR',
+            'pt-BR': 'pt-BR',
+            'en': 'en',
+            'en-US': 'en',
+            'es': 'es',
+            'es-ES': 'es',
+            'ar': 'ar',
+            'hi': 'hi',
+            'ja': 'ja',
+            'ru': 'ru'
+        };
 
-        /**
-         * Carregar arquivo de tradução
-         * @param {string} locale - Código do idioma
-         * @returns {Promise} Promise com traduções
-         */
-        async loadTranslations(locale) {
-            // Verificar se já está carregando
-            if (this.loadingPromises.has(locale)) {
-                return this.loadingPromises.get(locale);
+        return localeMap[browserLang] || localeMap[browserLang.split('-')[0]] || 'pt-BR';
+    }
+
+    async loadTranslations(locale) {
+        try {
+            console.log(`🌍 Carregando traduções: ${locale}`);
+
+            const response = await fetch(`./locales/${locale}.json`);
+
+            if (!response.ok) {
+                throw new Error(`Erro ao carregar ${locale}.json: ${response.status}`);
             }
 
-            // Verificar cache
-            const cached = this.getFromCache(locale);
-            if (cached) {
-                this.log(`📦 Traduções carregadas do cache: ${locale}`);
-                this.translations[locale] = cached;
-                return cached;
+            const data = await response.json();
+
+            if (!data.translations) {
+                throw new Error(`Arquivo ${locale}.json não contém campo "translations"`);
             }
 
-            // Carregar arquivo
-            const promise = this._fetchTranslations(locale);
-            this.loadingPromises.set(locale, promise);
-
-            try {
-                const translations = await promise;
-                this.translations[locale] = translations;
-                this.saveToCache(locale, translations);
-                this.log(`✅ Traduções carregadas: ${locale}`);
-                return translations;
-            } catch (error) {
-                this.error(`❌ Erro ao carregar traduções ${locale}:`, error);
-
-                // Tentar fallback
-                if (locale !== CONFIG.fallbackLocale) {
-                    this.log(`🔄 Tentando fallback: ${CONFIG.fallbackLocale}`);
-                    return this.loadTranslations(CONFIG.fallbackLocale);
-                }
-
-                throw error;
-            } finally {
-                this.loadingPromises.delete(locale);
-            }
-        }
-
-        /**
-         * Buscar arquivo de tradução
-         * @private
-         */
-        async _fetchTranslations(locale) {
-            const url = `${CONFIG.translationsPath}${locale}.json`;
-
-            try {
-                const response = await fetch(url);
-
-                if (!response.ok) {
-                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-                }
-
-                const data = await response.json();
-                return data;
-            } catch (error) {
-                throw new Error(`Falha ao carregar ${url}: ${error.message}`);
-            }
-        }
-
-        /**
-         * Obter tradução do cache
-         * @private
-         */
-        getFromCache(locale) {
-            const cached = this.cache.get(locale);
-            if (!cached) return null;
-
-            const now = Date.now();
-            if (now - cached.timestamp > CONFIG.cacheExpiration) {
-                this.cache.delete(locale);
-                return null;
-            }
-
-            return cached.data;
-        }
-
-        /**
-         * Salvar tradução no cache
-         * @private
-         */
-        saveToCache(locale, data) {
-            this.cache.set(locale, {
-                data: data,
-                timestamp: Date.now()
-            });
-        }
-
-        /**
-         * Obter valor aninhado de objeto
-         * Ex: get(obj, 'user.name.first')
-         * @private
-         */
-        _getNestedValue(obj, path) {
-            return path.split('.').reduce((current, key) => {
-                return current?.[key];
-            }, obj);
-        }
-
-        /**
-         * Traduzir chave
-         * @param {string} key - Chave de tradução (ex: 'nav.home')
-         * @param {object} params - Parâmetros para interpolação
-         * @param {string} locale - Idioma (opcional)
-         * @returns {string} Texto traduzido
-         */
-        t(key, params = {}, locale = null) {
-            locale = locale || this.currentLocale;
-
-            // Obter traduções do idioma
-            const translations = this.translations[locale];
-            if (!translations) {
-                this.warn(`⚠️ Traduções não carregadas para: ${locale}`);
-                return key;
-            }
-
-            // Buscar tradução
-            let translation = this._getNestedValue(translations, key);
-
-            // Fallback para idioma padrão
-            if (translation === undefined && locale !== CONFIG.fallbackLocale) {
-                const fallbackTranslations = this.translations[CONFIG.fallbackLocale];
-                if (fallbackTranslations) {
-                    translation = this._getNestedValue(fallbackTranslations, key);
-                    if (translation !== undefined) {
-                        this.log(`🔄 Usando fallback para: ${key}`);
-                    }
-                }
-            }
-
-            // Se não encontrar, retornar chave
-            if (translation === undefined) {
-                this.warn(`⚠️ Tradução não encontrada: ${key} (${locale})`);
-                return key;
-            }
-
-            // Interpolação de variáveis
-            if (Object.keys(params).length > 0) {
-                translation = this._interpolate(translation, params);
-            }
-
-            return translation;
-        }
-
-        /**
-         * Interpolar variáveis no texto
-         * Ex: "Olá {{name}}" com {name: "João"} → "Olá João"
-         * @private
-         */
-        _interpolate(text, params) {
-            return text.replace(/\{\{(\w+)\}\}/g, (match, key) => {
-                return params[key] !== undefined ? params[key] : match;
-            });
-        }
-
-        /**
-         * Traduzir com pluralização
-         * @param {string} key - Chave base (ex: 'items')
-         * @param {number} count - Quantidade
-         * @param {object} params - Parâmetros adicionais
-         * @returns {string} Texto traduzido com plural correto
-         */
-        tp(key, count, params = {}) {
-            const pluralKey = this._getPluralKey(key, count);
-            return this.t(pluralKey, { ...params, count }, this.currentLocale);
-        }
-
-        /**
-         * Determinar chave de plural baseado na quantidade
-         * @private
-         */
-        _getPluralKey(key, count) {
-            // Regras de pluralização simplificadas
-            // Para idiomas mais complexos, usar biblioteca como 'intl-pluralrules'
-
-            if (count === 0) {
-                return `${key}.zero`;
-            } else if (count === 1) {
-                return `${key}.one`;
-            } else {
-                return `${key}.other`;
-            }
-        }
-
-        /**
-         * Traduzir todos os elementos com data-i18n
-         */
-        translatePage() {
-            const elements = document.querySelectorAll('[data-i18n]');
-
-            elements.forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (!key) return;
-
-                // Obter parâmetros adicionais se houver
-                const paramsAttr = element.getAttribute('data-i18n-params');
-                const params = paramsAttr ? JSON.parse(paramsAttr) : {};
-
-                // Traduzir
-                const translation = this.t(key, params);
-
-                // Aplicar tradução ao elemento apropriado
-                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                    const placeholder = element.getAttribute('data-i18n-placeholder');
-                    if (placeholder) {
-                        element.placeholder = this.t(placeholder);
-                    }
-
-                    const ariaLabel = element.getAttribute('data-i18n-aria');
-                    if (ariaLabel) {
-                        element.setAttribute('aria-label', this.t(ariaLabel));
-                    }
-                } else if (element.tagName === 'IMG') {
-                    element.alt = translation;
-                } else {
-                    // Preservar elementos HTML internos se necessário
-                    if (element.children.length === 0) {
-                        element.textContent = translation;
-                    } else {
-                        // Substituir apenas texto direto
-                        const textNode = Array.from(element.childNodes)
-                            .find(node => node.nodeType === Node.TEXT_NODE);
-                        if (textNode) {
-                            textNode.textContent = translation;
-                        }
-                    }
-                }
-            });
-
-            // Traduzir placeholders separados
-            const placeholders = document.querySelectorAll('[data-i18n-placeholder]');
-            placeholders.forEach(element => {
-                const key = element.getAttribute('data-i18n-placeholder');
-                element.placeholder = this.t(key);
-            });
-
-            // Traduzir títulos (title attribute)
-            const titles = document.querySelectorAll('[data-i18n-title]');
-            titles.forEach(element => {
-                const key = element.getAttribute('data-i18n-title');
-                element.title = this.t(key);
-            });
-
-            // Traduzir aria-label
-            const ariaLabels = document.querySelectorAll('[data-i18n-aria]');
-            ariaLabels.forEach(element => {
-                const key = element.getAttribute('data-i18n-aria');
-                element.setAttribute('aria-label', this.t(key));
-            });
-
-            this.log(`✅ Página traduzida: ${elements.length} elementos`);
-        }
-
-        /**
-         * Mudar idioma atual
-         * @param {string} locale - Código do idioma
-         * @returns {Promise} Promise que resolve quando tradução estiver aplicada
-         */
-        async changeLocale(locale) {
-            if (this.currentLocale === locale) {
-                this.log(`ℹ️ Idioma já está definido como: ${locale}`);
-                return;
-            }
-
-            this.log(`🌍 Mudando idioma: ${this.currentLocale} → ${locale}`);
-
-            try {
-                // Carregar traduções se necessário
-                if (!this.translations[locale]) {
-                    await this.loadTranslations(locale);
-                }
-
-                // Atualizar idioma atual
-                const oldLocale = this.currentLocale;
-                this.currentLocale = locale;
-
-                // Traduzir página
-                this.translatePage();
-
-                // Notificar observadores
-                this._notifyObservers(locale, oldLocale);
-
-                // Disparar evento
-                const event = new CustomEvent('i18nchanged', {
-                    detail: {
-                        locale: locale,
-                        oldLocale: oldLocale
-                    }
-                });
-                window.dispatchEvent(event);
-
-                this.log(`✅ Idioma alterado para: ${locale}`);
-
-            } catch (error) {
-                this.error(`❌ Erro ao mudar idioma para ${locale}:`, error);
-                throw error;
-            }
-        }
-
-        /**
-         * Adicionar observador de mudança de idioma
-         * @param {Function} callback - Função a ser chamada
-         */
-        addObserver(callback) {
-            if (typeof callback === 'function') {
-                this.observers.push(callback);
-            }
-        }
-
-        /**
-         * Remover observador
-         * @param {Function} callback - Função a remover
-         */
-        removeObserver(callback) {
-            const index = this.observers.indexOf(callback);
-            if (index > -1) {
-                this.observers.splice(index, 1);
-            }
-        }
-
-        /**
-         * Notificar observadores
-         * @private
-         */
-        _notifyObservers(newLocale, oldLocale) {
-            this.observers.forEach(callback => {
-                try {
-                    callback(newLocale, oldLocale);
-                } catch (error) {
-                    this.error('Erro em observador i18n:', error);
-                }
-            });
-        }
-
-        /**
-         * Obter idioma atual
-         * @returns {string} Código do idioma atual
-         */
-        getLocale() {
-            return this.currentLocale;
-        }
-
-        /**
-         * Verificar se idioma está carregado
-         * @param {string} locale - Código do idioma
-         * @returns {boolean}
-         */
-        isLoaded(locale) {
-            return this.translations[locale] !== undefined;
-        }
-
-        /**
-         * Limpar cache
-         */
-        clearCache() {
-            this.cache.clear();
-            this.log('🧹 Cache de traduções limpo');
-        }
-
-        /**
-         * Inicializar i18n
-         * @param {string} locale - Idioma inicial
-         * @returns {Promise}
-         */
-        async init(locale = null) {
-            this.log('🚀 Inicializando i18n...');
-
-            // Usar idioma detectado ou padrão
-            locale = locale || window.getLocale?.() || CONFIG.defaultLocale;
+            this.translations = data.translations;
             this.currentLocale = locale;
+            this.isLoaded = true; // ← IMPORTANTE!
 
-            try {
-                // Carregar traduções do idioma inicial
-                await this.loadTranslations(locale);
+            // Salvar preferência
+            localStorage.setItem('preferredLocale', locale);
 
-                // Carregar fallback em paralelo
-                if (locale !== CONFIG.fallbackLocale) {
-                    this.loadTranslations(CONFIG.fallbackLocale).catch(err => {
-                        this.warn('Aviso ao carregar idioma fallback:', err);
-                    });
-                }
+            // Atualizar atributos HTML
+            document.documentElement.setAttribute('lang', locale);
+            document.documentElement.setAttribute('dir', data.direction || 'ltr');
 
-                // Traduzir página
-                this.translatePage();
+            // Limpar cache
+            this.translationCache.clear();
 
-                this.log('✅ i18n inicializado com sucesso');
-                this.log('📍 Idioma atual:', locale);
+            console.log(`✅ Traduções carregadas: ${locale} (isLoaded = true)`);
 
-            } catch (error) {
-                this.error('❌ Erro ao inicializar i18n:', error);
-                throw error;
+            // Notificar observers
+            this.notifyObservers();
+
+            return true;
+
+        } catch (error) {
+            console.error(`❌ Erro ao carregar traduções:`, error);
+
+            // Fallback para pt-BR
+            if (locale !== 'pt-BR') {
+                console.warn('⚠️ Tentando fallback para pt-BR...');
+                return await this.loadTranslations('pt-BR');
             }
-        }
 
-        /**
-         * Logging condicional
-         * @private
-         */
-        log(...args) {
-            if (CONFIG.debug) {
-                console.log('[i18n]', ...args);
-            }
-        }
-
-        warn(...args) {
-            if (CONFIG.debug) {
-                console.warn('[i18n]', ...args);
-            }
-        }
-
-        error(...args) {
-            console.error('[i18n]', ...args);
+            return false;
         }
     }
 
-    // ============================================
-    // INICIALIZAÇÃO
-    // ============================================
-
-    // Criar instância global
-    window.i18n = new I18n();
-
-    // Aguardar LocaleDetector e inicializar
-    window.addEventListener('localedetected', async (event) => {
-        const detectedLocale = event.detail.locale;
-
-        try {
-            await window.i18n.init(detectedLocale);
-
-            // Disparar evento de inicialização completa
-            const readyEvent = new CustomEvent('i18nready', {
-                detail: { locale: detectedLocale }
-            });
-            window.dispatchEvent(readyEvent);
-
-        } catch (error) {
-            console.error('Erro fatal ao inicializar i18n:', error);
+    t(key, params = {}) {
+        if (!this.isLoaded) {
+            console.warn(`⚠️ Traduções não carregadas ainda. Chave: ${key}`);
+            return key;
         }
-    });
 
-    // ============================================
-    // API GLOBAL SIMPLIFICADA
-    // ============================================
+        // Verificar cache
+        const cacheKey = `${key}-${JSON.stringify(params)}`;
+        if (this.translationCache.has(cacheKey)) {
+            return this.translationCache.get(cacheKey);
+        }
 
-    /**
-     * Função global de tradução (atalho)
-     * @param {string} key - Chave de tradução
-     * @param {object} params - Parâmetros
-     * @returns {string} Texto traduzido
-     */
-    window.t = function (key, params) {
-        return window.i18n.t(key, params);
-    };
+        // Navegar pelo objeto de traduções
+        const keys = key.split('.');
+        let value = this.translations;
 
-    /**
-     * Tradução com plural
-     */
-    window.tp = function (key, count, params) {
-        return window.i18n.tp(key, count, params);
-    };
+        for (const k of keys) {
+            if (value && typeof value === 'object' && k in value) {
+                value = value[k];
+            } else {
+                console.warn(`⚠️ Chave de tradução não encontrada: ${key}`);
+                return key;
+            }
+        }
 
-    /**
-     * Observador de mudança de idioma
-     */
-    window.onLocaleChange = function (callback) {
-        window.i18n.addObserver(callback);
-    };
+        // Se chegou aqui, value contém a tradução
+        if (typeof value !== 'string') {
+            console.warn(`⚠️ Tradução não é string: ${key}`, value);
+            return key;
+        }
 
-    // Log de carregamento
-    console.log('✅ i18n carregado e pronto');
-    console.log('📦 API global disponível:', {
-        i18n: 'window.i18n',
-        t: 'window.t(key, params)',
-        tp: 'window.tp(key, count, params)',
-        onLocaleChange: 'window.onLocaleChange(callback)'
-    });
+        // Substituir parâmetros {{param}}
+        let result = value;
+        for (const [param, paramValue] of Object.entries(params)) {
+            const regex = new RegExp(`\\{\\{${param}\\}\\}`, 'g');
+            result = result.replace(regex, paramValue);
+        }
 
-})();
+        // Adicionar ao cache
+        this.translationCache.set(cacheKey, result);
+
+        return result;
+    }
+
+    applyTranslations() {
+        if (!this.isLoaded) {
+            console.warn('⚠️ Tentando aplicar traduções antes do carregamento');
+            return;
+        }
+
+        console.log('🔄 Aplicando traduções no DOM...');
+
+        // Elementos com data-i18n
+        const elements = document.querySelectorAll('[data-i18n]');
+
+        elements.forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            const translation = this.t(key);
+
+            // Aplicar tradução
+            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                element.placeholder = translation;
+            } else {
+                element.textContent = translation;
+            }
+        });
+
+        // Elementos com data-i18n-placeholder
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+            const key = element.getAttribute('data-i18n-placeholder');
+            element.placeholder = this.t(key);
+        });
+
+        // Elementos com data-i18n-title
+        document.querySelectorAll('[data-i18n-title]').forEach(element => {
+            const key = element.getAttribute('data-i18n-title');
+            element.title = this.t(key);
+        });
+
+        // Elementos com data-i18n-aria-label
+        document.querySelectorAll('[data-i18n-aria-label]').forEach(element => {
+            const key = element.getAttribute('data-i18n-aria-label');
+            element.setAttribute('aria-label', this.t(key));
+        });
+
+        // Elementos com data-i18n-alt
+        document.querySelectorAll('[data-i18n-alt]').forEach(element => {
+            const key = element.getAttribute('data-i18n-alt');
+            element.alt = this.t(key);
+        });
+
+        console.log(`✅ Traduções aplicadas: ${elements.length} elementos`);
+    }
+
+    async changeLocale(locale) {
+        console.log(`🔄 Mudando idioma para: ${locale}`);
+
+        const success = await this.loadTranslations(locale);
+
+        if (success) {
+            this.applyTranslations();
+            this.announceLocaleChange(locale);
+            return true;
+        }
+
+        return false;
+    }
+
+    announceLocaleChange(locale) {
+        const announcement = this.t('announcements.languageChanged', { language: locale });
+
+        let liveRegion = document.getElementById('i18n-announcer');
+        if (!liveRegion) {
+            liveRegion = document.createElement('div');
+            liveRegion.id = 'i18n-announcer';
+            liveRegion.setAttribute('role', 'status');
+            liveRegion.setAttribute('aria-live', 'polite');
+            liveRegion.setAttribute('aria-atomic', 'true');
+            liveRegion.className = 'sr-only';
+            document.body.appendChild(liveRegion);
+        }
+
+        liveRegion.textContent = announcement;
+    }
+
+    formatDate(date, options = {}) {
+        const locale = this.currentLocale;
+        const dateObj = typeof date === 'string' ? new Date(date) : date;
+
+        const defaultOptions = {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        };
+
+        return new Intl.DateTimeFormat(locale, { ...defaultOptions, ...options }).format(dateObj);
+    }
+
+    formatNumber(number, options = {}) {
+        return new Intl.NumberFormat(this.currentLocale, options).format(number);
+    }
+
+    formatCurrency(amount, currency = 'BRL', options = {}) {
+        const defaultOptions = {
+            style: 'currency',
+            currency: currency
+        };
+
+        return new Intl.NumberFormat(this.currentLocale, { ...defaultOptions, ...options }).format(amount);
+    }
+
+    relativeTime(date) {
+        const now = new Date();
+        const past = typeof date === 'string' ? new Date(date) : date;
+        const diffInSeconds = Math.floor((now - past) / 1000);
+
+        if (diffInSeconds < 60) {
+            return this.t('time.justNow');
+        }
+
+        const diffInMinutes = Math.floor(diffInSeconds / 60);
+        if (diffInMinutes < 60) {
+            return this.t('time.minutesAgo.other', { count: diffInMinutes });
+        }
+
+        const diffInHours = Math.floor(diffInMinutes / 60);
+        if (diffInHours < 24) {
+            return this.t('time.hoursAgo.other', { count: diffInHours });
+        }
+
+        const diffInDays = Math.floor(diffInHours / 24);
+        if (diffInDays < 7) {
+            return this.t('time.daysAgo.other', { count: diffInDays });
+        }
+
+        const diffInWeeks = Math.floor(diffInDays / 7);
+        if (diffInWeeks < 4) {
+            return this.t('time.weeksAgo.other', { count: diffInWeeks });
+        }
+
+        const diffInMonths = Math.floor(diffInDays / 30);
+        if (diffInMonths < 12) {
+            return this.t('time.monthsAgo.other', { count: diffInMonths });
+        }
+
+        const diffInYears = Math.floor(diffInDays / 365);
+        return this.t('time.yearsAgo.other', { count: diffInYears });
+    }
+
+    subscribe(callback) {
+        this.observers.push(callback);
+    }
+
+    notifyObservers() {
+        this.observers.forEach(callback => callback(this.currentLocale));
+    }
+
+    getDirection() {
+        const rtlLocales = ['ar', 'he', 'fa', 'ur'];
+        return rtlLocales.includes(this.currentLocale) ? 'rtl' : 'ltr';
+    }
+}
+
+// ============================================
+// INICIALIZAÇÃO
+// ============================================
+
+// Criar instância global IMEDIATAMENTE
+const i18n = new I18n();
+window.i18n = i18n; // ← Expor ANTES do DOMContentLoaded
+window.t = (key, params) => i18n.t(key, params);
+
+console.log('📦 Módulo i18n carregado');
+console.log('🔗 window.i18n disponível (isLoaded:', i18n.isLoaded, ')');
+
+// Carregar traduções quando DOM estiver pronto
+document.addEventListener('DOMContentLoaded', async () => {
+    console.log('🌍 Inicializando sistema i18n...');
+
+    const success = await i18n.loadTranslations(i18n.currentLocale);
+
+    if (success) {
+        i18n.applyTranslations();
+        console.log('✅ Sistema i18n inicializado (isLoaded = true)');
+    } else {
+        console.error('❌ Falha ao inicializar sistema i18n');
+    }
+});
