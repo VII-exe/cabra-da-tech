@@ -1,13 +1,4 @@
-/**
- * ============================================
- * OPENDYSLEXIC - Fonte de Acessibilidade
- * ============================================
- * 
- * Garante que a fonte OpenDyslexic não seja sobrescrita
- * USANDO FONTES LOCAIS
- */
 
-/* Importar OpenDyslexic LOCAL */
 @font-face {
     font-family: 'OpenDyslexic';
     src: url('../fonts/OpenDyslexic/OpenDyslexic-Regular.woff2') format('woff2');

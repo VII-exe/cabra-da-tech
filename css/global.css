@@ -25,19 +25,16 @@ body {
     min-height: 100vh;
 }
 
-/* Remove estilos de lista padrão */
 ul,
 ol {
     list-style: none;
 }
 
-/* Remove decoração de links */
 a {
     text-decoration: none;
     color: inherit;
 }
 
-/* Imagens responsivas por padrão */
 img,
 picture,
 video,
@@ -48,7 +45,6 @@ svg {
     height: auto;
 }
 
-/* Herança de fontes em form elements */
 input,
 button,
 textarea,
@@ -57,44 +53,26 @@ select {
     color: inherit;
 }
 
-/* Remove appearance padrão de buttons */
 button {
     background: none;
     border: none;
     cursor: pointer;
 }
 
-/* Remove spinner de inputs numéricos */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
 
-/* ============================================
-    2. VARIÁVEIS CSS (Custom Properties)
-   ============================================ */
-
 :root {
-    /* ========================================
-        CORES - Identidade Cabra da Tech
-       ======================================== */
-
-    /* Cores Principais */
     --cabra-terra: #8B4513;
-    /* Marrom terra */
     --cabra-ceu: #1E90FF;
-    /* Azul céu sertão */
     --cabra-sol: #FFD700;
-    /* Amarelo sol */
     --cabra-verde: #228B22;
-    /* Verde caatinga */
     --cabra-escuro: #2C1810;
-    /* Marrom escuro */
     --cabra-claro: #F5F5DC;
-    /* Bege claro */
 
-    /* Cores Semânticas */
     --cor-primaria: var(--cabra-ceu);
     --cor-secundaria: var(--cabra-terra);
     --cor-destaque: var(--cabra-sol);
@@ -103,32 +81,21 @@ input[type="number"]::-webkit-outer-spin-button {
     --cor-alerta: #FFC107;
     --cor-info: #17A2B8;
 
-    /* Cores de Texto */
     --cor-texto: #1A1A1A;
     --cor-texto-secundario: #4A4A4A;
     --cor-texto-claro: #FFFFFF;
 
-    /* Cores de Fundo */
     --cor-fundo: #FFFFFF;
     --cor-fundo-secundario: #F8F9FA;
     --cor-fundo-escuro: #212529;
 
-    /* Cores de Borda */
     --cor-borda: #DEE2E6;
     --cor-borda-escura: #ADB5BD;
 
-    /* ========================================
-        MODO ALTO CONTRASTE
-       ======================================== */
     --cor-fundo-alto-contraste: #000000;
     --cor-texto-alto-contraste: #FFFF00;
     --cor-link-alto-contraste: #00FFFF;
 
-    /* ========================================
-        FONTES
-       ======================================== */
-
-    /* Pilha de Fontes Base (System Fonts) */
     --fonte-base:
         -apple-system,
         BlinkMacSystemFont,
@@ -143,16 +110,10 @@ input[type="number"]::-webkit-outer-spin-button {
         "Segoe UI Symbol",
         "Noto Color Emoji";
 
-    /* Fonte específica do idioma (injetada via JS na V4) */
     --fonte-idioma: var(--fonte-base);
-
-    /* Fonte para dislexia */
     --fonte-dislexia: "OpenDyslexic", var(--fonte-base);
-
-    /* Fonte principal (cascata) */
     --fonte-principal: var(--fonte-idioma), var(--fonte-base);
 
-    /* Fonte monoespaçada (código) */
     --fonte-mono:
         ui-monospace,
         "Cascadia Code",
@@ -162,73 +123,36 @@ input[type="number"]::-webkit-outer-spin-button {
         "DejaVu Sans Mono",
         monospace;
 
-    /* ========================================
-        TAMANHOS DE FONTE
-       ======================================== */
     --fonte-xs: 1.2rem;
-    /* 12px */
     --fonte-sm: 1.4rem;
-    /* 14px */
     --fonte-base: 1.6rem;
-    /* 16px */
     --fonte-md: 1.8rem;
-    /* 18px */
     --fonte-lg: 2rem;
-    /* 20px */
     --fonte-xl: 2.4rem;
-    /* 24px */
     --fonte-2xl: 3rem;
-    /* 30px */
     --fonte-3xl: 3.6rem;
-    /* 36px */
     --fonte-4xl: 4.8rem;
-    /* 48px */
 
-    /* ========================================
-        ESPAÇAMENTOS
-       ======================================== */
     --espaco-xs: 0.4rem;
-    /* 4px */
     --espaco-sm: 0.8rem;
-    /* 8px */
     --espaco-md: 1.6rem;
-    /* 16px */
     --espaco-lg: 2.4rem;
-    /* 24px */
     --espaco-xl: 3.2rem;
-    /* 32px */
     --espaco-2xl: 4.8rem;
-    /* 48px */
     --espaco-3xl: 6.4rem;
-    /* 64px */
     --espaco-4xl: 9.6rem;
-    /* 96px */
 
-    /* ========================================
-        RAIOS DE BORDA (Border Radius)
-       ======================================== */
     --raio-sm: 0.4rem;
-    /* 4px */
     --raio-md: 0.8rem;
-    /* 8px */
     --raio-lg: 1.2rem;
-    /* 12px */
     --raio-xl: 1.6rem;
-    /* 16px */
     --raio-full: 9999px;
-    /* Círculo/pílula */
 
-    /* ========================================
-        SOMBRAS
-       ======================================== */
     --sombra-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --sombra-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     --sombra-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     --sombra-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 
-    /* ========================================
-        Z-INDEX (Camadas)
-       ======================================== */
     --z-base: 0;
     --z-dropdown: 100;
     --z-sticky: 200;
@@ -238,25 +162,16 @@ input[type="number"]::-webkit-outer-spin-button {
     --z-popover: 600;
     --z-tooltip: 700;
 
-    /* ========================================
-        TRANSIÇÕES
-       ======================================== */
     --transicao-rapida: 150ms ease-in-out;
     --transicao-normal: 250ms ease-in-out;
     --transicao-lenta: 350ms ease-in-out;
 
-    /* ========================================
-        BREAKPOINTS (para uso em JS)
-       ======================================== */
     --bp-sm: 640px;
     --bp-md: 768px;
     --bp-lg: 1024px;
     --bp-xl: 1280px;
     --bp-2xl: 1536px;
 
-    /* ========================================
-        LARGURAS MÁXIMAS
-       ======================================== */
     --largura-sm: 640px;
     --largura-md: 768px;
     --largura-lg: 1024px;
@@ -264,18 +179,9 @@ input[type="number"]::-webkit-outer-spin-button {
     --largura-2xl: 1536px;
     --largura-completa: 100%;
 
-    /* ========================================
-        CONTRASTE (WCAG AA)
-       ======================================== */
     --razao-contraste-minimo: 4.5;
-    /* AA para texto normal */
     --razao-contraste-grande: 3.0;
-    /* AA para texto grande */
 }
-
-/* ============================================
-    3. ESTILOS BASE
-   ============================================ */
 
 body {
     font-family: var(--fonte-principal);
@@ -287,10 +193,6 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-
-/* ========================================
-    TIPOGRAFIA
-   ======================================== */
 
 h1,
 h2,
@@ -370,10 +272,6 @@ pre {
     margin-bottom: var(--espaco-md);
 }
 
-/* ========================================
-    LINKS
-   ======================================== */
-
 a {
     color: var(--cor-primaria);
     text-decoration: underline;
@@ -390,14 +288,9 @@ a:focus {
     border-radius: var(--raio-sm);
 }
 
-/* Links sem sublinhado em navegação */
 nav a {
     text-decoration: none;
 }
-
-/* ========================================
-    LISTAS
-   ======================================== */
 
 ul[role="list"],
 ol[role="list"] {
@@ -414,10 +307,6 @@ li {
     margin-bottom: var(--espaco-sm);
 }
 
-/* ========================================
-    CONTAINERS
-   ======================================== */
-
 .container {
     width: 100%;
     max-width: var(--largura-xl);
@@ -429,14 +318,6 @@ li {
     width: 100%;
     padding: 0 var(--espaco-md);
 }
-
-/* ============================================
-    4. CLASSES UTILITÁRIAS DE ACESSIBILIDADE
-   ============================================ */
-
-/* ========================================
-    SKIP LINKS (WCAG 2.4.1)
-   ======================================== */
 
 .skip-link {
     position: absolute;
@@ -456,10 +337,6 @@ li {
     left: var(--espaco-md);
 }
 
-/* ========================================
-    SCREEN READER ONLY (sr-only)
-   ======================================== */
-
 .sr-only {
     position: absolute;
     width: 1px;
@@ -472,7 +349,6 @@ li {
     border-width: 0;
 }
 
-/* Visível ao receber foco */
 .sr-only-focusable:focus,
 .sr-only-focusable:active {
     position: static;
@@ -482,10 +358,6 @@ li {
     clip: auto;
     white-space: normal;
 }
-
-/* ========================================
-    FOCO VISÍVEL (WCAG 2.4.7)
-   ======================================== */
 
 *:focus {
     outline: 2px solid var(--cor-primaria);
@@ -501,10 +373,6 @@ li {
     outline-offset: 2px;
 }
 
-/* ============================================
-    5. MODO DISLEXIA
-   ============================================ */
-
 body.modo-dislexia {
     font-family: var(--fonte-dislexia) !important;
     letter-spacing: 0.12em;
@@ -515,10 +383,6 @@ body.modo-dislexia {
 body.modo-dislexia * {
     font-family: var(--fonte-dislexia) !important;
 }
-
-/* ============================================
-    6. MODO ALTO CONTRASTE
-   ============================================ */
 
 body.alto-contraste {
     background-color: var(--cor-fundo-alto-contraste) !important;
@@ -542,13 +406,8 @@ body.alto-contraste svg {
     filter: contrast(1.2) brightness(1.1);
 }
 
-/* ============================================
-    7. AJUSTE DE TAMANHO DE FONTE (eMAG)
-   ============================================ */
-
 body.fonte-maior {
     font-size: 1.8rem;
-    /* +12.5% */
 }
 
 body.fonte-maior h1 {
@@ -565,7 +424,6 @@ body.fonte-maior h3 {
 
 body.fonte-menor {
     font-size: 1.4rem;
-    /* -12.5% */
 }
 
 body.fonte-menor h1 {
@@ -580,56 +438,9 @@ body.fonte-menor h3 {
     font-size: 2.625rem;
 }
 
-/* ============================================
-    8. SUPORTE RTL (Right-to-Left) - i18n
-   ============================================ */
-
-[dir="rtl"] {
-    direction: rtl;
-    text-align: right;
-}
-
-[dir="rtl"] ul,
-[dir="rtl"] ol {
-    padding-right: var(--espaco-xl);
-    padding-left: 0;
-}
-
-/* ============================================
-    9. AJUSTES POR IDIOMA (i18n)
-   ============================================ */
-
-/* Japonês, Chinês, Coreano (CJK) */
-:lang(ja),
-:lang(zh),
-:lang(ko) {
-    letter-spacing: 0.05em;
-    line-height: 1.8;
-    word-break: break-all;
-}
-
-/* Árabe */
-:lang(ar) {
-    line-height: 1.8;
-    text-align: right;
-}
-
-/* Hindi/Devanagari */
-:lang(hi) {
-    line-height: 1.7;
-}
-
-/* ============================================
-    10. RESPONSIVIDADE BASE
-   ============================================ */
-
-/* Mobile First - Base já é mobile */
-
-/* Tablet (768px+) */
 @media (min-width: 768px) {
     html {
         font-size: 65%;
-        /* 1rem = 10.4px */
     }
 
     .container {
@@ -637,27 +448,18 @@ body.fonte-menor h3 {
     }
 }
 
-/* Desktop (1024px+) */
 @media (min-width: 1024px) {
     html {
         font-size: 68.75%;
-        /* 1rem = 11px */
     }
 }
 
-/* Large Desktop (1280px+) */
 @media (min-width: 1280px) {
     html {
         font-size: 70%;
-        /* 1rem = 11.2px */
     }
 }
 
-/* ============================================
-    11. PREFERÊNCIAS DO SISTEMA
-   ============================================ */
-
-/* Respeitar preferência de movimento reduzido */
 @media (prefers-reduced-motion: reduce) {
 
     *,
@@ -670,7 +472,6 @@ body.fonte-menor h3 {
     }
 }
 
-/* Respeitar preferência de contraste */
 @media (prefers-contrast: high) {
     :root {
         --cor-texto: #000000;
@@ -679,14 +480,8 @@ body.fonte-menor h3 {
     }
 }
 
-/* Modo escuro automático (se usuário preferir) */
 @media (prefers-color-scheme: dark) {
-    /* Implementar tema escuro se desejado */
 }
-
-/* ============================================
-    12. PRINT STYLES
-   ============================================ */
 
 @media print {
 
@@ -718,7 +513,3 @@ body.fonte-menor h3 {
         page-break-after: avoid;
     }
 }
-
-/* ============================================
-    FIM DO CSS GLOBAL
-   ============================================ */
