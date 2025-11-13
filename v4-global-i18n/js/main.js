@@ -1,10 +1,9 @@
 /**
  * ============================================
- * MAIN.JS - Script Principal V4
+ * MAIN.JS - Script Principal V4 COMPLETO
  * ============================================
  * 
- * VERSÃO COM DEBUG MELHORADO
- * Identifica problemas com idiomas específicos
+ * COM RENDERIZAÇÃO DE SEÇÕES DE CATEGORIAS
  */
 
 // ============================================
@@ -15,7 +14,7 @@ class TranslationService {
     constructor() {
         this.apiUrl = 'https://translate.googleapis.com/translate_a/single';
         this.cache = new Map();
-        this.debugMode = true; // Debug ativado
+        this.debugMode = true;
         this.loadCache();
     }
 
@@ -52,21 +51,16 @@ class TranslationService {
         return `${targetLang}:${text.substring(0, 50)}`;
     }
 
-    /**
-     * Traduzir com DEBUG detalhado
-     */
     async translate(text, targetLang) {
         if (!text || text.trim() === '') {
             this.log('⚠️ Texto vazio');
             return text;
         }
 
-        // Não traduzir português
         if (targetLang === 'pt-BR' || targetLang === 'pt') {
             return text;
         }
 
-        // Mapear idiomas (CORRIGIDO)
         const langMap = {
             'pt-BR': 'pt',
             'pt': 'pt',
@@ -74,7 +68,7 @@ class TranslationService {
             'es': 'es',
             'ar': 'ar',
             'hi': 'hi',
-            'ja': 'ja',  // Japonês
+            'ja': 'ja',
             'ru': 'ru'
         };
 
@@ -87,16 +81,14 @@ class TranslationService {
 
         this.log(`🌐 Traduzindo para ${target}:`, text.substring(0, 50) + '...');
 
-        // Verificar cache
         const cacheKey = this.getCacheKey(text, target);
         if (this.cache.has(cacheKey)) {
             const cached = this.cache.get(cacheKey);
-            this.log(`📦 Cache HIT para ${target}:`, cached.substring(0, 50) + '...');
+            this.log(`📦 Cache HIT para ${target}`);
             return cached;
         }
 
         try {
-            // Construir URL
             const url = `${this.apiUrl}?client=gtx&sl=pt&tl=${target}&dt=t&q=${encodeURIComponent(text)}`;
 
             this.log(`📡 Fazendo requisição para ${target}...`);
@@ -109,9 +101,6 @@ class TranslationService {
 
             const data = await response.json();
 
-            this.log(`📥 Resposta da API para ${target}:`, data);
-
-            // Google Translate retorna array aninhado
             let translated = '';
 
             if (data && data[0]) {
@@ -124,13 +113,11 @@ class TranslationService {
 
             if (!translated || translated.trim() === '') {
                 console.warn(`⚠️ Tradução vazia para ${target}, usando original`);
-                console.warn('Resposta completa:', JSON.stringify(data));
                 return text;
             }
 
-            this.log(`✅ Traduzido para ${target}:`, translated.substring(0, 50) + '...');
+            this.log(`✅ Traduzido para ${target}`);
 
-            // Salvar no cache
             this.cache.set(cacheKey, translated);
             this.saveCache();
 
@@ -138,7 +125,6 @@ class TranslationService {
 
         } catch (error) {
             console.error(`❌ Erro ao traduzir para ${target}:`, error);
-            console.error('Texto original:', text);
             return text;
         }
     }
@@ -252,20 +238,12 @@ class NewsManager {
             for (let i = 0; i < this.news.length; i++) {
                 const noticia = this.news[i];
 
-                this.log(`📄 Notícia ${i + 1}/${this.news.length}: "${noticia.titulo.substring(0, 30)}..."`);
+                this.log(`📄 Notícia ${i + 1}/${this.news.length}`);
 
-                // Traduzir em paralelo
                 const [titulo, resumo] = await Promise.all([
                     this.translator.translate(noticia.titulo, this.currentLocale),
                     this.translator.translate(noticia.resumo, this.currentLocale)
                 ]);
-
-                this.log(`✅ Traduzido ${i + 1}:`, {
-                    tituloOriginal: noticia.titulo.substring(0, 30),
-                    tituloTraduzido: titulo.substring(0, 30),
-                    resumoOriginal: noticia.resumo.substring(0, 30),
-                    resumoTraduzido: resumo.substring(0, 30)
-                });
 
                 translated.push({
                     ...noticia,
@@ -302,6 +280,17 @@ class NewsManager {
             this.translatedNews = this.news;
         }
 
+        // Renderizar grid principal
+        this.renderMainGrid();
+
+        // Renderizar seções de categorias
+        this.renderCategorySection('tecnologia', 'Tecnologia');
+        this.renderCategorySection('educacao', 'Educação');
+
+        this.log('✅ Renderização completa');
+    }
+
+    renderMainGrid() {
         const container = document.querySelector('.noticias-grid');
         if (!container) {
             console.error('❌ Container .noticias-grid não encontrado');
@@ -313,15 +302,50 @@ class NewsManager {
         const newsToShow = this.translatedNews.slice(0, 6);
         container.innerHTML = newsToShow.map(news => this.createNewsCard(news)).join('');
 
-        this.log(`✅ ${newsToShow.length} notícias renderizadas`);
+        this.log(`✅ Grid principal: ${newsToShow.length} notícias`);
+    }
 
-        // Log da primeira notícia para debug
-        if (newsToShow.length > 0) {
-            this.log('📰 Primeira notícia renderizada:', {
-                titulo: newsToShow[0].titulo,
-                resumo: newsToShow[0].resumo.substring(0, 50)
-            });
+    renderCategorySection(sectionId, categoryName) {
+        const section = document.getElementById(sectionId);
+        if (!section) {
+            this.log(`⚠️ Seção #${sectionId} não encontrada`);
+            return;
         }
+
+        const container = section.querySelector('.noticias-lista, .noticias-grid');
+        if (!container) {
+            this.log(`⚠️ Container de notícias não encontrado em #${sectionId}`);
+            return;
+        }
+
+        // Filtrar notícias por categoria
+        const categoryNews = this.translatedNews.filter(noticia => {
+            if (!noticia.categoria) return false;
+
+            const cat = noticia.categoria.toLowerCase();
+            const search = categoryName.toLowerCase();
+
+            // Remover acentos para comparação
+            const normalize = (str) => str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+            return normalize(cat).includes(normalize(search));
+        });
+
+        if (categoryNews.length === 0) {
+            this.log(`⚠️ Nenhuma notícia encontrada para categoria: ${categoryName}`);
+            container.innerHTML = `
+                <div style="padding: 2rem; text-align: center; color: #718096;">
+                    <p>Nenhuma notícia disponível nesta categoria</p>
+                </div>
+            `;
+            return;
+        }
+
+        // Renderizar primeiras 3 notícias da categoria
+        const newsToShow = categoryNews.slice(0, 3);
+        container.innerHTML = newsToShow.map(news => this.createNewsCard(news)).join('');
+
+        this.log(`✅ Seção ${categoryName}: ${newsToShow.length} notícias`);
     }
 
     createNewsCard(noticia) {
@@ -444,15 +468,15 @@ class NewsManager {
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🚀 Inicializando V4 (Google Translate + DEBUG)...');
+    console.log('🚀 Inicializando V4 COMPLETO...');
 
     window.newsManager = new NewsManager();
     window.translator = window.newsManager.translator;
 
-    console.log('✅ Pronto! Modo DEBUG ativado');
+    console.log('✅ Pronto! Sistema completo carregado');
     console.log('💡 Comandos úteis:');
     console.log('   - window.translator.clearCache() // Limpar cache');
-    console.log('   - window.translator.translate("texto", "ja") // Testar japonês');
+    console.log('   - window.newsManager.render() // Re-renderizar');
 });
 
-console.log('📦 main.js carregado (DEBUG MODE)');
+console.log('📦 main.js carregado (VERSÃO COMPLETA)');
