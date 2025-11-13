@@ -1,0 +1,371 @@
+/**
+ * ============================================
+ * THEMES - Temas de Cores
+ * ============================================
+ * 
+ * Três temas:
+ * - Default (padrão claro)
+ * - Contrast (alto contraste)
+ * - Dark (modo escuro)
+ */
+
+/* ============================================
+   VARIÁVEIS CSS POR TEMA
+   ============================================ */
+
+/* TEMA PADRÃO (Light) */
+:root,
+[data-theme="default"],
+.theme-default {
+    /* Cores principais */
+    --color-primary: #667eea;
+    --color-primary-dark: #5568d3;
+    --color-primary-light: #7c94f5;
+
+    /* Backgrounds */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f7fafc;
+    --bg-tertiary: #edf2f7;
+    --bg-elevated: #ffffff;
+
+    /* Textos */
+    --text-primary: #1a202c;
+    --text-secondary: #4a5568;
+    --text-tertiary: #718096;
+    --text-muted: #a0aec0;
+
+    /* Bordas */
+    --border-color: #e2e8f0;
+    --border-color-light: #edf2f7;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+    /* Estados */
+    --color-success: #48bb78;
+    --color-error: #f56565;
+    --color-warning: #ed8936;
+    --color-info: #4299e1;
+
+    /* Links */
+    --link-color: #667eea;
+    --link-hover: #5568d3;
+}
+
+/* TEMA CONTRASTE */
+[data-theme="contrast"],
+.theme-contrast {
+    /* Cores principais - Alto contraste */
+    --color-primary: #0000ff;
+    --color-primary-dark: #0000cc;
+    --color-primary-light: #3333ff;
+
+    /* Backgrounds - Preto e branco */
+    --bg-primary: #ffffff;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #f0f0f0;
+    --bg-elevated: #ffffff;
+
+    /* Textos - Máximo contraste */
+    --text-primary: #000000;
+    --text-secondary: #000000;
+    --text-tertiary: #333333;
+    --text-muted: #666666;
+
+    /* Bordas - Muito visíveis */
+    --border-color: #000000;
+    --border-color-light: #333333;
+
+    /* Shadows - Removidas para clareza */
+    --shadow-sm: none;
+    --shadow-md: none;
+    --shadow-lg: none;
+
+    /* Estados - Cores vibrantes */
+    --color-success: #008000;
+    --color-error: #ff0000;
+    --color-warning: #ff6600;
+    --color-info: #0000ff;
+
+    /* Links - Sublinhados sempre */
+    --link-color: #0000ff;
+    --link-hover: #0000cc;
+}
+
+/* TEMA ESCURO (Dark) */
+[data-theme="dark"],
+.theme-dark {
+    /* Cores principais */
+    --color-primary: #7c94f5;
+    --color-primary-dark: #667eea;
+    --color-primary-light: #93a7f9;
+
+    /* Backgrounds - Escuros */
+    --bg-primary: #1a202c;
+    --bg-secondary: #2d3748;
+    --bg-tertiary: #4a5568;
+    --bg-elevated: #2d3748;
+
+    /* Textos - Claros */
+    --text-primary: #f7fafc;
+    --text-secondary: #e2e8f0;
+    --text-tertiary: #cbd5e0;
+    --text-muted: #a0aec0;
+
+    /* Bordas */
+    --border-color: #4a5568;
+    --border-color-light: #2d3748;
+
+    /* Shadows - Mais sutis */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+
+    /* Estados */
+    --color-success: #68d391;
+    --color-error: #fc8181;
+    --color-warning: #f6ad55;
+    --color-info: #63b3ed;
+
+    /* Links */
+    --link-color: #7c94f5;
+    --link-hover: #93a7f9;
+}
+
+/* ============================================
+   APLICAÇÃO DAS VARIÁVEIS
+   ============================================ */
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Backgrounds */
+.bg-secondary {
+    background-color: var(--bg-secondary);
+}
+
+.bg-tertiary {
+    background-color: var(--bg-tertiary);
+}
+
+/* Textos */
+.text-secondary {
+    color: var(--text-secondary);
+}
+
+.text-tertiary {
+    color: var(--text-tertiary);
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+/* Links */
+a {
+    color: var(--link-color);
+    transition: color 0.2s ease;
+}
+
+a:hover,
+a:focus {
+    color: var(--link-hover);
+}
+
+/* Bordas */
+.border {
+    border-color: var(--border-color);
+}
+
+/* Botões */
+button,
+.btn {
+    border-color: var(--border-color);
+    transition: all 0.2s ease;
+}
+
+button:hover,
+.btn:hover {
+    background-color: var(--bg-tertiary);
+}
+
+/* Cards e Containers */
+.card,
+.noticia-card,
+.news-card {
+    background-color: var(--bg-elevated);
+    border-color: var(--border-color);
+    box-shadow: var(--shadow-md);
+}
+
+/* Inputs */
+input,
+textarea,
+select {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--color-primary);
+}
+
+/* ============================================
+   AJUSTES ESPECÍFICOS POR TEMA
+   ============================================ */
+
+/* CONTRASTE - Ajustes especiais */
+[data-theme="contrast"] {
+    /* Fonte maior */
+    font-size: 18px;
+
+    /* Peso da fonte mais forte */
+    font-weight: 600;
+}
+
+[data-theme="contrast"] * {
+    /* Bordas mais grossas */
+    border-width: 2px;
+}
+
+[data-theme="contrast"] a {
+    /* Links sempre sublinhados */
+    text-decoration: underline !important;
+    font-weight: 700;
+}
+
+[data-theme="contrast"] button,
+[data-theme="contrast"] .btn {
+    /* Botões com bordas fortes */
+    border: 3px solid #000000 !important;
+    font-weight: 700;
+}
+
+[data-theme="contrast"] .noticia-card,
+[data-theme="contrast"] .card {
+    /* Cards com bordas muito visíveis */
+    border: 3px solid #000000;
+    box-shadow: none;
+}
+
+/* DARK - Ajustes especiais */
+[data-theme="dark"] img {
+    /* Reduzir brilho de imagens */
+    opacity: 0.9;
+    transition: opacity 0.2s ease;
+}
+
+[data-theme="dark"] img:hover {
+    opacity: 1;
+}
+
+[data-theme="dark"] code,
+[data-theme="dark"] pre {
+    background-color: #2d3748;
+    color: #e2e8f0;
+}
+
+/* ============================================
+   TRANSIÇÕES SUAVES
+   ============================================ */
+
+* {
+    transition: background-color 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+/* ============================================
+   BOTÕES DE TEMA (Visual)
+   ============================================ */
+
+[data-theme-button] {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 2px solid var(--border-color);
+    background-color: var(--bg-elevated);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+[data-theme-button]:hover {
+    background-color: var(--bg-tertiary);
+    border-color: var(--color-primary);
+}
+
+[data-theme-button].active {
+    background-color: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+[data-theme-button]:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* ============================================
+   ACESSIBILIDADE
+   ============================================ */
+
+/* Foco visível */
+*:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* Contraste - Foco extra visível */
+[data-theme="contrast"] *:focus {
+    outline: 4px solid #0000ff;
+    outline-offset: 4px;
+}
+
+/* Screen reader only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* ============================================
+   RESPONSIVIDADE
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* ============================================
+   PRINT (Impressão)
+   ============================================ */
+
+@media print {
+    :root {
+        --bg-primary: white;
+        --text-primary: black;
+    }
+
+    * {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+    }
+}

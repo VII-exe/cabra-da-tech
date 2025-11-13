@@ -1,11 +1,4 @@
-/* ============================================
-    CSS GLOBAL - CABRA DA TECH
-    Base compartilhada por todas as versões
-   ============================================ */
-
-/* ============================================
-    1. CSS RESET MODERNO
-   ============================================ */
+/* 1. CSS RESET MODERNO */
 
 *,
 *::before,
@@ -16,9 +9,7 @@
 }
 
 html {
-    /* Define 1rem = 10px para facilitar cálculos */
     font-size: 62.5%;
-    /* 10px */
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

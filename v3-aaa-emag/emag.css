@@ -1242,5 +1242,640 @@
 }
 
 /* ============================================
-   FIM DO CSS V3
+   TEMAS E ESPAÇAMENTOS - V3 AAA + eMAG
+   Complemento ao emag.css
+   Classes aplicadas por barra-acessibilidade.js
    ============================================ */
+
+/* ============================================
+   TEMA PADRÃO (Default)
+   Já está no emag.css via variáveis CSS
+   ============================================ */
+
+/* ============================================
+   TEMA ALTO CONTRASTE (High Contrast)
+   WCAG AAA - Contraste 21:1
+   ============================================ */
+body.tema-high-contrast {
+    /* Sobrescrever TODAS as variáveis */
+    --cor-fundo: #FFFFFF !important;
+    --cor-fundo-secundario: #FFFFFF !important;
+    --cor-texto: #000000 !important;
+    --cor-texto-secundario: #000000 !important;
+    --cor-texto-claro: #FFFFFF !important;
+    --cor-primaria: #0000FF !important;
+    --cor-borda: #000000 !important;
+    --cabra-verde: #008000 !important;
+    --cabra-escuro: #000000 !important;
+    --cabra-terra: #000000 !important;
+    --cabra-sol: #FFFF00 !important;
+    --cabra-ceu: #0000FF !important;
+    
+    /* Aplicar no body */
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+    font-weight: 600;
+}
+
+/* Forçar cores em todos os elementos */
+body.tema-high-contrast * {
+    color: #000000 !important;
+    background-color: transparent !important;
+}
+
+/* Exceções com fundo branco */
+body.tema-high-contrast .barra-acessibilidade,
+body.tema-high-contrast .noticia-card,
+body.tema-high-contrast .card-content,
+body.tema-high-contrast .article-summary,
+body.tema-high-contrast .article-extra,
+body.tema-high-contrast .author-box,
+body.tema-high-contrast .site-header,
+body.tema-high-contrast .breadcrumb {
+    background-color: #FFFFFF !important;
+}
+
+/* Links azuis e sublinhados */
+body.tema-high-contrast a {
+    color: #0000FF !important;
+    text-decoration: underline !important;
+    text-decoration-thickness: 2px !important;
+    font-weight: 700;
+}
+
+body.tema-high-contrast a:hover,
+body.tema-high-contrast a:focus {
+    color: #0000CC !important;
+    text-decoration: underline !important;
+}
+
+/* Botões com borda grossa */
+body.tema-high-contrast button,
+body.tema-high-contrast .btn,
+body.tema-high-contrast .btn-controle,
+body.tema-high-contrast .btn-primary,
+body.tema-high-contrast .share-btn,
+body.tema-high-contrast .tag,
+body.tema-high-contrast .menu-link {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+    border: 3px solid #000000 !important;
+    font-weight: 700;
+    text-decoration: none !important;
+}
+
+body.tema-high-contrast button:hover,
+body.tema-high-contrast .btn:hover,
+body.tema-high-contrast .btn-controle:hover,
+body.tema-high-contrast .share-btn:hover,
+body.tema-high-contrast .tag:hover,
+body.tema-high-contrast .menu-link:hover {
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
+}
+
+/* Botão ativo */
+body.tema-high-contrast button.active,
+body.tema-high-contrast .btn-controle.active,
+body.tema-high-contrast button[aria-pressed="true"],
+body.tema-high-contrast .btn-controle[aria-pressed="true"],
+body.tema-high-contrast .menu-link.active,
+body.tema-high-contrast .menu-link[aria-current="page"] {
+    background-color: #0000FF !important;
+    color: #FFFFFF !important;
+    border-color: #0000FF !important;
+}
+
+/* Cards e containers com bordas grossas */
+body.tema-high-contrast .noticia-card,
+body.tema-high-contrast .article-figure,
+body.tema-high-contrast .article-summary,
+body.tema-high-contrast .article-extra,
+body.tema-high-contrast .author-box,
+body.tema-high-contrast .alerta-versao {
+    border: 4px solid #000000 !important;
+    background-color: #FFFFFF !important;
+}
+
+/* Inputs */
+body.tema-high-contrast input,
+body.tema-high-contrast textarea,
+body.tema-high-contrast select {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+    border: 3px solid #000000 !important;
+}
+
+/* Imagens com borda */
+body.tema-high-contrast img {
+    border: 3px solid #000000;
+}
+
+/* Ícones visíveis */
+body.tema-high-contrast i {
+    color: #000000 !important;
+}
+
+/* Remover sombras */
+body.tema-high-contrast * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+/* Badges e categorias */
+body.tema-high-contrast .category-badge {
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
+    border: 3px solid #000000 !important;
+}
+
+/* ============================================
+   TEMA ESCURO (Dark Mode)
+   ============================================ */
+body.tema-dark {
+    /* Sobrescrever variáveis */
+    --cor-fundo: #1A202C !important;
+    --cor-fundo-secundario: #2D3748 !important;
+    --cor-texto: #F7FAFC !important;
+    --cor-texto-secundario: #E2E8F0 !important;
+    --cor-texto-claro: #F7FAFC !important;
+    --cor-primaria: #7C94F5 !important;
+    --cor-borda: #4A5568 !important;
+    --cabra-verde: #68D391 !important;
+    --cabra-escuro: #1A202C !important;
+    --cabra-terra: #A0522D !important;
+    --cabra-sol: #FFD700 !important;
+    --cabra-ceu: #87CEEB !important;
+    
+    background-color: #1A202C !important;
+    color: #F7FAFC !important;
+}
+
+/* Forçar cores claras */
+body.tema-dark,
+body.tema-dark * {
+    color: #F7FAFC !important;
+}
+
+/* Backgrounds escuros */
+body.tema-dark .barra-acessibilidade,
+body.tema-dark .site-header,
+body.tema-dark .breadcrumb,
+body.tema-dark .hero-section,
+body.tema-dark .noticias-section {
+    background-color: #1A202C !important;
+}
+
+body.tema-dark .noticia-card,
+body.tema-dark .card-content,
+body.tema-dark .article-summary,
+body.tema-dark .article-extra,
+body.tema-dark .author-box,
+body.tema-dark .alerta-versao {
+    background-color: #2D3748 !important;
+    border-color: #4A5568 !important;
+}
+
+/* Links */
+body.tema-dark a {
+    color: #7C94F5 !important;
+}
+
+body.tema-dark a:hover,
+body.tema-dark a:focus {
+    color: #93A7F9 !important;
+}
+
+/* Botões */
+body.tema-dark button,
+body.tema-dark .btn,
+body.tema-dark .btn-controle,
+body.tema-dark .share-btn,
+body.tema-dark .tag,
+body.tema-dark .menu-link {
+    background-color: #2D3748 !important;
+    color: #F7FAFC !important;
+    border-color: #4A5568 !important;
+}
+
+body.tema-dark button:hover,
+body.tema-dark .btn:hover,
+body.tema-dark .btn-controle:hover,
+body.tema-dark .share-btn:hover,
+body.tema-dark .tag:hover,
+body.tema-dark .menu-link:hover {
+    background-color: #4A5568 !important;
+}
+
+/* Botão ativo */
+body.tema-dark button.active,
+body.tema-dark .btn-controle.active,
+body.tema-dark button[aria-pressed="true"],
+body.tema-dark .btn-controle[aria-pressed="true"],
+body.tema-dark .menu-link.active,
+body.tema-dark .menu-link[aria-current="page"] {
+    background-color: #7C94F5 !important;
+    color: #1A202C !important;
+    border-color: #7C94F5 !important;
+}
+
+/* Botão primário */
+body.tema-dark .btn-primary {
+    background-color: #68D391 !important;
+    color: #1A202C !important;
+    border-color: #68D391 !important;
+}
+
+body.tema-dark .btn-primary:hover {
+    background-color: #48BB78 !important;
+    border-color: #48BB78 !important;
+}
+
+/* Inputs */
+body.tema-dark input,
+body.tema-dark textarea,
+body.tema-dark select {
+    background-color: #2D3748 !important;
+    color: #F7FAFC !important;
+    border-color: #4A5568 !important;
+}
+
+/* Imagens */
+body.tema-dark img {
+    opacity: 0.9;
+}
+
+body.tema-dark img:hover {
+    opacity: 1;
+}
+
+/* Ícones */
+body.tema-dark i {
+    color: #F7FAFC !important;
+}
+
+/* Badges */
+body.tema-dark .category-badge {
+    background-color: #68D391 !important;
+    color: #1A202C !important;
+}
+
+/* ============================================
+   ESPAÇAMENTO NORMAL (padrão)
+   ============================================ */
+body.espacamento-normal {
+    line-height: 1.6;
+    letter-spacing: normal;
+    word-spacing: normal;
+}
+
+/* ============================================
+   ESPAÇAMENTO AMPLIADO (Large)
+   ============================================ */
+body.espacamento-large {
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+    word-spacing: 0.1em;
+}
+
+body.espacamento-large h1,
+body.espacamento-large h2,
+body.espacamento-large h3,
+body.espacamento-large h4,
+body.espacamento-large h5,
+body.espacamento-large h6 {
+    line-height: 1.4;
+    letter-spacing: 0.03em;
+    margin-bottom: 1.2em;
+}
+
+body.espacamento-large p {
+    line-height: 2;
+    margin-bottom: 1.5em;
+}
+
+body.espacamento-large li {
+    line-height: 2;
+    margin-bottom: 1em;
+}
+
+body.espacamento-large .article-content,
+body.espacamento-large .card-description,
+body.espacamento-large .article-subtitle {
+    line-height: 2;
+}
+
+body.espacamento-large button,
+body.espacamento-large .btn,
+body.espacamento-large .btn-controle {
+    padding: 0.75rem 1.5rem;
+    letter-spacing: 0.05em;
+}
+
+body.espacamento-large .btn-primary {
+    padding: 1rem 2rem;
+}
+
+/* ============================================
+   TRANSIÇÕES SUAVES
+   ============================================ */
+body,
+body * {
+    transition: background-color 0.3s ease, 
+                color 0.3s ease, 
+                border-color 0.3s ease;
+}
+
+/* ============================================
+   MODO REDUZIDO DE MOVIMENTO
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    body,
+    body * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* ============================================
+   PRINT (Impressão)
+   ============================================ */
+@media print {
+    body {
+        background-color: white !important;
+        color: black !important;
+    }
+    
+    body * {
+        background-color: white !important;
+        color: black !important;
+    }
+}
+
+/* ============================================
+   PATCH EQUILIBRADO: HEADER E BARRA PROPORCIONAIS
+   Adicione este código NO FINAL do emag.css
+   (substitui o patch anterior)
+   ============================================ */
+
+/* ============================================
+   BARRA DE ACESSIBILIDADE - EQUILIBRADA
+   ============================================ */
+.barra-acessibilidade {
+    padding: 0.65rem 0 !important; /* Equilibrado */
+    border-bottom-width: 2px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+.acessibilidade-controles {
+    gap: 1.25rem !important; /* Equilibrado */
+    padding: 0 1rem;
+}
+
+.controle-grupo {
+    gap: 0.6rem !important; /* Equilibrado */
+    flex-wrap: nowrap;
+}
+
+.controle-label {
+    font-size: 0.875rem !important; /* 14px - legível */
+    gap: 0.35rem !important;
+    white-space: nowrap;
+}
+
+.controle-label i {
+    font-size: 1.1rem !important;
+}
+
+.controle-botoes {
+    gap: 0.35rem !important;
+}
+
+.btn-controle {
+    padding: 0.45rem 0.9rem !important; /* Equilibrado */
+    border-radius: 6px !important;
+    font-size: 0.875rem !important; /* 14px */
+    gap: 0.35rem !important;
+    line-height: 1.3;
+}
+
+.btn-controle i {
+    font-size: 1rem !important;
+}
+
+.btn-controle:focus {
+    outline-width: 2px !important;
+    outline-offset: 2px !important;
+}
+
+/* ============================================
+   SKIP LINKS - EQUILIBRADAS
+   ============================================ */
+.skip-links a {
+    padding: 0.5rem 0.875rem !important;
+    font-size: 0.875rem !important; /* 14px */
+}
+
+.skip-links kbd {
+    padding: 2px 5px !important;
+    border-radius: 3px !important;
+    font-size: 0.75rem !important; /* 12px */
+    margin-left: 0.3rem !important;
+}
+
+/* ============================================
+   SITE-HEADER - EQUILIBRADO
+   ============================================ */
+.site-header {
+    border-bottom-width: 2px !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.site-header .container {
+    gap: 1.25rem !important; /* Equilibrado */
+    padding-top: 1rem !important; /* Equilibrado */
+    padding-bottom: 1rem !important;
+}
+
+/* Logo - tamanho proporcional */
+.logo {
+    gap: 0.35rem !important;
+}
+
+.logo img {
+    height: 75px !important; /* EQUILIBRADO - nem grande nem pequeno */
+}
+
+.logo a:focus {
+    outline-width: 2px !important;
+    outline-offset: 3px !important;
+}
+
+.tagline {
+    font-size: 0.813rem !important; /* 13px */
+}
+
+/* Navegação - proporcional */
+.menu-toggle {
+    padding: 0.5rem 0.875rem !important;
+    gap: 0.35rem !important;
+}
+
+.menu-toggle:focus {
+    outline-width: 2px !important;
+    outline-offset: 2px !important;
+}
+
+.menu-list {
+    gap: 0.35rem !important;
+}
+
+.menu-link {
+    gap: 0.35rem !important;
+    padding: 0.5rem 0.875rem !important; /* Equilibrado */
+    border-width: 2px !important;
+    font-size: 0.938rem !important; /* 15px */
+}
+
+.menu-link i {
+    font-size: 1.125rem !important; /* 18px */
+}
+
+.menu-link:focus {
+    outline-width: 2px !important;
+    outline-offset: 2px !important;
+}
+
+/* Busca - proporcional */
+.search-wrapper {
+    min-width: 240px !important;
+}
+
+.search-form {
+    border-width: 2px !important;
+}
+
+.search-form input {
+    padding: 0.5rem 0.875rem !important;
+    font-size: 0.938rem !important; /* 15px */
+}
+
+.search-form button {
+    padding: 0.5rem 1rem !important;
+}
+
+.search-form button:focus {
+    outline-width: 2px !important;
+    outline-offset: -2px !important;
+}
+
+.search-form button i {
+    font-size: 1.375rem !important; /* 22px */
+}
+
+/* ============================================
+   BREADCRUMB - EQUILIBRADO
+   ============================================ */
+.breadcrumb {
+    padding: 0.625rem 0 !important; /* 10px */
+}
+
+.breadcrumb ol {
+    gap: 0.5rem !important;
+    padding: 0 1rem !important;
+}
+
+.breadcrumb li {
+    gap: 0.5rem !important;
+    font-size: 0.875rem !important; /* 14px */
+}
+
+.breadcrumb a {
+    gap: 0.3rem !important;
+    padding: 0.3rem 0.6rem !important;
+}
+
+.breadcrumb a:focus {
+    outline-width: 2px !important;
+    outline-offset: 2px !important;
+}
+
+/* ============================================
+   RESPONSIVIDADE MOBILE
+   ============================================ */
+@media (max-width: 768px) {
+    .barra-acessibilidade {
+        padding: 0.5rem 0 !important;
+    }
+
+    .acessibilidade-controles {
+        gap: 1rem !important;
+        padding: 0 0.75rem;
+    }
+
+    .controle-grupo {
+        gap: 0.5rem !important;
+    }
+
+    .controle-label {
+        font-size: 0.813rem !important; /* 13px */
+    }
+
+    .controle-label i {
+        font-size: 1rem !important;
+    }
+
+    .btn-controle {
+        padding: 0.4rem 0.75rem !important;
+        font-size: 0.813rem !important; /* 13px */
+    }
+
+    .btn-controle i {
+        font-size: 0.938rem !important;
+    }
+
+    .site-header .container {
+        padding-top: 0.75rem !important;
+        padding-bottom: 0.75rem !important;
+    }
+
+    .logo img {
+        height: 60px !important; /* Menor em mobile */
+    }
+
+    .tagline {
+        font-size: 0.75rem !important;
+    }
+
+    .menu-link {
+        padding: 0.6rem 0.875rem !important;
+        font-size: 0.875rem !important;
+    }
+
+    .search-wrapper {
+        min-width: 100% !important;
+    }
+
+    .breadcrumb ol {
+        font-size: 0.813rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .controle-label {
+        font-size: 0.75rem !important;
+    }
+
+    .btn-controle {
+        padding: 0.35rem 0.65rem !important;
+        font-size: 0.75rem !important;
+    }
+
+    .logo img {
+        height: 55px !important;
+    }
+
+    .menu-link {
+        font-size: 0.813rem !important;
+    }
+}

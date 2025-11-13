@@ -11,14 +11,14 @@
 
     <!-- SEO -->
     <meta name="description"
-        content="Projeto educacional de acessibilidade web - Compare 4 versões do mesmo portal de notícias: anti-padrão, WCAG AA, WCAG AAA + eMAG e versão global com i18n">
+        content="Projeto educacional de acessibilidade web - Compare 3 versões do mesmo portal de notícias: anti-padrão, WCAG AA e WCAG AAA + eMAG">
     <meta name="keywords" content="acessibilidade, WCAG, eMAG, HTML semântico, a11y, web accessibility">
     <meta name="author" content="IFBA - Santo Antônio de Jesus">
     <meta name="robots" content="index, follow">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Cabra da Tech - Projeto de Acessibilidade Web">
-    <meta property="og:description" content="Aprenda acessibilidade web na prática com 4 versões comparativas">
+    <meta property="og:description" content="Aprenda acessibilidade web na prática com 3 versões comparativas">
     <meta property="og:image" content="./assets/images/og-image.png">
     <meta property="og:url" content="https://cabradatech.ifba.br">
     <meta property="og:type" content="website">
@@ -27,7 +27,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Cabra da Tech - Projeto de Acessibilidade Web">
-    <meta name="twitter:description" content="Aprenda acessibilidade web na prática com 4 versões comparativas">
+    <meta name="twitter:description" content="Aprenda acessibilidade web na prática com 3 versões comparativas">
     <meta name="twitter:image" content="./assets/images/og-image.png">
 
     <!-- Theme Color -->
@@ -147,9 +147,9 @@
 
         .versoes-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: var(--espaco-xl);
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -198,11 +198,6 @@
         .versao-card[data-version="v3"] {
             --card-color-start: #28A745;
             --card-color-end: #218838;
-        }
-
-        .versao-card[data-version="v4"] {
-            --card-color-start: #FFC107;
-            --card-color-end: #E0A800;
         }
 
         .card-icon {
@@ -263,10 +258,6 @@
 
         .feature-item.negative i {
             color: var(--cor-erro);
-        }
-
-        .feature-item.neutral i {
-            color: var(--cor-primaria);
         }
 
         .card-stats {
@@ -336,7 +327,7 @@
         }
 
         .comparison-table {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             background-color: var(--cor-fundo);
             border-radius: var(--raio-lg);
@@ -494,10 +485,6 @@
             animation-delay: 0.3s;
         }
 
-        .versao-card:nth-child(4) {
-            animation-delay: 0.4s;
-        }
-
         /* Modo reduzido de movimento */
         @media (prefers-reduced-motion: reduce) {
             .versao-card {
@@ -545,7 +532,7 @@
             <div class="section-header">
                 <h2 id="versoes-titulo">Escolha sua Versão</h2>
                 <p class="section-description">
-                    Explore 4 implementações diferentes do mesmo portal de notícias.
+                    Explore 3 implementações diferentes do mesmo portal de notícias.
                     Cada versão demonstra um nível distinto de acessibilidade e boas práticas web.
                 </p>
             </div>
@@ -652,8 +639,8 @@
                                 <span class="stat-label">Acessibilidade</span>
                             </div>
                             <div class="stat-item">
-                                <span class="stat-value">A</span>
-                                <span class="stat-label">Nota WCAG</span>
+                                <span class="stat-value">AA</span>
+                                <span class="stat-label">Nível WCAG</span>
                             </div>
                         </div>
                     </div>
@@ -695,11 +682,11 @@
                             </li>
                             <li class="feature-item positive">
                                 <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
-                                <span>Personalização de fonte/cor</span>
+                                <span>Personalização de fonte/cor/tema</span>
                             </li>
                             <li class="feature-item positive">
                                 <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
-                                <span>Libras e audiodescrição</span>
+                                <span>Libras e recursos avançados</span>
                             </li>
                         </ul>
 
@@ -723,63 +710,6 @@
                     </footer>
                 </article>
 
-                <!-- V4 - Global i18n -->
-                <article class="versao-card" data-version="v4">
-                    <header class="card-header">
-                        <span class="card-icon" aria-hidden="true">🌍</span>
-                        <h3 class="card-title">Versão 4</h3>
-                        <p class="card-level">Global i18n + RTL</p>
-                    </header>
-
-                    <div class="card-body">
-                        <p class="card-description">
-                            Versão internacional com suporte completo a i18n (internacionalização),
-                            múltiplos idiomas, RTL (right-to-left) e formatos localizados.
-                        </p>
-
-                        <ul class="card-features" role="list">
-                            <li class="feature-item positive">
-                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
-                                <span>4 idiomas (PT, EN, ES, AR)</span>
-                            </li>
-                            <li class="feature-item positive">
-                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
-                                <span>Suporte RTL (árabe)</span>
-                            </li>
-                            <li class="feature-item positive">
-                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
-                                <span>Formatos de data/moeda localizados</span>
-                            </li>
-                            <li class="feature-item positive">
-                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
-                                <span>WCAG AA mantido</span>
-                            </li>
-                            <li class="feature-item positive">
-                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
-                                <span>Detecção automática de idioma</span>
-                            </li>
-                        </ul>
-
-                        <div class="card-stats">
-                            <div class="stat-item">
-                                <span class="stat-value">4</span>
-                                <span class="stat-label">Idiomas</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-value">RTL</span>
-                                <span class="stat-label">Suporte</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <footer class="card-footer">
-                        <a href="./v4-global-i18n/global-i18n.html" class="btn-access">
-                            <span>Acessar Versão Global</span>
-                            <i class="bi bi-arrow-right" aria-hidden="true"></i>
-                        </a>
-                    </footer>
-                </article>
-
             </div>
         </section>
 
@@ -788,7 +718,7 @@
             <div class="section-header">
                 <h2 id="comparacao-titulo">Tabela Comparativa</h2>
                 <p class="section-description">
-                    Veja lado a lado as diferenças entre as quatro versões
+                    Veja lado a lado as diferenças entre as três versões
                 </p>
             </div>
 
@@ -797,10 +727,9 @@
                     <thead>
                         <tr>
                             <th scope="col">Característica</th>
-                            <th scope="col">V1 (Anti)</th>
-                            <th scope="col">V2 (AA)</th>
-                            <th scope="col">V3 (AAA)</th>
-                            <th scope="col">V4 (i18n)</th>
+                            <th scope="col">V1 (Anti-padrão)</th>
+                            <th scope="col">V2 (WCAG AA)</th>
+                            <th scope="col">V3 (AAA + eMAG)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -809,12 +738,10 @@
                             <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
                             <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
                             <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
-                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
                         </tr>
                         <tr>
                             <th scope="row">WCAG 2.1 AA</th>
                             <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
-                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
                             <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
                             <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
                         </tr>
@@ -823,19 +750,16 @@
                             <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
                             <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
                             <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
-                            <td><i class="bi bi-dash-circle-fill check-partial" aria-label="Parcial"></i></td>
                         </tr>
                         <tr>
-                            <th scope="row">eMAG</th>
+                            <th scope="row">eMAG (Gov. BR)</th>
                             <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
                             <td><i class="bi bi-dash-circle-fill check-partial" aria-label="Parcial"></i></td>
                             <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
-                            <td><i class="bi bi-dash-circle-fill check-partial" aria-label="Parcial"></i></td>
                         </tr>
                         <tr>
                             <th scope="row">ARIA</th>
                             <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
-                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
                             <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
                             <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
                         </tr>
@@ -844,12 +768,10 @@
                             <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
                             <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
                             <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
-                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
                         </tr>
                         <tr>
                             <th scope="row">Leitores de Tela</th>
                             <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
-                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
                             <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
                             <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
                         </tr>
@@ -858,35 +780,42 @@
                             <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
                             <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
                             <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
-                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
                         </tr>
                         <tr>
-                            <th scope="row">Personalização</th>
-                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
-                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
-                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
-                            <td><i class="bi bi-dash-circle-fill check-partial" aria-label="Parcial"></i></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Internacionalização</th>
-                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
+                            <th scope="row">Personalização Avançada</th>
                             <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
                             <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
                             <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
                         </tr>
                         <tr>
-                            <th scope="row">Suporte RTL</th>
-                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
+                            <th scope="row">Controle de Fonte</th>
                             <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
                             <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
                             <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
                         </tr>
                         <tr>
-                            <th scope="row">Libras/Audiodescrição</th>
+                            <th scope="row">Temas (Claro/Escuro/Contraste)</th>
                             <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
                             <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
                             <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Fonte para Dislexia</th>
                             <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
+                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
+                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Atalhos de Teclado</th>
+                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
+                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
+                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Skip Links</th>
+                            <td><i class="bi bi-x-circle-fill check-no" aria-label="Não"></i></td>
+                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
+                            <td><i class="bi bi-check-circle-fill check-yes" aria-label="Sim"></i></td>
                         </tr>
                     </tbody>
                 </table>

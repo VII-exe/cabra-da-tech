@@ -1,0 +1,164 @@
+/**
+ * ============================================
+ * OPENDYSLEXIC - Fonte de Acessibilidade
+ * ============================================
+ * 
+ * Garante que a fonte OpenDyslexic não seja sobrescrita
+ * USANDO FONTES LOCAIS
+ */
+
+/* Importar OpenDyslexic LOCAL */
+@font-face {
+    font-family: 'OpenDyslexic';
+    src: url('../fonts/OpenDyslexic/OpenDyslexic-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'OpenDyslexic';
+    src: url('../fonts/OpenDyslexic/OpenDyslexic-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'OpenDyslexic';
+    src: url('../fonts/OpenDyslexic/OpenDyslexic-Italic.woff2') format('woff2');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'OpenDyslexic';
+    src: url('../fonts/OpenDyslexic/OpenDyslexic-BoldItalic.woff2') format('woff2');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+/**
+ * APLICAÇÃO DA FONTE
+ * Usa !important para garantir que não seja sobrescrita
+ */
+
+/* Quando classe dyslexic-font está ativa */
+html.dyslexic-font,
+html.dyslexic-font *,
+body.dyslexic-font,
+body.dyslexic-font * {
+    font-family: 'OpenDyslexic', Arial, sans-serif !important;
+}
+
+/* Alternativa: data-attribute */
+[data-font="dyslexic"],
+[data-font="dyslexic"] * {
+    font-family: 'OpenDyslexic', Arial, sans-serif !important;
+}
+
+/**
+ * AJUSTES VISUAIS
+ * OpenDyslexic precisa de mais espaçamento
+ */
+
+html.dyslexic-font {
+    letter-spacing: 0.05em;
+    word-spacing: 0.1em;
+    line-height: 1.6;
+}
+
+html.dyslexic-font h1,
+html.dyslexic-font h2,
+html.dyslexic-font h3,
+html.dyslexic-font h4,
+html.dyslexic-font h5,
+html.dyslexic-font h6 {
+    letter-spacing: 0.03em;
+    word-spacing: 0.08em;
+}
+
+html.dyslexic-font p,
+html.dyslexic-font li,
+html.dyslexic-font td,
+html.dyslexic-font th {
+    letter-spacing: 0.05em;
+    word-spacing: 0.1em;
+    line-height: 1.7;
+}
+
+/**
+ * GARANTIR PRECEDÊNCIA MÁXIMA
+ * !important vence até style inline
+ */
+
+/* Extra força para elementos específicos */
+html.dyslexic-font input,
+html.dyslexic-font textarea,
+html.dyslexic-font button,
+html.dyslexic-font select {
+    font-family: 'OpenDyslexic', Arial, sans-serif !important;
+}
+
+/* Links e elementos interativos */
+html.dyslexic-font a,
+html.dyslexic-font label {
+    font-family: 'OpenDyslexic', Arial, sans-serif !important;
+}
+
+/* Notícias e cards */
+html.dyslexic-font .noticia-card,
+html.dyslexic-font .noticia-card *,
+html.dyslexic-font .news-card,
+html.dyslexic-font .news-card * {
+    font-family: 'OpenDyslexic', Arial, sans-serif !important;
+}
+
+/**
+ * SOBRESCREVER QUALQUER FONTE INLINE
+ */
+html.dyslexic-font [style*="font-family"] {
+    font-family: 'OpenDyslexic', Arial, sans-serif !important;
+}
+
+/**
+ * FALLBACK PARA NAVEGADORES ANTIGOS
+ */
+@supports not (font-display: swap) {
+    html.dyslexic-font {
+        font-family: Arial, sans-serif;
+    }
+}
+
+/**
+ * LOADING STATE
+ * Evitar FOIT (Flash of Invisible Text)
+ */
+html.dyslexic-font.fonts-loading {
+    font-family: Arial, sans-serif;
+}
+
+html.dyslexic-font.fonts-loaded {
+    font-family: 'OpenDyslexic', Arial, sans-serif !important;
+}
+
+/**
+ * DEBUG - Remover em produção
+ */
+/*
+html.dyslexic-font::before {
+  content: "🔤 OpenDyslexic ativa";
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: #4CAF50;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  z-index: 9999;
+  font-family: Arial, sans-serif !important;
+}
+*/
