@@ -191,7 +191,7 @@
 .logo img {
     display: block;
     width: auto;
-    height: 60px;
+    height: 100px;
     transition: opacity var(--transicao-normal);
 }
 
