@@ -367,7 +367,7 @@ html[dir="rtl"] .hero {
     color: var(--text-color);
     text-decoration: none;
     font-weight: 600;
-    padding: var(--spacing-2) var(--spacing-3);
+    padding-left: var(--spacing-3);
     border-radius: 6px;
     transition: all 0.3s ease;
 }
